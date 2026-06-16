@@ -1,21 +1,29 @@
 import { Link } from 'react-router-dom';
+import { Briefcase, Users, Camera, CirclePlay, MapPin, Phone, Mail, Globe } from 'lucide-react';
 import '../styles/footer.css';
 import Logo from './Logo';
 
 const quickLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'About Us', path: '/about' },
-  { label: 'Products', path: '/products' },
+  { label: 'Home',          path: '/' },
+  { label: 'About Us',      path: '/about' },
+  { label: 'Products',      path: '/products' },
   { label: 'News & Insights', path: '/news' },
-  { label: 'Gallery', path: '/gallery' },
-  { label: 'Contact Us', path: '/contact' },
+  { label: 'Gallery',       path: '/gallery' },
+  { label: 'Contact Us',    path: '/contact' },
 ];
 
 const complianceLinks = [
   { label: 'Quality & Food Safety', path: '/quality' },
-  { label: 'Sustainability', path: '/sustainability' },
-  { label: 'Export Markets', path: '/export-markets' },
+  { label: 'Sustainability',        path: '/sustainability' },
+  { label: 'Export Markets',        path: '/export-markets' },
   { label: 'Packaging & Logistics', path: '/packaging' },
+];
+
+const socialLinks = [
+  { Icon: Briefcase,  href: '#', label: 'LinkedIn' },
+  { Icon: Users,      href: '#', label: 'Facebook' },
+  { Icon: Camera,     href: '#', label: 'Instagram' },
+  { Icon: CirclePlay, href: '#', label: 'YouTube' },
 ];
 
 export default function Footer() {
@@ -26,7 +34,7 @@ export default function Footer() {
       <div className="footer-top">
         <div className="container-xl footer-grid">
 
-          {/* Brand column */}
+          {/* Brand */}
           <div className="footer-brand">
             <Logo height={52} inverted />
             <p>
@@ -34,17 +42,20 @@ export default function Footer() {
               vegetables, herbs and spices, committed to sustainable agriculture and
               international quality standards.
             </p>
-            <div className="footer-tagline">SAFE • QUALITY • SUSTAINABLE</div>
+            <div className="footer-tagline">SAFE · QUALITY · SUSTAINABLE</div>
+
             <div className="footer-certs">
-              {['HACCP', 'GAP', 'ISO', 'KEPHIS'].map(cert => (
+              {['HACCP', 'GlobalG.A.P.', 'KEPHIS', 'KEBS'].map(cert => (
                 <span key={cert} className="footer-cert-badge">{cert}</span>
               ))}
             </div>
+
             <div className="footer-social">
-              <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
-              <a href="#" aria-label="Facebook" title="Facebook">f</a>
-              <a href="#" aria-label="Instagram" title="Instagram">ig</a>
-              <a href="#" aria-label="YouTube" title="YouTube">yt</a>
+              {socialLinks.map(({ Icon, href, label }) => (
+                <a key={label} href={href} aria-label={label} title={label}>
+                  <Icon size={16} strokeWidth={1.75} />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -71,44 +82,48 @@ export default function Footer() {
           {/* Contact */}
           <div className="footer-col">
             <h4>Get In Touch</h4>
+
             <div className="footer-contact-item">
-              <div className="icon">📍</div>
+              <div className="icon"><MapPin size={15} strokeWidth={1.75} /></div>
               <div className="text">Nairobi, Kenya</div>
             </div>
+
             <div className="footer-contact-item">
-              <div className="icon">📞</div>
+              <div className="icon"><Phone size={15} strokeWidth={1.75} /></div>
               <div className="text">
                 <a href="tel:+254712365084">+254 712 365 084</a><br />
                 <a href="tel:+254722537995">+254 722 537 995</a>
               </div>
             </div>
+
             <div className="footer-contact-item">
-              <div className="icon">✉️</div>
+              <div className="icon"><Mail size={15} strokeWidth={1.75} /></div>
               <div className="text">
                 <a href="mailto:export@carlfresh.com">export@carlfresh.com</a><br />
                 <a href="mailto:info@carlfresh.com">info@carlfresh.com</a>
               </div>
             </div>
+
             <div className="footer-contact-item">
-              <div className="icon">🌐</div>
+              <div className="icon"><Globe size={15} strokeWidth={1.75} /></div>
               <div className="text">
                 <a href="http://www.carlfresh.com">www.carlfresh.com</a>
               </div>
             </div>
+
             <a
               href="https://wa.me/254712365084"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
-              style={{ marginTop: '1rem', fontSize: '0.8rem', padding: '0.6rem 1.25rem' }}
+              style={{ marginTop: '1.25rem', fontSize: '0.8rem', padding: '0.6rem 1.25rem' }}
             >
-              💬 WhatsApp Us
+              WhatsApp Us
             </a>
           </div>
         </div>
       </div>
 
-      {/* Footer bottom */}
       <div className="container-xl footer-bottom">
         <p>© {year} Carl Fresh Produce Limited. All rights reserved. Sustainably Grown in Kenya.</p>
         <div className="footer-bottom-links">

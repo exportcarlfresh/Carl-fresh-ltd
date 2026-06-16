@@ -1,0 +1,53 @@
+/* ═══════════════════════════════════════════════
+   Carl Fresh Produce Limited — Colour Palette
+   Central source of truth for all brand colours.
+   Import this file before any component styles.
+   ═══════════════════════════════════════════════ */
+
+:root {
+  /* ── Brand greens ── */
+  --color-green-dark:    #0d3b12;
+  --color-green-primary: #1b5e20;
+  --color-green-mid:     #2e7d32;
+  --color-green-light:   #4caf50;
+  --color-green-pale:    #e8f5e9;
+
+  /* ── Brand reds (chili) ── */
+  --color-red-chili:  #c62828;
+  --color-red-light:  #e53935;
+  --color-red-pale:   #ffebee;
+
+  /* ── Gold / accent ── */
+  --color-gold:       #c9a84c;
+  --color-gold-light: #e8c96a;
+  --color-gold-pale:  #fdf6e3;
+
+  /* ── Neutrals ── */
+  --color-white:      #ffffff;
+  --color-off-white:  #f9f9f6;
+  --color-gray-light: #f4f4f4;
+  --color-gray-border: #e5e7eb;
+  --color-gray-mid:   #666666;
+  --color-gray-dark:  #333333;
+  --color-black:      #111111;
+
+  /* ── Semantic ── */
+  --color-text:         var(--color-gray-dark);
+  --color-text-muted:   var(--color-gray-mid);
+  --color-text-heading: var(--color-green-primary);
+  --color-bg:           var(--color-white);
+  --color-bg-alt:       var(--color-off-white);
+  --color-border:       var(--color-gray-border);
+  --color-accent:       var(--color-gold);
+
+  /* ── Overlay / shadow ── */
+  --shadow-sm:  0 2px 8px  rgba(0, 0, 0, 0.06);
+  --shadow-md:  0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg:  0 12px 40px rgba(0, 0, 0, 0.12);
+  --shadow-xl:  0 20px 60px rgba(0, 0, 0, 0.16);
+
+  /* ── Green tinted shadows ── */
+  --shadow-green-sm: 0 4px 16px rgba(27, 94, 32, 0.12);
+  --shadow-green-md: 0 8px 28px rgba(27, 94, 32, 0.20);
+  --shadow-green-lg: 0 16px 48px rgba(27, 94, 32, 0.28);
+}

@@ -186,42 +186,18 @@
 
 .navbar-hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   padding: 6px;
   background: none;
   border: none;
   border-radius: 6px;
+  transition: color 0.2s;
 }
 
-.navbar-hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.navbar.transparent .navbar-hamburger span {
-  background-color: #fff;
-}
-
-.navbar.scrolled .navbar-hamburger span {
-  background-color: var(--color-gray-dark);
-}
-
-.navbar-hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.navbar-hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar-hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+.navbar.transparent .navbar-hamburger { color: #fff; }
+.navbar.scrolled   .navbar-hamburger { color: var(--color-gray-dark); }
 
 /* Mobile nav drawer */
 .mobile-menu {

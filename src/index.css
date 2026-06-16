@@ -1,23 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+/* ── External fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+
+/* ── Tailwind v4 ── */
 @import "tailwindcss";
 
+/* ── Brand colour tokens ── */
+@import './styles/global/colors.css';
+
+/* ── Tailwind theme overrides ── */
 @theme {
   --color-green-primary: #1b5e20;
-  --color-green-dark: #0d3b12;
-  --color-green-mid: #2e7d32;
-  --color-green-light: #4caf50;
-  --color-red-chili: #c62828;
-  --color-red-light: #e53935;
-  --color-gold: #c9a84c;
-  --color-gold-light: #e8c96a;
-  --color-off-white: #f9f9f6;
-  --color-gray-mid: #666666;
-  --color-gray-dark: #333333;
+  --color-green-dark:    #0d3b12;
+  --color-green-mid:     #2e7d32;
+  --color-green-light:   #4caf50;
+  --color-red-chili:     #c62828;
+  --color-red-light:     #e53935;
+  --color-gold:          #c9a84c;
+  --color-gold-light:    #e8c96a;
+  --color-off-white:     #f9f9f6;
+  --color-gray-mid:      #666666;
+  --color-gray-dark:     #333333;
 
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Raleway", system-ui, sans-serif;
+  --font-body:    "Raleway", system-ui, sans-serif;
 }
 
+/* ── Reset ── */
 *,
 *::before,
 *::after {
@@ -32,8 +40,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-gray-dark);
-  background-color: #fff;
+  color: var(--color-text, #333333);
+  background-color: var(--color-bg, #fff);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -60,13 +68,17 @@ a {
   flex-direction: column;
 }
 
-/* ── Shared utility classes ── */
+/* ══════════════════════════════════════
+   Shared utility classes
+   ══════════════════════════════════════ */
 
 .section-label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-family: var(--font-body);
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-gold);
@@ -79,15 +91,16 @@ a {
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 3vw, 2.75rem);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-green-primary);
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
   font-family: var(--font-body);
   font-size: 1rem;
-  color: var(--color-gray-mid);
+  color: var(--color-text-muted, #666);
   max-width: 600px;
   line-height: 1.75;
 }
@@ -103,13 +116,16 @@ a {
 }
 
 .divider-gold {
-  width: 60px;
+  width: 56px;
   height: 3px;
-  background: var(--color-gold);
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
   border-radius: 2px;
+  flex-shrink: 0;
 }
 
-/* ── Buttons ── */
+/* ══════════════════════════════════════
+   Buttons
+   ══════════════════════════════════════ */
 
 .btn-primary {
   display: inline-flex;
@@ -120,18 +136,19 @@ a {
   padding: 0.75rem 1.75rem;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.03em;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
   transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-primary:hover {
   background-color: var(--color-green-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(27, 94, 32, 0.3);
+  box-shadow: var(--shadow-green-md);
 }
 
 .btn-secondary {
@@ -143,11 +160,12 @@ a {
   padding: 0.72rem 1.72rem;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700;
+  font-size: 0.875rem;
   transition: all 0.25s ease;
   border: 2px solid var(--color-green-primary);
   cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-secondary:hover {
@@ -165,15 +183,16 @@ a {
   padding: 0.72rem 1.72rem;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700;
+  font-size: 0.875rem;
   transition: all 0.25s ease;
-  border: 2px solid rgba(255,255,255,0.7);
+  border: 2px solid rgba(255, 255, 255, 0.65);
   cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-outline-white:hover {
-  background-color: rgba(255,255,255,0.15);
+  background-color: rgba(255, 255, 255, 0.12);
   border-color: #fff;
 }
 
@@ -186,22 +205,31 @@ a {
   padding: 0.75rem 1.75rem;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700;
+  font-size: 0.875rem;
   transition: all 0.25s ease;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-gold:hover {
   background-color: #a8872a;
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.35);
 }
 
-/* ── Page hero (shared) ── */
+/* ══════════════════════════════════════
+   Page hero (shared across inner pages)
+   ══════════════════════════════════════ */
 
 .page-hero {
-  background: linear-gradient(135deg, var(--color-green-dark) 0%, var(--color-green-primary) 60%, var(--color-green-mid) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-green-dark) 0%,
+    var(--color-green-primary) 60%,
+    var(--color-green-mid) 100%
+  );
   padding: 7rem 0 4.5rem;
   color: #fff;
   text-align: center;
@@ -213,43 +241,52 @@ a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 40%);
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 40%);
   pointer-events: none;
 }
 
 .page-hero h1 {
   color: #fff;
   font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   margin-bottom: 1rem;
   position: relative;
 }
 
 .page-hero p {
-  color: rgba(255,255,255,0.8);
-  font-size: 1.1rem;
-  max-width: 600px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  max-width: 580px;
   margin: 0 auto;
   font-family: var(--font-body);
+  font-weight: 400;
   position: relative;
+  line-height: 1.7;
 }
 
-/* ── Card ── */
+/* ══════════════════════════════════════
+   Cards
+   ══════════════════════════════════════ */
 
 .card {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-lg);
 }
 
-/* ── Animations ── */
+/* ══════════════════════════════════════
+   Animations
+   ══════════════════════════════════════ */
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(28px); }
@@ -266,29 +303,33 @@ a {
   to   { opacity: 1; transform: translateX(0); }
 }
 
-.animate-fade-up   { animation: fadeInUp 0.65s ease forwards; }
-.animate-fade-in   { animation: fadeIn 0.65s ease forwards; }
+.animate-fade-up    { animation: fadeInUp     0.65s ease forwards; }
+.animate-fade-in    { animation: fadeIn       0.65s ease forwards; }
 .animate-slide-right { animation: slideInRight 0.65s ease forwards; }
 
-/* ── Breadcrumb ── */
+/* ══════════════════════════════════════
+   Breadcrumb
+   ══════════════════════════════════════ */
 
 .breadcrumb {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.65);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
   justify-content: center;
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
   position: relative;
 }
 
-.breadcrumb a { color: rgba(255,255,255,0.75); }
-.breadcrumb a:hover { color: var(--color-gold); }
-.breadcrumb span { color: var(--color-gold); }
+.breadcrumb a         { color: rgba(255, 255, 255, 0.72); transition: color 0.2s; }
+.breadcrumb a:hover   { color: var(--color-gold-light); }
+.breadcrumb span      { color: var(--color-gold-light); }
 
-/* ── Stats counter ── */
+/* ══════════════════════════════════════
+   Stat counters
+   ══════════════════════════════════════ */
 
 .stats-grid {
   display: grid;
@@ -300,25 +341,28 @@ a {
 .stat-item .stat-number {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-green-primary);
   line-height: 1;
+  letter-spacing: -0.03em;
 }
 
 .stat-item .stat-label {
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--color-gray-mid);
-  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted, #666);
+  margin-top: 0.35rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 500;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
-/* ── Accordion (FAQ) ── */
+/* ══════════════════════════════════════
+   Accordion / FAQ
+   ══════════════════════════════════════ */
 
 .accordion-item {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-border, #e5e7eb);
 }
 
 .accordion-trigger {
@@ -332,8 +376,8 @@ a {
   cursor: pointer;
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-gray-dark);
+  font-weight: 600;
+  color: var(--color-text, #333);
   text-align: left;
   gap: 1rem;
   transition: color 0.2s;
@@ -343,16 +387,15 @@ a {
 
 .accordion-icon {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: 1.5px solid var(--color-green-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-green-primary);
-  font-size: 1.1rem;
-  transition: transform 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .accordion-icon.open {
@@ -366,7 +409,7 @@ a {
   max-height: 0;
   transition: max-height 0.35s ease, padding 0.35s ease;
   font-family: var(--font-body);
-  color: var(--color-gray-mid);
+  color: var(--color-text-muted, #666);
   font-size: 0.95rem;
   line-height: 1.75;
 }

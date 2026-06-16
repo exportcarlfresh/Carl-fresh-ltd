@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ChevronDown, Menu, X, ShieldCheck, Leaf, Globe, Package } from 'lucide-react';
 import '../styles/navbar.css';
 import Logo from './Logo';
 
 interface DropdownItem {
   label: string;
   path: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 interface NavItem {
@@ -22,15 +23,15 @@ const navItems: NavItem[] = [
   {
     label: 'Quality & Compliance',
     dropdown: [
-      { label: 'Quality & Food Safety', path: '/quality', icon: '🛡️' },
-      { label: 'Sustainability', path: '/sustainability', icon: '🌿' },
+      { label: 'Quality & Food Safety', path: '/quality', icon: <ShieldCheck size={16} /> },
+      { label: 'Sustainability', path: '/sustainability', icon: <Leaf size={16} /> },
     ],
   },
   {
     label: 'Trade & Logistics',
     dropdown: [
-      { label: 'Export Markets', path: '/export-markets', icon: '🌍' },
-      { label: 'Packaging & Logistics', path: '/packaging', icon: '📦' },
+      { label: 'Export Markets', path: '/export-markets', icon: <Globe size={16} /> },
+      { label: 'Packaging & Logistics', path: '/packaging', icon: <Package size={16} /> },
     ],
   },
   { label: 'News & Insights', path: '/news' },
@@ -38,19 +39,19 @@ const navItems: NavItem[] = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled]       = useState(false);
+  const [mobileOpen, setMobileOpen]   = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  const location = useLocation();
+  const location   = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isHomePage = location.pathname === '/';
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
@@ -60,13 +61,13 @@ export default function Navbar() {
   }, [location.pathname]);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleOutside);
+    return () => document.removeEventListener('mousedown', handleOutside);
   }, []);
 
   useEffect(() => {
@@ -86,12 +87,13 @@ export default function Navbar() {
     <>
       <nav className={navClass} role="navigation" aria-label="Main navigation">
         <div className="container-xl navbar-inner" ref={dropdownRef}>
+
           {/* Logo */}
-          <Link to="/" className="navbar-logo" aria-label="Carl Fresh Produce - Home">
+          <Link to="/" className="navbar-logo" aria-label="Carl Fresh Produce — Home">
             <Logo height={48} />
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop links */}
           <ul className="navbar-menu" role="list">
             {navItems.map((item) => (
               <li key={item.label}>
@@ -99,14 +101,27 @@ export default function Navbar() {
                   <div style={{ position: 'relative' }}>
                     <button
                       className={`navbar-link ${isActive(undefined, item.dropdown) ? 'active' : ''}`}
-                      onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
+                      onClick={() =>
+                        setOpenDropdown(openDropdown === item.label ? null : item.label)
+                      }
                       aria-expanded={openDropdown === item.label}
                       aria-haspopup="true"
                     >
                       {item.label}
-                      <span className="chevron">▾</span>
+                      <ChevronDown
+                        size={14}
+                        strokeWidth={2.5}
+                        style={{
+                          transition: 'transform 0.2s',
+                          transform: openDropdown === item.label ? 'rotate(180deg)' : 'none',
+                        }}
+                      />
                     </button>
-                    <div className={`dropdown ${openDropdown === item.label ? 'open' : ''}`} role="menu">
+
+                    <div
+                      className={`dropdown ${openDropdown === item.label ? 'open' : ''}`}
+                      role="menu"
+                    >
                       {item.dropdown.map((d) => (
                         <Link
                           key={d.path}
@@ -133,38 +148,48 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* CTA */}
-          <Link to="/contact" className="navbar-link navbar-cta" style={{ display: 'none' }}>
-            Get a Quote
-          </Link>
+          {/* Right side: CTA + hamburger */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Link to="/contact" className="navbar-link navbar-cta">
               Get a Quote
             </Link>
-            {/* Hamburger */}
+
             <button
               className={`navbar-hamburger ${mobileOpen ? 'open' : ''}`}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
             >
-              <span /><span /><span />
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile menu */}
-      <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`} role="dialog" aria-label="Mobile navigation">
+      {/* Mobile drawer */}
+      <div
+        className={`mobile-menu ${mobileOpen ? 'open' : ''}`}
+        role="dialog"
+        aria-label="Mobile navigation"
+      >
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
           <button
             onClick={() => setMobileOpen(false)}
-            style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#333' }}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: '#333',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0.25rem',
+            }}
             aria-label="Close menu"
           >
-            ✕
+            <X size={24} />
           </button>
         </div>
+
         <ul className="mobile-menu-list" role="list">
           {navItems.map((item) => (
             <li key={item.label} className="mobile-menu-item">
@@ -172,17 +197,28 @@ export default function Navbar() {
                 <>
                   <button
                     className="mobile-menu-link"
-                    onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
+                    onClick={() =>
+                      setMobileExpanded(mobileExpanded === item.label ? null : item.label)
+                    }
                     aria-expanded={mobileExpanded === item.label}
                   >
                     {item.label}
-                    <span style={{ fontSize: '0.75rem', transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none', display: 'inline-block', transition: 'transform 0.2s' }}>▾</span>
+                    <ChevronDown
+                      size={16}
+                      style={{
+                        transition: 'transform 0.2s',
+                        transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none',
+                      }}
+                    />
                   </button>
+
                   {mobileExpanded === item.label && (
                     <div className="mobile-submenu">
                       {item.dropdown.map((d) => (
                         <Link key={d.path} to={d.path} className="mobile-submenu-link">
-                          {d.icon} {d.label}
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                            {d.icon} {d.label}
+                          </span>
                         </Link>
                       ))}
                     </div>
@@ -196,6 +232,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
         <div className="mobile-cta-wrap">
           <Link to="/contact" className="btn-primary" style={{ justifyContent: 'center' }}>
             Get a Quote

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Calendar, Clock, Newspaper } from 'lucide-react';
 import '../styles/news.css';
 
 interface Article {
@@ -9,7 +10,6 @@ interface Article {
   category: string;
   date: string;
   readTime: string;
-  emoji: string;
   img: string;
   featured?: boolean;
 }
@@ -22,7 +22,6 @@ const articles: Article[] = [
     category: 'Market Trends',
     date: 'March 2025',
     readTime: '4 min read',
-    emoji: '🥑',
     img: 'https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=800&q=80',
     featured: true,
   },
@@ -33,17 +32,15 @@ const articles: Article[] = [
     category: 'Sustainability',
     date: 'February 2025',
     readTime: '3 min read',
-    emoji: '💧',
     img: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=600&q=80',
   },
   {
     id: 3,
-    title: 'Understanding MaximumResidue Levels (MRLs) for EU Export',
+    title: 'Understanding Maximum Residue Levels (MRLs) for EU Export',
     excerpt: 'A practical guide to EU Maximum Residue Level requirements for fresh produce exporters, and how Carl Fresh ensures all our products comply with the strictest European standards.',
     category: 'Farming Practices',
     date: 'January 2025',
     readTime: '6 min read',
-    emoji: '🔬',
     img: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=80',
   },
   {
@@ -53,7 +50,6 @@ const articles: Article[] = [
     category: 'Product Updates',
     date: 'December 2024',
     readTime: '2 min read',
-    emoji: '❄️',
     img: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&q=80',
   },
   {
@@ -63,27 +59,24 @@ const articles: Article[] = [
     category: 'Market Trends',
     date: 'November 2024',
     readTime: '5 min read',
-    emoji: '🌶️',
     img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
   },
   {
     id: 6,
-    title: 'Farmer Training Programme: 2024 Year in Review',
-    excerpt: 'In 2024, Carl Fresh\'s farmer training programme reached over 100 smallholder farmers with education on GAP compliance, water management and post-harvest handling.',
+    title: "Farmer Training Programme: 2024 Year in Review",
+    excerpt: "In 2024, Carl Fresh's farmer training programme reached over 100 smallholder farmers with education on GAP compliance, water management and post-harvest handling.",
     category: 'Sustainability',
     date: 'October 2024',
     readTime: '4 min read',
-    emoji: '👨‍🌾',
     img: 'https://images.unsplash.com/photo-1592979585344-4ca01a9fe0ca?w=600&q=80',
   },
   {
     id: 7,
-    title: 'Fine Beans: A Deep Dive into Kenya\'s Premium Export Vegetable',
-    excerpt: 'Kenya\'s fine beans are among the most sought-after fresh vegetables in European supermarkets. This comprehensive overview covers growing regions, varieties, quality standards and logistics.',
+    title: "Fine Beans: A Deep Dive into Kenya's Premium Export Vegetable",
+    excerpt: "Kenya's fine beans are among the most sought-after fresh vegetables in European supermarkets. This comprehensive overview covers growing regions, varieties, quality standards and logistics.",
     category: 'Farming Practices',
     date: 'September 2024',
     readTime: '7 min read',
-    emoji: '🫘',
     img: 'https://images.unsplash.com/photo-1506389225426-7b19e8060b35?w=600&q=80',
   },
   {
@@ -93,7 +86,6 @@ const articles: Article[] = [
     category: 'Product Updates',
     date: 'August 2024',
     readTime: '2 min read',
-    emoji: '🏅',
     img: 'https://images.unsplash.com/photo-1614727187331-2756554eb2a0?w=600&q=80',
   },
 ];
@@ -151,15 +143,15 @@ export default function News() {
                 <span className="news-featured-tag">{featured.category}</span>
                 <h2>{featured.title}</h2>
                 <p>{featured.excerpt}</p>
-                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--color-gray-mid)' }}>
-                    📅 {featured.date}
+                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--color-gray-mid)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                    <Calendar size={13} /> {featured.date}
                   </span>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--color-gray-mid)' }}>
-                    ⏱️ {featured.readTime}
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--color-gray-mid)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                    <Clock size={13} /> {featured.readTime}
                   </span>
                 </div>
-                <button className="btn-primary">Read Full Article →</button>
+                <button className="btn-primary">Read Full Article</button>
               </div>
             </div>
           </div>
@@ -199,8 +191,12 @@ export default function News() {
                 </div>
                 <div className="news-card-body">
                   <div className="news-card-meta">
-                    <span>📅 {article.date}</span>
-                    <span>⏱️ {article.readTime}</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                      <Calendar size={12} /> {article.date}
+                    </span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                      <Clock size={12} /> {article.readTime}
+                    </span>
                   </div>
                   <h3 className="news-card-title">{article.title}</h3>
                   <p className="news-card-excerpt">{article.excerpt}</p>
@@ -215,7 +211,9 @@ export default function News() {
 
           {filtered.length === 0 && (
             <div style={{ textAlign: 'center', padding: '4rem 0', color: 'var(--color-gray-mid)', fontFamily: 'var(--font-body)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📰</div>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+                <Newspaper size={48} strokeWidth={1.25} color="var(--color-gray-light)" />
+              </div>
               <p>No articles found in this category.</p>
             </div>
           )}

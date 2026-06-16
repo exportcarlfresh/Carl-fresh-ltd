@@ -1,32 +1,32 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ImageOff, X } from 'lucide-react';
 import '../styles/gallery.css';
 
 interface GalleryItem {
   id: number;
   category: string;
   caption: string;
-  emoji: string;
   img: string;
   size?: 'tall' | 'wide' | 'normal';
 }
 
 const galleryItems: GalleryItem[] = [
-  { id: 1, category: 'Farms', caption: 'Avocado Farm — Central Highlands', emoji: '🥑', img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=700&q=80', size: 'tall' },
-  { id: 2, category: 'Products', caption: 'Premium Export Avocados', emoji: '🥑', img: 'https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=700&q=80' },
-  { id: 3, category: 'Products', caption: 'Long Cayenne Chilies', emoji: '🌶️', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80' },
-  { id: 4, category: 'Harvesting', caption: 'Harvest Season — Fine Beans', emoji: '🫘', img: 'https://images.unsplash.com/photo-1506389225426-7b19e8060b35?w=700&q=80', size: 'wide' },
-  { id: 5, category: 'Packing', caption: 'Export Packing Facility', emoji: '📦', img: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=80' },
-  { id: 6, category: 'Products', caption: 'Fresh Mangoes — Export Grade', emoji: '🥭', img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=700&q=80', size: 'tall' },
-  { id: 7, category: 'Farms', caption: 'Green Farms — Rift Valley', emoji: '🌱', img: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=700&q=80' },
-  { id: 8, category: 'Export', caption: 'Ready for Air Freight — JKIA', emoji: '✈️', img: 'https://images.unsplash.com/photo-1524508762098-b9ff39a7a869?w=700&q=80' },
-  { id: 9, category: 'Products', caption: 'Snap Peas — Premium Quality', emoji: '🫛', img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=700&q=80' },
-  { id: 10, category: 'Harvesting', caption: 'Passion Fruit Harvest', emoji: '🌿', img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=700&q=80', size: 'wide' },
-  { id: 11, category: 'Packing', caption: 'Quality Control & Inspection', emoji: '🔍', img: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=700&q=80' },
-  { id: 12, category: 'Farms', caption: 'Pineapple Farm — Western Kenya', emoji: '🍍', img: 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=80' },
-  { id: 13, category: 'Products', caption: 'Snow Peas — Export Ready', emoji: '❄️', img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&q=80' },
-  { id: 14, category: 'Export', caption: 'Reefer Container Loading', emoji: '🚢', img: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=700&q=80' },
-  { id: 15, category: 'Harvesting', caption: 'Chili Harvest — Eastern Kenya', emoji: '🌶️', img: 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=700&q=80' },
+  { id: 1,  category: 'Farms',      caption: 'Avocado Farm — Central Highlands',   img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=700&q=80', size: 'tall' },
+  { id: 2,  category: 'Products',   caption: 'Premium Export Avocados',             img: 'https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=700&q=80' },
+  { id: 3,  category: 'Products',   caption: 'Long Cayenne Chilies',                img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80' },
+  { id: 4,  category: 'Harvesting', caption: 'Harvest Season — Fine Beans',         img: 'https://images.unsplash.com/photo-1506389225426-7b19e8060b35?w=700&q=80', size: 'wide' },
+  { id: 5,  category: 'Packing',    caption: 'Export Packing Facility',             img: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=80' },
+  { id: 6,  category: 'Products',   caption: 'Fresh Mangoes — Export Grade',        img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=700&q=80', size: 'tall' },
+  { id: 7,  category: 'Farms',      caption: 'Green Farms — Rift Valley',           img: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=700&q=80' },
+  { id: 8,  category: 'Export',     caption: 'Ready for Air Freight — JKIA',        img: 'https://images.unsplash.com/photo-1524508762098-b9ff39a7a869?w=700&q=80' },
+  { id: 9,  category: 'Products',   caption: 'Snap Peas — Premium Quality',         img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=700&q=80' },
+  { id: 10, category: 'Harvesting', caption: 'Passion Fruit Harvest',               img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=700&q=80', size: 'wide' },
+  { id: 11, category: 'Packing',    caption: 'Quality Control & Inspection',        img: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=700&q=80' },
+  { id: 12, category: 'Farms',      caption: 'Pineapple Farm — Western Kenya',      img: 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=80' },
+  { id: 13, category: 'Products',   caption: 'Snow Peas — Export Ready',            img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&q=80' },
+  { id: 14, category: 'Export',     caption: 'Reefer Container Loading',            img: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=700&q=80' },
+  { id: 15, category: 'Harvesting', caption: 'Chili Harvest — Eastern Kenya',       img: 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=700&q=80' },
 ];
 
 const categories = ['All', 'Farms', 'Products', 'Harvesting', 'Packing', 'Export'];
@@ -67,11 +67,6 @@ export default function Gallery() {
             className={`gallery-filter-btn ${activeFilter === cat ? 'active' : ''}`}
             onClick={() => setActiveFilter(cat)}
           >
-            {cat === 'Farms' && '🌱 '}
-            {cat === 'Products' && '🥑 '}
-            {cat === 'Harvesting' && '👨‍🌾 '}
-            {cat === 'Packing' && '📦 '}
-            {cat === 'Export' && '✈️ '}
             {cat}
           </button>
         ))}
@@ -92,7 +87,6 @@ export default function Gallery() {
                 onKeyDown={(e) => e.key === 'Enter' && setLightbox(item)}
               >
                 <div className="gallery-item-inner">
-                  {item.emoji}
                   <img
                     src={item.img}
                     alt={item.caption}
@@ -112,7 +106,9 @@ export default function Gallery() {
 
           {filtered.length === 0 && (
             <div style={{ textAlign: 'center', padding: '4rem 0', color: 'var(--color-gray-mid)', fontFamily: 'var(--font-body)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🖼️</div>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+                <ImageOff size={48} strokeWidth={1.25} color="var(--color-gray-light)" />
+              </div>
               <p>No images in this category.</p>
             </div>
           )}
@@ -134,7 +130,7 @@ export default function Gallery() {
               onClick={() => setLightbox(null)}
               aria-label="Close lightbox"
             >
-              ✕
+              <X size={18} />
             </button>
             <div style={{
               background: 'linear-gradient(135deg, #e8f5e9, #c8e6c9)',
@@ -142,10 +138,8 @@ export default function Gallery() {
               alignItems: 'center',
               justifyContent: 'center',
               minHeight: '300px',
-              fontSize: '5rem',
               position: 'relative',
             }}>
-              {lightbox.emoji}
               <img
                 src={lightbox.img}
                 alt={lightbox.caption}
@@ -153,10 +147,7 @@ export default function Gallery() {
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
             </div>
-            <div style={{
-              padding: '1rem 1.5rem',
-              background: '#fff',
-            }}>
+            <div style={{ padding: '1rem 1.5rem', background: '#fff' }}>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 700, color: 'var(--color-gold)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 {lightbox.category}
               </span>

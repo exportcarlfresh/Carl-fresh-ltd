@@ -1,45 +1,50 @@
 import { Link } from 'react-router-dom';
+import {
+  Package, ShieldCheck, Waves, Leaf, Tag, Thermometer,
+  Sprout, Truck, Warehouse, Plane, PackageCheck,
+  ClipboardList, QrCode, BarChart2, Ship, Mail,
+} from 'lucide-react';
 import '../styles/packaging.css';
 
 const packagingTypes = [
   {
-    icon: '📦', title: 'Export Cartons',
+    Icon: Package, title: 'Export Cartons',
     desc: 'Standard corrugated cartons designed for air and sea freight, available in multiple sizes with custom branding options.',
     sizes: ['2kg', '3kg', '4kg', '5kg', '6kg', '10kg'],
   },
   {
-    icon: '🛡️', title: 'Retail Punnets',
+    Icon: ShieldCheck, title: 'Retail Punnets',
     desc: 'Consumer-ready punnets and clamshell packaging designed for supermarket shelves, with optional modified atmosphere packaging (MAP).',
     sizes: ['100g', '150g', '200g', '250g', '500g'],
   },
   {
-    icon: '🌊', title: 'Bulk Packaging',
+    Icon: Waves, title: 'Bulk Packaging',
     desc: 'High-volume bulk packaging for food processors and distributors, optimised for sea freight and large-volume orders.',
     sizes: ['10kg', '15kg', '20kg', 'Bulk bins'],
   },
   {
-    icon: '🌿', title: 'Eco-Friendly Options',
+    Icon: Leaf, title: 'Eco-Friendly Options',
     desc: 'Sustainable packaging alternatives including recyclable cartons, compostable films and reduced-plastic solutions for eco-conscious buyers.',
     sizes: ['Custom sizes available'],
   },
   {
-    icon: '🏷️', title: 'Custom Branding',
+    Icon: Tag, title: 'Custom Branding',
     desc: 'Private label and custom-branded packaging for supermarket own-brand lines and distributor-branded products.',
     sizes: ['All sizes', 'Custom print'],
   },
   {
-    icon: '❄️', title: 'Insulated Packaging',
+    Icon: Thermometer, title: 'Insulated Packaging',
     desc: 'Specialised insulated liners and gel packs for temperature-sensitive products requiring extended cold chain protection.',
     sizes: ['Various sizes', 'Temperature-rated'],
   },
 ];
 
 const coldChainSteps = [
-  { icon: '🌱', title: 'Farm Harvest', desc: 'Products harvested at optimal maturity in the cool of the morning.' },
-  { icon: '🚛', title: 'Field Transport', desc: 'Refrigerated vehicles transfer produce to packing facility within hours.' },
-  { icon: '🏭', title: 'Cold Storage', desc: 'Products stored at optimal temperatures during grading and packing.' },
-  { icon: '✈️', title: 'Air Freight', desc: 'Priority loading on scheduled air cargo flights from Nairobi JKIA.' },
-  { icon: '📦', title: 'Delivery', desc: 'Consignment delivered to buyer\'s warehouse at destination.' },
+  { Icon: Sprout,       title: 'Farm Harvest',    desc: 'Products harvested at optimal maturity in the cool of the morning.' },
+  { Icon: Truck,        title: 'Field Transport',  desc: 'Refrigerated vehicles transfer produce to packing facility within hours.' },
+  { Icon: Warehouse,    title: 'Cold Storage',     desc: 'Products stored at optimal temperatures during grading and packing.' },
+  { Icon: Plane,        title: 'Air Freight',      desc: 'Priority loading on scheduled air cargo flights from Nairobi JKIA.' },
+  { Icon: PackageCheck, title: 'Delivery',         desc: "Consignment delivered to buyer's warehouse at destination." },
 ];
 
 const traceSteps = [
@@ -52,10 +57,14 @@ const traceSteps = [
 ];
 
 const traceCards = [
-  { icon: '📋', title: 'Lot Numbering', desc: 'Every carton carries a unique lot number traceable to the source farm and harvest date.' },
-  { icon: '📱', title: 'QR Code Traceability', desc: 'QR codes on packaging enable buyers to verify origin and supply chain details instantly.' },
-  { icon: '📊', title: 'Digital Records', desc: 'All traceability data is captured and stored in our digital farm management system.' },
+  { Icon: ClipboardList, title: 'Lot Numbering',       desc: 'Every carton carries a unique lot number traceable to the source farm and harvest date.' },
+  { Icon: QrCode,        title: 'QR Code Traceability', desc: 'QR codes on packaging enable buyers to verify origin and supply chain details instantly.' },
+  { Icon: BarChart2,     title: 'Digital Records',      desc: 'All traceability data is captured and stored in our digital farm management system.' },
 ];
+
+const divider = (margin = '1rem auto') => (
+  <div className="divider-gold" style={{ margin }} />
+);
 
 export default function Packaging() {
   return (
@@ -85,7 +94,7 @@ export default function Packaging() {
             <div>
               <div className="section-label">Our Approach</div>
               <h2 className="section-title">Tailored Packaging for Every Market</h2>
-              <div className="divider-gold-left" style={{ width: '60px', height: '3px', background: 'var(--color-gold)', borderRadius: '2px', margin: '1rem 0' }} />
+              {divider('1rem 0')}
               <div className="packaging-intro-text">
                 <p>
                   Effective packaging and logistics are as important as the quality of
@@ -118,17 +127,17 @@ export default function Packaging() {
           <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
             <div className="section-label">Packaging Options</div>
             <h2 className="section-title">Our Packaging Solutions</h2>
-            <div className="divider-gold" style={{ width: '60px', height: '3px', background: 'var(--color-gold)', borderRadius: '2px', margin: '1rem auto' }} />
+            {divider()}
           </div>
 
           <div className="packaging-types-grid">
-            {packagingTypes.map((p) => (
-              <div key={p.title} className="packaging-type-card">
-                <div className="icon">{p.icon}</div>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
+            {packagingTypes.map(({ Icon, title, desc, sizes }) => (
+              <div key={title} className="packaging-type-card">
+                <div className="icon"><Icon size={28} strokeWidth={1.6} /></div>
+                <h3>{title}</h3>
+                <p>{desc}</p>
                 <div className="packaging-sizes">
-                  {p.sizes.map(s => <span key={s} className="size-chip">{s}</span>)}
+                  {sizes.map(s => <span key={s} className="size-chip">{s}</span>)}
                 </div>
               </div>
             ))}
@@ -142,7 +151,7 @@ export default function Packaging() {
           <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
             <div className="section-label">Freight Solutions</div>
             <h2 className="section-title">Air & Sea Freight</h2>
-            <div className="divider-gold" style={{ width: '60px', height: '3px', background: 'var(--color-gold)', borderRadius: '2px', margin: '1rem auto' }} />
+            {divider()}
             <p className="section-subtitle" style={{ margin: '0 auto' }}>
               We offer both air freight and sea freight options, tailored to your
               timeline, budget and product requirements.
@@ -152,7 +161,7 @@ export default function Packaging() {
           <div className="freight-grid">
             <div className="freight-card air">
               <div className="freight-card-header">
-                <div className="freight-icon">✈️</div>
+                <div className="freight-icon"><Plane size={28} strokeWidth={1.5} /></div>
                 <div>
                   <h3>Air Freight</h3>
                   <p>Fast delivery for perishable products</p>
@@ -172,7 +181,7 @@ export default function Packaging() {
 
             <div className="freight-card sea">
               <div className="freight-card-header">
-                <div className="freight-icon">🚢</div>
+                <div className="freight-icon"><Ship size={28} strokeWidth={1.5} /></div>
                 <div>
                   <h3>Sea Freight</h3>
                   <p>Cost-effective for high-volume orders</p>
@@ -203,18 +212,18 @@ export default function Packaging() {
             <h2 className="section-title" style={{ color: '#fff' }}>
               Our Cold Chain Process
             </h2>
-            <div className="divider-gold" style={{ width: '60px', height: '3px', background: 'var(--color-gold)', borderRadius: '2px', margin: '1rem auto' }} />
+            {divider()}
             <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.7)', margin: '0 auto' }}>
               Maintaining the cold chain from farm to buyer is our highest logistics priority.
             </p>
           </div>
 
           <div className="cold-chain-steps">
-            {coldChainSteps.map((step) => (
-              <div key={step.title} className="cold-step">
-                <div className="step-icon">{step.icon}</div>
-                <h4>{step.title}</h4>
-                <p>{step.desc}</p>
+            {coldChainSteps.map(({ Icon, title, desc }) => (
+              <div key={title} className="cold-step">
+                <div className="step-icon"><Icon size={26} strokeWidth={1.5} /></div>
+                <h4>{title}</h4>
+                <p>{desc}</p>
               </div>
             ))}
           </div>
@@ -228,7 +237,7 @@ export default function Packaging() {
             <div className="traceability-text">
               <div className="section-label">Traceability</div>
               <h2 className="section-title">Full Product Traceability</h2>
-              <div className="divider-gold-left" style={{ width: '60px', height: '3px', background: 'var(--color-gold)', borderRadius: '2px', margin: '1rem 0' }} />
+              {divider('1rem 0')}
               <p>
                 Our traceability system links every exported consignment to its source
                 farm, harvest date, packer and export documentation. Buyers can verify
@@ -250,12 +259,12 @@ export default function Packaging() {
             </div>
 
             <div className="traceability-visual">
-              {traceCards.map((card) => (
-                <div key={card.title} className="trace-card">
-                  <div className="tc-icon">{card.icon}</div>
+              {traceCards.map(({ Icon, title, desc }) => (
+                <div key={title} className="trace-card">
+                  <div className="tc-icon"><Icon size={22} strokeWidth={1.6} /></div>
                   <div>
-                    <h4>{card.title}</h4>
-                    <p>{card.desc}</p>
+                    <h4>{title}</h4>
+                    <p>{desc}</p>
                   </div>
                 </div>
               ))}
@@ -267,7 +276,9 @@ export default function Packaging() {
                 color: '#fff',
                 textAlign: 'center',
               }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📬</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem' }}>
+                  <Mail size={32} strokeWidth={1.5} />
+                </div>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, marginBottom: '0.35rem' }}>
                   Need Custom Packaging?
                 </p>
@@ -293,7 +304,7 @@ export default function Packaging() {
           </p>
           <div className="cta-banner-actions">
             <Link to="/contact" className="btn-gold">Get Logistics Quote</Link>
-            <Link to="/export-markets" className="btn-outline-white">Export Markets →</Link>
+            <Link to="/export-markets" className="btn-outline-white">Export Markets</Link>
           </div>
         </div>
       </section>

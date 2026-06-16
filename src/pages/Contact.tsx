@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  MapPin, Phone, Mail, Globe, MessageCircle,
+  Lock, CheckCircle2, Briefcase, Users, Camera, CirclePlay,
+  ClipboardList,
+} from 'lucide-react';
 import '../styles/contact.css';
 
 type FormTab = 'inquiry' | 'quote';
@@ -70,15 +75,14 @@ export default function Contact() {
         <div className="container-xl">
           <div className="contact-layout">
 
-            {/* ── Info Panel ── */}
+            {/* Info Panel */}
             <div className="contact-info">
 
-              {/* Contact details */}
               <div className="contact-info-card">
                 <h3>Contact Information</h3>
 
                 <div className="contact-detail">
-                  <div className="detail-icon">📍</div>
+                  <div className="detail-icon"><MapPin size={18} strokeWidth={1.75} /></div>
                   <div className="detail-content">
                     <span className="detail-label">Location</span>
                     <span className="detail-value">Nairobi, Kenya</span>
@@ -86,7 +90,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail">
-                  <div className="detail-icon">📞</div>
+                  <div className="detail-icon"><Phone size={18} strokeWidth={1.75} /></div>
                   <div className="detail-content">
                     <span className="detail-label">Phone / WhatsApp</span>
                     <div className="detail-value">
@@ -97,7 +101,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail">
-                  <div className="detail-icon">✉️</div>
+                  <div className="detail-icon"><Mail size={18} strokeWidth={1.75} /></div>
                   <div className="detail-content">
                     <span className="detail-label">Email</span>
                     <div className="detail-value">
@@ -109,7 +113,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail">
-                  <div className="detail-icon">🌐</div>
+                  <div className="detail-icon"><Globe size={18} strokeWidth={1.75} /></div>
                   <div className="detail-content">
                     <span className="detail-label">Website</span>
                     <span className="detail-value">www.carlfresh.com</span>
@@ -125,16 +129,16 @@ export default function Contact() {
                 </p>
                 <div className="contact-social">
                   <a href="#" aria-label="LinkedIn" title="LinkedIn">
-                    <span style={{ fontSize: '0.9rem' }}>in</span>
+                    <Briefcase size={18} strokeWidth={1.75} />
                   </a>
                   <a href="#" aria-label="Facebook" title="Facebook">
-                    <span style={{ fontSize: '0.9rem' }}>f</span>
+                    <Users size={18} strokeWidth={1.75} />
                   </a>
                   <a href="#" aria-label="Instagram" title="Instagram">
-                    <span style={{ fontSize: '0.9rem' }}>ig</span>
+                    <Camera size={18} strokeWidth={1.75} />
                   </a>
                   <a href="#" aria-label="YouTube" title="YouTube">
-                    <span style={{ fontSize: '0.9rem' }}>▶</span>
+                    <CirclePlay size={18} strokeWidth={1.75} />
                   </a>
                 </div>
               </div>
@@ -176,7 +180,7 @@ export default function Contact() {
                 onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-2px)')}
                 onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
               >
-                <span style={{ fontSize: '1.5rem' }}>💬</span>
+                <MessageCircle size={24} strokeWidth={2} />
                 <div>
                   <div>Chat on WhatsApp</div>
                   <div style={{ fontSize: '0.75rem', opacity: 0.85 }}>+254 712 365 084</div>
@@ -184,21 +188,22 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* ── Forms Panel ── */}
+            {/* Forms Panel */}
             <div className="contact-forms" id="quote">
-              {/* Tab switcher */}
               <div className="contact-form-tabs">
                 <button
                   className={`contact-form-tab ${activeTab === 'inquiry' ? 'active' : ''}`}
                   onClick={() => setActiveTab('inquiry')}
                 >
-                  📧 General Inquiry
+                  <Mail size={15} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '6px' }} />
+                  General Inquiry
                 </button>
                 <button
                   className={`contact-form-tab ${activeTab === 'quote' ? 'active' : ''}`}
                   onClick={() => setActiveTab('quote')}
                 >
-                  📋 Request a Quote
+                  <ClipboardList size={15} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '6px' }} />
+                  Request a Quote
                 </button>
               </div>
 
@@ -207,7 +212,9 @@ export default function Contact() {
                 <div className="contact-form-card">
                   {inquirySubmitted ? (
                     <div className="form-success">
-                      <div className="success-icon">✅</div>
+                      <div className="success-icon">
+                        <CheckCircle2 size={48} strokeWidth={1.5} color="var(--color-green-primary)" />
+                      </div>
                       <h4>Message Sent!</h4>
                       <p>
                         Thank you for reaching out. Our export team will respond
@@ -267,10 +274,11 @@ export default function Contact() {
 
                         <div className="form-submit">
                           <span className="form-submit-note">
-                            🔒 Your information is kept strictly confidential.
+                            <Lock size={13} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                            Your information is kept strictly confidential.
                           </span>
                           <button type="submit" className="btn-primary">
-                            Send Message →
+                            Send Message
                           </button>
                         </div>
                       </form>
@@ -284,7 +292,9 @@ export default function Contact() {
                 <div className="contact-form-card">
                   {quoteSubmitted ? (
                     <div className="form-success">
-                      <div className="success-icon">✅</div>
+                      <div className="success-icon">
+                        <CheckCircle2 size={48} strokeWidth={1.5} color="var(--color-green-primary)" />
+                      </div>
                       <h4>Quote Request Received!</h4>
                       <p>
                         Our export team will review your requirements and send
@@ -370,10 +380,11 @@ export default function Contact() {
 
                         <div className="form-submit">
                           <span className="form-submit-note">
-                            🔒 Your information is strictly confidential.
+                            <Lock size={13} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                            Your information is strictly confidential.
                           </span>
                           <button type="submit" className="btn-primary">
-                            Request Quote →
+                            Request Quote
                           </button>
                         </div>
                       </form>
