@@ -55,7 +55,7 @@ export default function Contact() {
     <main>
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             Contact Us
           </div>
           <h1>Let's Grow Together</h1>
@@ -66,7 +66,7 @@ export default function Contact() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>Contact Us</span>
+            <span>Contact Us</span>
           </div>
         </div>
       </div>

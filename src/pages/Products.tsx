@@ -130,7 +130,7 @@ export default function Products() {
     <main>
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             Our Products
           </div>
           <h1>Premium Export Produce</h1>
@@ -141,7 +141,7 @@ export default function Products() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>Products</span>
+            <span>Products</span>
           </div>
         </div>
       </div>

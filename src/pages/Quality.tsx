@@ -58,7 +58,7 @@ export default function Quality() {
     <main>
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             Quality & Food Safety
           </div>
           <h1>Our Quality Commitment</h1>
@@ -69,7 +69,7 @@ export default function Quality() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>Quality & Food Safety</span>
+            <span>Quality & Food Safety</span>
           </div>
         </div>
       </div>

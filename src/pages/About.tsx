@@ -41,7 +41,7 @@ export default function About() {
       {/* Hero */}
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             About Us
           </div>
           <h1>Our Story So Far</h1>
@@ -49,7 +49,7 @@ export default function About() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>About Us</span>
+            <span>About Us</span>
           </div>
         </div>
       </div>

@@ -71,7 +71,7 @@ export default function Packaging() {
     <main>
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             Packaging & Logistics
           </div>
           <h1>Packaging & Logistics Solutions</h1>
@@ -82,7 +82,7 @@ export default function Packaging() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>Packaging & Logistics</span>
+            <span>Packaging & Logistics</span>
           </div>
         </div>
       </div>
