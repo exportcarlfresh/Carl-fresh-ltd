@@ -284,6 +284,7 @@
 
 .products-toolbar .section-title {
   margin-bottom: 0;
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
 }
 
 .products-tabs {
@@ -548,21 +549,25 @@
   border: none;
   border-radius: 20px;
   padding: 2.5rem;
-  min-height: 180px;
+  min-height: 230px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: left;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
 .promo-duo-orange {
-  background: linear-gradient(135deg, var(--color-gold), #e0a83a);
+  background-color: var(--color-gold);
 }
 
 .promo-duo-dark {
-  background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
+  background-color: var(--color-gray-light);
 }
 
 .promo-duo-card h3 {

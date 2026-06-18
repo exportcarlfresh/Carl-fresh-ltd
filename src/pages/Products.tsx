@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import "../styles/products.css";
 import pbannerImg from "../assets/images/pbanner.png";
+import pbanner3Img from "../assets/images/pbanner3.png";
+import pbanner4Img from "../assets/images/pbanner4.png";
 import {
   allProducts,
   categories,
@@ -119,28 +121,23 @@ export default function Products() {
       <section className="products-promo-duo-section page-section">
         <div className="container-xl">
           <div className="products-promo-duo">
-            <Link to="/contact" className="promo-duo-card promo-duo-orange">
-              <h3>Fresh Fruit &amp; Vegetable Basket</h3>
-              <p>Mixed export crates tailored to your market needs</p>
-              <span className="promo-duo-link">
-                Get a Custom Quote <ArrowRight size={14} />
-              </span>
-            </Link>
+            <Link
+              to="/contact"
+              className="promo-duo-card promo-duo-orange"
+              style={{ backgroundImage: `url(${pbanner3Img})` }}
+              aria-label="Fresh Fruit & Vegetable Basket — Get a Custom Quote"
+            />
             <button
               className="promo-duo-card promo-duo-dark"
+              style={{ backgroundImage: `url(${pbanner4Img})` }}
+              aria-label="Bold Flavours, Grown in Kenya — Explore Herbs & Spices"
               onClick={() => {
                 setActiveCategory("Herbs & Spices");
                 document
                   .getElementById("featured")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-            >
-              <h3>Bold Flavours, Grown in Kenya</h3>
-              <p>Export-grade chilies for global cuisines</p>
-              <span className="promo-duo-link">
-                Explore Herbs &amp; Spices <ArrowRight size={14} />
-              </span>
-            </button>
+            />
           </div>
         </div>
       </section>
@@ -148,7 +145,7 @@ export default function Products() {
       {/* Best Seller */}
       <section
         className="products-page page-section"
-        style={{ background: "#fff" }}
+        style={{ background: "#fff", paddingTop: "2rem" }}
       >
         <div className="container-xl">
           <div className="products-toolbar" style={{ marginBottom: "2rem" }}>
