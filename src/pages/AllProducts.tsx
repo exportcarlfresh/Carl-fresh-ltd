@@ -1,16 +1,27 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { allProducts, categoryCircles } from "../data/products";
+import { allProducts, categories, categoryCircles } from "../data/products";
 import type { Product } from "../data/products";
 import ProductCard from "../components/ProductCard";
 import ProductModal from "../components/ProductModal";
 import "../styles/products.css";
 
 export default function AllProducts() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchParams] = useSearchParams();
+  const requestedCategory = searchParams.get("category");
+  const initialCategory =
+    requestedCategory && categories.includes(requestedCategory)
+      ? requestedCategory
+      : "All";
+
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    setActiveCategory(initialCategory);
+  }, [initialCategory]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);

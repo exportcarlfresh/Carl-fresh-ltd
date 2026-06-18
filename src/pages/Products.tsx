@@ -71,16 +71,16 @@ export default function Products() {
           </h2>
           <div className="category-circles">
             {categoryCircles.map(({ name, img }) => (
-              <button
+              <Link
                 key={name}
-                className={`category-circle ${activeCategory === name ? "active" : ""}`}
-                onClick={() => setActiveCategory(name)}
+                to={`/products/all?category=${encodeURIComponent(name)}`}
+                className="category-circle"
               >
                 <span className="category-circle-img">
                   <img src={img} alt={name} loading="lazy" />
                 </span>
                 <span className="category-circle-label">{name}</span>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

@@ -227,6 +227,7 @@
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .category-circle-img {
@@ -393,11 +394,15 @@
 }
 
 @media (max-width: 1024px) {
-  .all-products-grid { grid-template-columns: repeat(2, 1fr); }
+  .all-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 560px) {
-  .all-products-grid { grid-template-columns: 1fr; }
+  .all-products-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .product-card {
@@ -653,7 +658,7 @@
 .product-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(17, 17, 17, 0.6);
+  background: rgba(17, 17, 17, 0.72);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -667,10 +672,15 @@
   max-width: 800px;
   width: 100%;
   max-height: 85vh;
-  overflow-y: auto;
+  overflow: hidden;
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.product-modal-scroll {
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 .product-modal-close {
@@ -686,20 +696,25 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   z-index: 2;
 }
 
 .product-modal-image {
-  aspect-ratio: 4/3;
+  height: 100%;
+  max-height: 85vh;
   overflow: hidden;
   background: var(--color-gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-modal-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .product-modal-body {
@@ -708,9 +723,35 @@
   flex-direction: column;
 }
 
+.packaging-options-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-mid);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.product-modal-cta {
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
 @media (max-width: 700px) {
   .product-modal {
     grid-template-columns: 1fr;
+  }
+
+  .product-modal-image {
+    height: 200px;
+    max-height: 200px;
+  }
+
+  .product-modal-scroll {
+    max-height: calc(85vh - 200px);
   }
 }
 
