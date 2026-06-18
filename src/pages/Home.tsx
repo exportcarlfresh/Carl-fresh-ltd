@@ -41,10 +41,34 @@ const certifications = [
 ];
 
 const exportRegions = [
-  { Icon: Globe, region: 'Europe',      markets: 'UK, Netherlands, Germany, France', desc: 'Premium supermarket chains and food processors.' },
-  { Icon: Globe, region: 'Middle East', markets: 'UAE, Saudi Arabia, Qatar',          desc: 'Major importers and hospitality groups.' },
-  { Icon: Globe, region: 'Asia',        markets: 'Singapore, Malaysia, Hong Kong',    desc: 'Specialty food retailers and distributors.' },
-  { Icon: Globe, region: 'Africa',      markets: 'Rwanda, Uganda, Tanzania',          desc: 'Regional wholesale and retail markets.' },
+  {
+    Icon: Globe,
+    region: 'Europe',
+    markets: 'UK, Netherlands, Germany, France',
+    desc: 'Premium supermarket chains and food processors.',
+    image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80'
+  },
+  {
+    Icon: Globe,
+    region: 'Middle East',
+    markets: 'UAE, Saudi Arabia, Qatar',
+    desc: 'Major importers and hospitality groups.',
+    image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=900&q=80'
+  },
+  {
+    Icon: Globe,
+    region: 'Asia',
+    markets: 'Singapore, Malaysia, Hong Kong',
+    desc: 'Specialty food retailers and distributors.',
+    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=900&q=80'
+  },
+  {
+    Icon: Globe,
+    region: 'Africa',
+    markets: 'Rwanda, Uganda, Tanzania',
+    desc: 'Regional wholesale and retail markets.',
+    image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=80'
+  },
 ];
 
 const divider = (
@@ -284,35 +308,30 @@ export default function Home() {
       {/* ── Export Markets ── */}
       <section className="export-teaser page-section" aria-label="Export markets">
         <div className="container-xl">
-          <div style={{ textAlign: 'center' }}>
-            <div className="section-label">Global Reach</div>
-            <h2 className="section-title">Our Export Markets</h2>
-            {divider}
-            <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              Serving premium buyers across four continents with consistent quality,
-              reliable logistics and competitive pricing.
-            </p>
+          <div className="export-teaser-header">
+            <div>
+              <div className="section-label">Global Reach</div>
+              <h2 className="section-title">Our Export Markets</h2>
+            </div>
+            <Link to="/export-markets" className="btn-primary">
+              Explore All Markets <ArrowRight size={16} />
+            </Link>
           </div>
 
           <div className="export-regions">
-            {exportRegions.map(({ Icon, region, markets, desc }) => (
-              <div key={region} className="export-region-card">
-                <div style={{ marginBottom: '0.75rem' }}>
-                  <Icon size={32} color="var(--color-green-primary)" strokeWidth={1.5} />
+            {exportRegions.map(({ region, markets, desc, image }) => (
+              <div
+                key={region}
+                className="export-region-card"
+                style={{ backgroundImage: `linear-gradient(180deg, rgba(6,38,12,0.10), rgba(6,38,12,0.78)), url(${image})` }}
+              >
+                <div className="export-region-card-content">
+                  <span className="export-region-card-tag">{region}</span>
+                  <h3>{markets}</h3>
+                  <p>{desc}</p>
                 </div>
-                <h3>{region}</h3>
-                <p style={{ fontSize: '0.78rem', color: 'var(--color-gold)', fontWeight: 700, marginBottom: '0.35rem' }}>
-                  {markets}
-                </p>
-                <p>{desc}</p>
               </div>
             ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/export-markets" className="btn-primary">
-              Explore Our Markets <ArrowRight size={16} />
-            </Link>
           </div>
         </div>
       </section>

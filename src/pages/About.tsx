@@ -107,40 +107,50 @@ export default function About() {
       {/* ── Mission / Vision / Promise ── */}
       <section className="mvv-section page-section">
         <div className="container-xl">
-          <div style={{ textAlign: 'center' }}>
-            <div className="section-label">Our Foundation</div>
-            <h2 className="section-title">Mission, Vision & Values</h2>
-            {divider()}
-          </div>
+          <div className="mvv-layout">
+            <div className="mvv-visual">
+              <div className="mvv-visual-content">
+                <div className="section-label" style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#f7f1d0' }}>
+                  Our Foundation
+                </div>
+                <h2 className="section-title" style={{ color: '#fff', maxWidth: '16rem' }}>
+                  Mission, Vision & Promise
+                </h2>
+                <p>
+                  We grow, export, and deliver premium Kenyan produce with integrity, care,
+                  and consistency at every step.
+                </p>
+              </div>
+            </div>
 
-          <div className="mvv-grid">
-            <div className="mvv-card mission">
-              <div className="mvv-icon"><Target size={28} strokeWidth={1.75} /></div>
-              <h3>Our Mission</h3>
-              <p>
-                To be Kenya's most trusted fresh produce exporter by delivering consistently
-                premium quality products, building lasting relationships with global buyers,
-                and uplifting local farming communities through sustainable, profitable
-                agricultural practices.
-              </p>
-            </div>
-            <div className="mvv-card vision">
-              <div className="mvv-icon"><Eye size={28} strokeWidth={1.75} /></div>
-              <h3>Our Vision</h3>
-              <p>
-                To establish Carl Fresh Produce as the benchmark for excellence in African
-                fresh produce exports — recognised globally for unparalleled quality,
-                sustainability, and the authentic taste of Kenya's agricultural richness.
-              </p>
-            </div>
-            <div className="mvv-card values">
-              <div className="mvv-icon"><Gem size={28} strokeWidth={1.75} /></div>
-              <h3>Our Promise</h3>
-              <p>
-                Every product we export carries our promise: Safe to eat, of the highest
-                Quality, Sustainably grown, fully Traceable, and Reliably delivered. These
-                five pillars guide every decision we make from farm to export.
-              </p>
+            <div className="mvv-cards">
+              <div className="mvv-card mission">
+                <div className="mvv-icon"><Target size={28} strokeWidth={1.75} /></div>
+                <h3>Our Mission</h3>
+                <p>
+                  To be Kenya's most trusted fresh produce exporter by delivering consistently
+                  premium quality products, building lasting relationships with global buyers,
+                  and uplifting local farming communities through sustainable, profitable
+                  agricultural practices.
+                </p>
+              </div>
+              <div className="mvv-card vision">
+                <div className="mvv-icon"><Eye size={28} strokeWidth={1.75} /></div>
+                <h3>Our Vision</h3>
+                <p>
+                  To establish Carl Fresh Produce as the benchmark for excellence in African
+                  fresh produce exports — recognised globally for unparalleled quality,
+                  sustainability, and the authentic taste of Kenya's agricultural richness.
+                </p>
+              </div>
+              <div className="mvv-card values">
+                <div className="mvv-icon"><Gem size={28} strokeWidth={1.75} /></div>
+                <h3>Our Promise</h3>
+                <p>
+                  Every product we export carries our promise: Safe to eat, of the highest
+                  Quality, Sustainably grown, fully Traceable, and Reliably delivered.
+                </p>
+              </div>
             </div>
           </div>
         </div>

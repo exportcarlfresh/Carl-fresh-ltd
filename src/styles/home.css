@@ -513,54 +513,84 @@
 /* ── Export map teaser ── */
 
 .export-teaser {
-  background: var(--color-off-white);
+  background: #f7f8f2;
+}
+
+.export-teaser-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .export-regions {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
-  margin-top: 3rem;
 }
 
 .export-region-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  border: 1px solid #e5e7eb;
-  transition: all 0.3s;
+  position: relative;
+  min-height: 390px;
+  border-radius: 22px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: end;
+  box-shadow: 0 18px 38px rgba(8, 38, 13, 0.1);
 }
 
-.export-region-card:hover {
-  border-color: var(--color-green-primary);
-  box-shadow: 0 8px 24px rgba(27,94,32,0.1);
-  transform: translateY(-3px);
+.export-region-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(5,29,11,0.64));
 }
 
-.export-region-card .flag {
-  font-size: 2.25rem;
-  margin-bottom: 0.75rem;
+.export-region-card-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 1.75rem;
+}
+
+.export-region-card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.8rem;
 }
 
 .export-region-card h3 {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-green-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
   margin-bottom: 0.35rem;
 }
 
 .export-region-card p {
   font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: var(--color-gray-mid);
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.84);
+  line-height: 1.6;
 }
 
 /* ── CTA Banner ── */
 
 .cta-banner {
-  background: linear-gradient(135deg, var(--color-green-dark), var(--color-green-primary));
+  background:
+    linear-gradient(90deg, rgba(8, 38, 13, 0.88), rgba(8, 38, 13, 0.68)),
+    url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1400&q=80') center/cover;
   color: #fff;
   padding: 5rem 0;
   text-align: center;
@@ -572,7 +602,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 50%, rgba(201,168,76,0.15), transparent 60%);
+  background: radial-gradient(circle at 70% 50%, rgba(201,168,76,0.15), transparent 55%);
   pointer-events: none;
 }
 
@@ -609,12 +639,14 @@
   .about-strip-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
   .stats-bar-item:nth-child(2) { border-right: none; }
+  .export-teaser-header { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 640px) {
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .certifications-grid { grid-template-columns: 1fr 1fr; }
-  .export-regions { grid-template-columns: 1fr 1fr; }
+  .export-regions { grid-template-columns: 1fr; }
   .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
   .hero-tagline { flex-wrap: wrap; gap: 1rem; }
+  .export-region-card { min-height: 320px; }
 }
