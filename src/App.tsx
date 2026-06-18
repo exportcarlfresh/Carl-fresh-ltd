@@ -16,10 +16,21 @@ import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash.slice(1));
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      return;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 

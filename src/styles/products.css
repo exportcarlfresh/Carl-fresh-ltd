@@ -4,6 +4,11 @@
   background: var(--color-off-white);
 }
 
+#shop-by-category,
+#featured {
+  scroll-margin-top: 90px;
+}
+
 .cat-btn {
   padding: 0.55rem 1.5rem;
   border-radius: 999px;

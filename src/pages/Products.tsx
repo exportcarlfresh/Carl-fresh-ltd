@@ -61,6 +61,7 @@ export default function Products() {
       <section
         className="shop-categories page-section"
         style={{ paddingTop: 0 }}
+        id="shop-by-category"
       >
         <div className="container-xl">
           <h2
@@ -73,7 +74,7 @@ export default function Products() {
             {categoryCircles.map(({ name, img }) => (
               <Link
                 key={name}
-                to={`/products/all?category=${encodeURIComponent(name)}`}
+                to={`/products/all?category=${encodeURIComponent(name)}&from=shop-by-category`}
                 className="category-circle"
               >
                 <span className="category-circle-img">
@@ -107,7 +108,7 @@ export default function Products() {
           <ProductCarousel products={filtered} onView={setModalProduct} />
 
           <div className="view-all-wrap">
-            <Link to="/products/all" className="btn-secondary">
+            <Link to="/products/all?from=featured" className="btn-secondary">
               View All Products <ArrowRight size={16} />
             </Link>
           </div>

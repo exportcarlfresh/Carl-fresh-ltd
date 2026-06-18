@@ -15,6 +15,12 @@ export default function AllProducts() {
       ? requestedCategory
       : "All";
 
+  const fromSection = searchParams.get("from");
+  const backTo =
+    fromSection === "shop-by-category" || fromSection === "featured"
+      ? `/products#${fromSection}`
+      : "/products";
+
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -46,7 +52,7 @@ export default function AllProducts() {
       <div className={`all-products-sticky-bar ${scrolled ? "compact" : ""}`}>
         <div className="container-xl">
           <div className="sticky-bar-row">
-            <Link to="/products" className="back-button">
+            <Link to={backTo} className="back-button">
               <ArrowLeft size={16} /> Back
             </Link>
             <div className="category-circles">
