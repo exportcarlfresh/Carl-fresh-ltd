@@ -232,6 +232,17 @@ a {
   overflow: hidden;
 }
 
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 1100px);
+  height: 2px;
+  background: rgba(27, 94, 32, 0.15);
+}
+
 .page-hero .section-label {
   background: var(--color-gray-light);
   border-color: transparent;
