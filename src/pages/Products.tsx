@@ -5,6 +5,7 @@ import "../styles/products.css";
 import pbannerImg from "../assets/images/pbanner.png";
 import pbanner3Img from "../assets/images/pbanner3.png";
 import pbanner4Img from "../assets/images/pbanner4.png";
+import pbanner5Img from "../assets/images/pbanner7.png";
 import {
   allProducts,
   categories,
@@ -125,19 +126,23 @@ export default function Products() {
               to="/contact"
               className="promo-duo-card promo-duo-orange"
               style={{ backgroundImage: `url(${pbanner3Img})` }}
-              aria-label="Fresh Fruit & Vegetable Basket — Get a Custom Quote"
-            />
+            >
+              <h3>Fresh Vegetable &amp; Fruit Basket</h3>
+              <p>Farm-fresh goodness in every bite</p>
+            </Link>
             <button
               className="promo-duo-card promo-duo-dark"
               style={{ backgroundImage: `url(${pbanner4Img})` }}
-              aria-label="Bold Flavours, Grown in Kenya — Explore Herbs & Spices"
               onClick={() => {
                 setActiveCategory("Herbs & Spices");
                 document
                   .getElementById("featured")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-            />
+            >
+              <h3>Best Cuisine from Natural Herbs &amp; Spices</h3>
+              <p>Pure ingredients, extraordinary flavour</p>
+            </button>
           </div>
         </div>
       </section>
@@ -168,6 +173,30 @@ export default function Products() {
                 onView={setModalProduct}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section
+        className="cta-banner cta-banner-split"
+        style={{ backgroundImage: `url(${pbanner5Img})` }}
+      >
+        <div className="container-xl">
+          <div className="cta-split-content">
+            <h2>Need a Custom Order?</h2>
+            <p>
+              Contact our export team for tailored packaging, volume pricing and
+              supply schedule discussions.
+            </p>
+            <div className="cta-banner-actions">
+              <Link to="/contact" className="btn-gold">
+                Send an Inquiry
+              </Link>
+              <Link to="/contact#quote" className="btn-secondary">
+                Request a Quote
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -210,26 +239,10 @@ export default function Products() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta-banner">
-        <div className="container-xl">
-          <h2>Need a Custom Order?</h2>
-          <p>
-            Contact our export team for tailored packaging, volume pricing and
-            supply schedule discussions.
-          </p>
-          <div className="cta-banner-actions">
-            <Link to="/contact" className="btn-gold">
-              Send an Inquiry
-            </Link>
-            <Link to="/contact#quote" className="btn-outline-white">
-              Request a Quote
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />
+      <ProductModal
+        product={modalProduct}
+        onClose={() => setModalProduct(null)}
+      />
     </main>
   );
 }

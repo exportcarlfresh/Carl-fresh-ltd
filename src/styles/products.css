@@ -9,6 +9,50 @@
   scroll-margin-top: 90px;
 }
 
+/* ── Custom Order CTA (image split) ── */
+
+.cta-banner.cta-banner-split {
+  background-color: var(--color-green-pale);
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  text-align: left;
+  padding: 4rem 0;
+}
+
+.cta-banner.cta-banner-split::before {
+  display: none;
+}
+
+.cta-split-content {
+  max-width: 50%;
+  position: relative;
+}
+
+.cta-banner.cta-banner-split h2 {
+  color: var(--color-gray-dark);
+  text-align: left;
+  font-size: clamp(1.3rem, 3vw, 2.25rem);
+  font-weight: 800;
+}
+
+.cta-banner.cta-banner-split p {
+  color: var(--color-gray-mid);
+  text-align: left;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  font-weight: 500;
+}
+
+.cta-banner.cta-banner-split .cta-banner-actions {
+  justify-content: flex-start;
+}
+
+@media (max-width: 700px) {
+  .cta-split-content {
+    max-width: 100%;
+  }
+}
+
 .cat-btn {
   padding: 0.55rem 1.5rem;
   border-radius: 999px;
@@ -572,18 +616,20 @@
 
 .promo-duo-card h3 {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
   font-weight: 800;
   color: #fff;
   margin-bottom: 0.5rem;
+  max-width: 50%;
+  line-height: 1.25;
 }
 
 .promo-duo-card p {
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: clamp(0.72rem, 1.5vw, 0.88rem);
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 1rem;
-  max-width: 280px;
+  max-width: 50%;
 }
 
 .promo-duo-link {
@@ -605,7 +651,7 @@
 /* ── Deal of the month ── */
 
 .deal-of-month {
-  background: var(--color-green-pale);
+  background: var(--color-off-white);
 }
 
 .deal-grid {
@@ -885,9 +931,6 @@
   font-size: 0.9rem;
   margin-top: 2px;
   flex-shrink: 0;
-}
-
-.product-spec .spec-content {
 }
 
 .product-spec .spec-label {
