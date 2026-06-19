@@ -28,7 +28,7 @@ export const allProducts: Product[] = [
     packaging: ["4kg carton", "6kg carton", "10kg carton", "Bulk bins"],
     specs: "Grade A, size 10–24, firmness index 3–5 kg/cm²",
     markets: "Europe, Middle East, Asia",
-    img: "https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=600&q=80",
+    img: "https://www.soulflower.in/cdn/shop/articles/avocado-1_335cdafd-3f2d-4de4-a016-37f8476e6ecf-1508942.jpg?v=1780126278&width=1100",
   },
   {
     name: "Mangoes",
@@ -39,7 +39,7 @@ export const allProducts: Product[] = [
     packaging: ["4kg tray", "5kg carton", "8kg carton"],
     specs: "Export Grade A, Min weight 200g, Brix 14–18°",
     markets: "Europe, Middle East, Africa",
-    img: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&q=80",
+    img: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2023/6/1/close-up-of-mangoes-red-with-yellow-skins.jpg.rend.hgtvcom.1280.720.85.suffix/1685646276107.webp",
   },
   {
     name: "Pineapples",
@@ -50,7 +50,7 @@ export const allProducts: Product[] = [
     packaging: ["5 count carton", "8 count carton", "10 count carton"],
     specs: "MD2 & Queen varieties, Brix min 12°, diameter 10–15cm",
     markets: "Europe, Middle East",
-    img: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=600&q=80",
+    img: "https://img.lb.wbmdstatic.com/vim/live/webmd/consumer_assets/site_images/articles/health_tools/health_benefits_of_pineapple_slideshow/1800ss_getty_rf_pineapples.jpg?resize=728px:*&output-quality=75",
   },
   {
     name: "Purple Passion Fruits",
@@ -62,7 +62,7 @@ export const allProducts: Product[] = [
     packaging: ["3kg punnet tray", "5kg carton", "Bulk 10kg"],
     specs: "Grade A, min weight 40g, Brix 14°+, deep purple colour",
     markets: "Europe, Middle East, Asia",
-    img: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&q=80",
+    img: "https://www.yarden.com/wp-content/uploads/Passion-Fruit-Possom-Purple-plant-1.jpg",
   },
   {
     name: "Fine Beans",
@@ -73,7 +73,7 @@ export const allProducts: Product[] = [
     packaging: ["200g punnet", "500g bag", "3kg clamshell", "5kg bulk box"],
     specs: "Length 8–13cm, diameter 5–7mm, no defects, bright green",
     markets: "UK, Netherlands, Germany, France",
-    img: "https://images.unsplash.com/photo-1506389225426-7b19e8060b35?w=600&q=80",
+    img: "https://cropnuts.com/wp-content/uploads/2019/10/french_beans.jpg",
   },
   {
     name: "Snap Peas",
@@ -84,7 +84,7 @@ export const allProducts: Product[] = [
     packaging: ["150g punnet", "200g bag", "3kg carton", "5kg box"],
     specs: "Pod length 7–10cm, firm and crisp, bright green, no strings",
     markets: "Europe, UK, Middle East",
-    img: "https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=600&q=80",
+    img: "https://northernwildflowers.ca/cdn/shop/products/SugarSnapPeasshutterstock_45091780.jpg?v=1755013453",
   },
   {
     name: "Snow Peas",
@@ -95,7 +95,7 @@ export const allProducts: Product[] = [
     packaging: ["100g punnet", "200g bag", "3kg flat carton", "5kg carton"],
     specs: "Pod length 6–9cm, flat profile, bright green, string-free",
     markets: "Netherlands, UK, Germany, Singapore",
-    img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80",
+    img: "https://www.taylorfarms.com/wp-content/uploads/2023/10/Snow-Peas.webp",
   },
   {
     name: "Long Cayenne Chili",
@@ -107,7 +107,7 @@ export const allProducts: Product[] = [
     packaging: ["3kg carton", "5kg carton", "10kg bulk", "Retail 100g bags"],
     specs: "Length 15–20cm, Scoville 30,000–50,000 SHU, bright red, no blemish",
     markets: "Europe, Middle East, Asia",
-    img: "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=600&q=80",
+    img: "https://agroduka.com/images/product/Cayenne-pepper-.png",
   },
   {
     name: "Thin Chili",
@@ -118,7 +118,7 @@ export const allProducts: Product[] = [
     packaging: ["3kg carton", "5kg carton", "10kg bulk"],
     specs: "Length 8–12cm, Scoville 50,000–80,000 SHU, deep red to green",
     markets: "Europe, Asia, Middle East",
-    img: "https://images.unsplash.com/photo-1596365960028-70eeab6d2d10?w=600&q=80",
+    img: "https://theamazingseeds.com/cdn/shop/products/CayenneRedLongThin-001_1024x1024.jpg?v=1609771054",
   },
   {
     name: "Bullet Chili",
@@ -130,7 +130,7 @@ export const allProducts: Product[] = [
     packaging: ["2kg carton", "3kg carton", "5kg bulk"],
     specs: "Diameter 1.5–3cm, Scoville 50,000–100,000 SHU, deep red, firm",
     markets: "Asia, Middle East, Africa",
-    img: "https://images.unsplash.com/photo-1560457099-12c8d84ad3d6?w=600&q=80",
+    img: "https://cdn.standardmedia.co.ke/images/monday/high_prospects_for_b5e5cc1c2bdab9.jpg",
   },
 ];
 
