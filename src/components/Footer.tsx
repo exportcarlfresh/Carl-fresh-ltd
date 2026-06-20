@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Briefcase, Users, Camera, CirclePlay, MapPin, Phone, Mail, Globe } from 'lucide-react';
 import '../styles/footer.css';
-import Logo from './Logo';
+import Logo from '../assets/logo.png';
 
 const quickLinks = [
   { label: 'Home',          path: '/' },
@@ -36,19 +36,11 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="footer-brand">
-            <Logo height={52} inverted />
+            <img src={Logo} alt="Carl Fresh Produce" height={52} />
             <p>
-              Carl Fresh Produce Limited is a premium Kenyan exporter of fresh fruits,
-              vegetables, herbs and spices, committed to sustainable agriculture and
-              international quality standards.
+              Premium Kenyan exporter of fresh fruits, vegetables, herbs and spices for global markets.
             </p>
             <div className="footer-tagline">SAFE · QUALITY · SUSTAINABLE</div>
-
-            <div className="footer-certs">
-              {['HACCP', 'GlobalG.A.P.', 'KEPHIS', 'KEBS'].map(cert => (
-                <span key={cert} className="footer-cert-badge">{cert}</span>
-              ))}
-            </div>
 
             <div className="footer-social">
               {socialLinks.map(({ Icon, href, label }) => (

@@ -6,7 +6,19 @@ import {
   ArrowRight, CheckCircle2, Package, Wheat
 } from 'lucide-react';
 import HeroBannerr from '../assets/HeroBannerr.png';
-import AboutBanner from '../assets/AboutBanner.png';
+import AboutBanner from '../assets/Export.png';
+import Asia from '../assets/Asia.png';
+import Europe from '../assets/Europe.png';
+import MiddleEast from '../assets/MiddleEast.png';
+import Africa from '../assets/Africa.png';
+import Avocado from '../assets/Avocados.png';
+import Mango from '../assets/Mangoes.png';
+import Pineapple from '../assets/Pineapples.png';
+import PassionFruit from '../assets/PassionFruits.png';  
+import FineBeans from '../assets/FineBeans.png';
+import Chilies from '../assets/Chillies.png';
+import SnapPeas from '../assets/SnapPeas.png';
+import SnowPeas from '../assets/SnowPeas.png';
 import '../styles/home.css';
 
 const stats = [
@@ -25,14 +37,14 @@ const whyChoose = [
 ];
 
 const products = [
-  { name: 'Avocados',       tag: 'Fruits',          desc: 'Hass & Fuerte varieties, export grade',     img: 'https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=400&q=80' },
-  { name: 'Mangoes',        tag: 'Fruits',          desc: 'Tommy Atkins, Kent & Apple mangoes',         img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&q=80' },
-  { name: 'Pineapples',     tag: 'Fruits',          desc: 'Sweet Kenyan pineapples, year-round',        img: 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400&q=80' },
-  { name: 'Passion Fruits', tag: 'Fruits',          desc: 'Purple passion fruits, vibrant flavour',     img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400&q=80' },
-  { name: 'Fine Beans',     tag: 'Vegetables',      desc: 'Tender fine beans, premium quality',         img: 'https://images.unsplash.com/photo-1506389225426-7b19e8060b35?w=400&q=80' },
-  { name: 'Chilies',        tag: 'Herbs & Spices',  desc: 'Long Cayenne, Bullet & Thin varieties',      img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
-  { name: 'Snap Peas',      tag: 'Vegetables',      desc: 'Crisp snap peas, air-freight ready',         img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=400&q=80' },
-  { name: 'Snow Peas',      tag: 'Vegetables',      desc: 'Tender snow peas, European market',          img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80' },
+  { name: 'Avocados',       tag: 'Fruits',          desc: 'Hass & Fuerte varieties, export grade',     img: Avocado },
+  { name: 'Mangoes',        tag: 'Fruits',          desc: 'Tommy Atkins, Kent & Apple mangoes',         img: Mango },
+  { name: 'Pineapples',     tag: 'Fruits',          desc: 'Sweet Kenyan pineapples, year-round',        img: Pineapple },
+  { name: 'Passion Fruits', tag: 'Fruits',          desc: 'Purple passion fruits, vibrant flavour',     img: PassionFruit },
+  { name: 'Fine Beans',     tag: 'Vegetables',      desc: 'Tender fine beans, premium quality',         img: FineBeans },
+  { name: 'Chilies',        tag: 'Herbs & Spices',  desc: 'Long Cayenne, Bullet & Thin varieties',      img: Chilies },
+  { name: 'Snap Peas',      tag: 'Vegetables',      desc: 'Crisp snap peas, air-freight ready',         img: SnapPeas },
+  { name: 'Snow Peas',      tag: 'Vegetables',      desc: 'Tender snow peas, European market',          img: SnowPeas },
 ];
 
 const certifications = [
@@ -48,28 +60,28 @@ const exportRegions = [
     region: 'Europe',
     markets: 'UK, Netherlands, Germany, France',
     desc: 'Premium supermarket chains and food processors.',
-    image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80'
+    image: Europe
   },
   {
     Icon: Globe,
     region: 'Middle East',
     markets: 'UAE, Saudi Arabia, Qatar',
     desc: 'Major importers and hospitality groups.',
-    image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=900&q=80'
+    image: MiddleEast
   },
   {
     Icon: Globe,
     region: 'Asia',
     markets: 'Singapore, Malaysia, Hong Kong',
     desc: 'Specialty food retailers and distributors.',
-    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=900&q=80'
+    image: Asia
   },
   {
     Icon: Globe,
     region: 'Africa',
     markets: 'Rwanda, Uganda, Tanzania',
     desc: 'Regional wholesale and retail markets.',
-    image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=80'
+    image: Africa
   },
 ];
 
@@ -95,10 +107,6 @@ export default function Home() {
 
         <div className="container-xl" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
           <div className="hero-content">
-            <div className="hero-badge">
-              <span />
-              Premium Fresh Produce Exporter · Nairobi, Kenya
-            </div>
 
             <h1 className="hero-title">
               Premium Fresh<br />

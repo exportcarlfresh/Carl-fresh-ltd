@@ -1,13 +1,29 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Globe, MapPin, Package, ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+} from 'react-leaflet';
+
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import '../styles/exports.css';
+import Asia from '../assets/Asia.png';
+import Europe from '../assets/Europe.png';
+import MiddleEast from '../assets/MiddleEast.png';
+import Africa from '../assets/Africa.png';
+import Export from '../assets/Supply.png';
+import Export2 from '../assets/ExportII.png';
 
 const regions = [
   {
     region: 'Europe',
     subtitle: 'Established premium buyers',
-    image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=80',
+    image: Europe,
     countries: ['UK', 'Netherlands', 'Germany', 'France'],
     products: ['Avocados', 'Fine Beans', 'Snap Peas', 'Snow Peas'],
     info: 'Strong demand across supermarket and wholesale channels with strict compliance to EU standards.',
@@ -15,7 +31,7 @@ const regions = [
   {
     region: 'Middle East',
     subtitle: 'Fast-growing demand hubs',
-    image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=80',
+    image: MiddleEast,
     countries: ['UAE', 'Saudi Arabia', 'Qatar'],
     products: ['Mangoes', 'Chilies', 'Avocados', 'Pineapples'],
     info: 'High-value markets supported by efficient air freight and strong seasonal demand.',
@@ -23,7 +39,7 @@ const regions = [
   {
     region: 'Asia',
     subtitle: 'Premium export growth',
-    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80',
+    image: Asia,
     countries: ['Singapore', 'Malaysia', 'Hong Kong'],
     products: ['Passion Fruits', 'Snow Peas', 'Chilies', 'Avocados'],
     info: 'Time-sensitive and quality-driven markets that value freshness, traceability and consistency.',
@@ -31,12 +47,38 @@ const regions = [
   {
     region: 'Africa',
     subtitle: 'Regional trade expansion',
-    image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80',
+    image: Africa,
     countries: ['Rwanda', 'Uganda', 'Tanzania', 'South Africa'],
     products: ['Mangoes', 'Pineapples', 'Avocados', 'Fine Beans'],
     info: 'Connected regional supply channels supporting high-volume trade across the continent.',
   },
 ];
+const kenyaPosition: [number, number] = [-1.286389, 36.817223];
+
+const exportDestinations = [
+  {
+    region: 'Europe',
+    position: [52.3676, 4.9041],
+  },
+  {
+    region: 'Middle East',
+    position: [25.2048, 55.2708],
+  },
+  {
+    region: 'Asia',
+    position: [1.3521, 103.8198],
+  },
+  {
+    region: 'Africa',
+    position: [-6.7924, 39.2083],
+  },
+];
+
+const mapMarker = new L.DivIcon({
+  className: 'custom-map-marker',
+  html: '<div class="marker-pulse"></div>',
+  iconSize: [18, 18],
+});
 
 const marketPoints = [
   'Reliable cold chain handling',
@@ -132,42 +174,96 @@ export default function ExportMarkets() {
       <section className="export-map-section page-section">
         <div className="container-xl">
           <div className="export-map-layout">
+
             <div className="export-map-panel">
+
               <div className="map-header">
                 <div>
-                  <div className="section-label">Trade Routes</div>
-                  <h2 className="section-title">Interactive Market Map</h2>
+                  <div className="section-label">
+                    Trade Routes
+                  </div>
+
+                  <h2 className="section-title">
+                    Global Export Network
+                  </h2>
                 </div>
-                <span className="map-pill">{activeMarket.region}</span>
+
+                <span className="map-pill">
+                  15+ Countries
+                </span>
               </div>
 
-              <div className="map-surface">
-                <div className="map-surface-overlay" />
-                {regions.map((market, index) => (
-                  <button
-                    key={market.region}
-                    type="button"
-                    className={`map-pin ${index === activeRegion ? 'active' : ''}`}
-                    style={{ top: `${20 + index * 14}%`, left: `${35 + index * 12}%` }}
-                    onClick={() => setActiveRegion(index)}
-                  >
-                    <span className="pin-dot" />
-                    <span className="pin-label">{market.region}</span>
-                  </button>
+              <MapContainer
+                center={kenyaPosition}
+                zoom={3}
+                scrollWheelZoom={false}
+                className="leaflet-map"
+              >
+                <TileLayer
+                  url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                />
+
+                <Marker
+                  position={kenyaPosition}
+                  icon={mapMarker}
+                >
+                  <Popup>
+                    Carl Fresh Produce
+                    <br />
+                    Nairobi, Kenya
+                  </Popup>
+                </Marker>
+
+                {exportDestinations.map((destination) => (
+                  <div key={destination.region}>
+                    <Marker
+                      position={destination.position as [number, number]}
+                      icon={mapMarker}
+                    >
+                      <Popup>
+                        {destination.region}
+                      </Popup>
+                    </Marker>
+
+                    <Polyline
+                      positions={[
+                        kenyaPosition,
+                        destination.position as [number, number],
+                      ]}
+                      pathOptions={{
+                        color: '#c9a84c',
+                        weight: 2,
+                        opacity: 0.85,
+                      }}
+                    />
+                  </div>
                 ))}
-              </div>
+              </MapContainer>
+
             </div>
 
             <div className="map-info-card">
-              <p className="map-info-label">Selected Region</p>
-              <h3>{activeMarket.region}</h3>
-              <p>{activeMarket.info}</p>
+              <p className="map-info-label">
+                Export Reach
+              </p>
+
+              <h3>15+ Countries</h3>
+
+              <p>
+                From Kenya's fertile growing regions, Carl Fresh Produce
+                delivers premium fruits, vegetables, herbs and spices to
+                customers across Europe, the Middle East, Asia and Africa
+                through trusted logistics and cold-chain networks.
+              </p>
+
               <div className="map-info-tags">
-                {activeMarket.countries.map(country => (
-                  <span key={country}>{country}</span>
-                ))}
+                <span>Europe</span>
+                <span>Middle East</span>
+                <span>Asia</span>
+                <span>Africa</span>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -195,7 +291,7 @@ export default function ExportMarkets() {
 
             <div className="export-focus-visual">
               <img
-                src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1100&q=80"
+                src={Export}
                 alt="Fresh produce export operations"
                 loading="lazy"
               />
@@ -215,7 +311,7 @@ export default function ExportMarkets() {
           <div className="export-network-layout">
             <div className="network-image-panel">
               <img
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                src={Export2}
                 alt="Global supply network"
                 loading="lazy"
               />

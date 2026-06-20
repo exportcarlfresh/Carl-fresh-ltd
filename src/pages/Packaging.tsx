@@ -5,6 +5,7 @@ import {
   ClipboardList, QrCode, BarChart2, Ship, Mail,
 } from 'lucide-react';
 import '../styles/packaging.css';
+import Shipment from '../assets/Logistics.png';
 
 const packagingTypes = [
   {
@@ -111,7 +112,7 @@ export default function Packaging() {
             </div>
             <div style={{ borderRadius: '20px', overflow: 'hidden', aspectRatio: '4/3' }}>
               <img
-                src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=80"
+                src={Shipment}
                 alt="Fresh produce packaging facility"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 loading="lazy"
