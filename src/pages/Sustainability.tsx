@@ -61,7 +61,7 @@ export default function Sustainability() {
     <main>
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             Sustainability
           </div>
           <h1>Sustainably Grown in Kenya</h1>
@@ -69,7 +69,7 @@ export default function Sustainability() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>Sustainability</span>
+            <span>Sustainability</span>
           </div>
         </div>
       </div>

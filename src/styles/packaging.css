@@ -86,37 +86,113 @@
   background: #fff;
 }
 
-.freight-grid {
+.freight-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.15fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.freight-intro {
+  max-width: 32rem;
+}
+
+.freight-intro p {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--color-gray-mid);
+  line-height: 1.8;
+}
+
+.freight-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.freight-highlights span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: #f5f7f0;
+  color: var(--color-green-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.freight-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-top: 3rem;
+  gap: 1.25rem;
 }
 
 .freight-card {
-  border-radius: 20px;
+  position: relative;
+  min-height: 520px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 18px 38px rgba(9, 38, 12, 0.08);
+}
+
+.freight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(5, 28, 11, 0.82));
+  z-index: 0;
+}
+
+.freight-card.air {
+  background:
+    linear-gradient(180deg, rgba(5, 28, 11, 0.12), rgba(5, 28, 11, 0.76)),
+    url('https://images.unsplash.com/photo-1529074963764-98f45c47344b?auto=format&fit=crop&w=900&q=80') center/cover;
+}
+
+.freight-card.sea {
+  background:
+    linear-gradient(180deg, rgba(5, 28, 11, 0.06), rgba(5, 28, 11, 0.78)),
+    url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=80') center/cover;
+}
+
+.freight-card-content {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  padding: 1.75rem;
+  color: #fff;
+}
+
+.freight-card-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.6rem;
+  margin-bottom: 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .freight-card-header {
-  padding: 2rem;
-  color: #fff;
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-.freight-card.air .freight-card-header {
-  background: linear-gradient(135deg, #1565c0, #1976d2);
-}
-
-.freight-card.sea .freight-card-header {
-  background: linear-gradient(135deg, #00695c, #00796b);
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
 }
 
 .freight-card-header .freight-icon {
-  font-size: 2.5rem;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .freight-card-header h3 {
@@ -129,38 +205,38 @@
 .freight-card-header p {
   font-family: var(--font-body);
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.78);
   margin-top: 0.2rem;
 }
 
 .freight-card-body {
-  padding: 1.75rem 2rem;
-  background: var(--color-off-white);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .freight-feature {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid #e5e7eb;
+  align-items: flex-start;
+  gap: 0.65rem;
   font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--color-gray-dark);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.55;
 }
 
-.freight-feature:last-child { border-bottom: none; }
-
 .freight-feature::before {
-  content: '✓';
-  color: var(--color-green-primary);
-  font-weight: 700;
+  content: '•';
+  color: var(--color-gold-light);
+  font-size: 1rem;
+  line-height: 1;
   flex-shrink: 0;
+  margin-top: 0.2rem;
 }
 
 /* Cold chain */
 .cold-chain {
-  background: linear-gradient(135deg, #01579b, #0277bd);
+  background: var(--color-green-primary);
   color: #fff;
 }
 

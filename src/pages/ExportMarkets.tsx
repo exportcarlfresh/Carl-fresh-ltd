@@ -1,43 +1,90 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, MapPin, Package, ArrowRight } from 'lucide-react';
+import { Globe, MapPin, Package, ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+} from 'react-leaflet';
+
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import '../styles/exports.css';
+import Asia from '../assets/Asia.png';
+import Europe from '../assets/Europe.png';
+import MiddleEast from '../assets/MiddleEast.png';
+import Africa from '../assets/Africa.png';
+import Export from '../assets/Supply.png';
+import Export2 from '../assets/ExportII.png';
 
 const regions = [
   {
-    Icon: Globe, region: 'Europe', subtitle: 'Our largest and most established market',
-    products: ['Avocados', 'Fine Beans', 'Snap Peas', 'Snow Peas', 'Chilies', 'Mangoes'],
-    info: "Europe is Carl Fresh's primary market, with established relationships with importers, distributors and supermarket chains in the UK, Netherlands, Germany and France. We comply fully with EU phytosanitary and food safety regulations, including Maximum Residue Level (MRL) requirements.",
+    region: 'Europe',
+    subtitle: 'Established premium buyers',
+    image: Europe,
+    countries: ['UK', 'Netherlands', 'Germany', 'France'],
+    products: ['Avocados', 'Fine Beans', 'Snap Peas', 'Snow Peas'],
+    info: 'Strong demand across supermarket and wholesale channels with strict compliance to EU standards.',
   },
   {
-    Icon: Globe, region: 'Middle East', subtitle: 'High-growth premium market',
-    products: ['Avocados', 'Mangoes', 'Chilies', 'Passion Fruits', 'Pineapples'],
-    info: "The Middle East represents a rapidly growing market for premium Kenyan produce. We serve major importers in UAE, Saudi Arabia and Qatar, with products transported via efficient air freight routes from Nairobi's Jomo Kenyatta International Airport.",
+    region: 'Middle East',
+    subtitle: 'Fast-growing demand hubs',
+    image: MiddleEast,
+    countries: ['UAE', 'Saudi Arabia', 'Qatar'],
+    products: ['Mangoes', 'Chilies', 'Avocados', 'Pineapples'],
+    info: 'High-value markets supported by efficient air freight and strong seasonal demand.',
   },
   {
-    Icon: Globe, region: 'Asia', subtitle: 'Emerging premium markets',
-    products: ['Avocados', 'Chilies', 'Snow Peas', 'Snap Peas', 'Passion Fruits'],
-    info: 'Asian markets, particularly Singapore, Malaysia and Hong Kong, have a growing appetite for premium African produce. Our cold chain expertise and fast air freight connections make us a reliable supplier for time-sensitive Asian buyers.',
+    region: 'Asia',
+    subtitle: 'Premium export growth',
+    image: Asia,
+    countries: ['Singapore', 'Malaysia', 'Hong Kong'],
+    products: ['Passion Fruits', 'Snow Peas', 'Chilies', 'Avocados'],
+    info: 'Time-sensitive and quality-driven markets that value freshness, traceability and consistency.',
   },
   {
-    Icon: Globe, region: 'Africa', subtitle: 'Regional trade and wholesale markets',
-    products: ['Mangoes', 'Pineapples', 'Avocados', 'Chilies', 'Fine Beans'],
-    info: 'Within Africa, we serve regional markets including Rwanda, Uganda, Tanzania and South Africa. As intra-African trade grows, we are positioned to be a leading supplier of premium Kenyan produce across the continent.',
+    region: 'Africa',
+    subtitle: 'Regional trade expansion',
+    image: Africa,
+    countries: ['Rwanda', 'Uganda', 'Tanzania', 'South Africa'],
+    products: ['Mangoes', 'Pineapples', 'Avocados', 'Fine Beans'],
+    info: 'Connected regional supply channels supporting high-volume trade across the continent.',
+  },
+];
+const kenyaPosition: [number, number] = [-1.286389, 36.817223];
+
+const exportDestinations = [
+  {
+    region: 'Europe',
+    position: [52.3676, 4.9041],
+  },
+  {
+    region: 'Middle East',
+    position: [25.2048, 55.2708],
+  },
+  {
+    region: 'Asia',
+    position: [1.3521, 103.8198],
+  },
+  {
+    region: 'Africa',
+    position: [-6.7924, 39.2083],
   },
 ];
 
-const keyMarkets = [
-  { name: 'United Kingdom' },
-  { name: 'Netherlands' },
-  { name: 'Germany' },
-  { name: 'France' },
-  { name: 'UAE' },
-  { name: 'Saudi Arabia' },
-  { name: 'Qatar' },
-  { name: 'Singapore' },
-  { name: 'Malaysia' },
-  { name: 'Hong Kong' },
-  { name: 'Rwanda' },
-  { name: 'Tanzania' },
+const mapMarker = new L.DivIcon({
+  className: 'custom-map-marker',
+  html: '<div class="marker-pulse"></div>',
+  iconSize: [18, 18],
+});
+
+const marketPoints = [
+  'Reliable cold chain handling',
+  'Regulatory compliance support',
+  'Custom freight solutions',
+  'Traceable farm-to-port sourcing',
 ];
 
 const divider = (margin = '1rem auto') => (
@@ -45,126 +92,245 @@ const divider = (margin = '1rem auto') => (
 );
 
 export default function ExportMarkets() {
+  const [activeRegion, setActiveRegion] = useState(0);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCarouselIndex((prev) => (prev + 1) % regions.length);
+  };
+
+  const prevSlide = () => {
+    setCarouselIndex((prev) => (prev - 1 + regions.length) % regions.length);
+  };
+
+  const activeMarket = regions[activeRegion];
+
   return (
     <main>
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
-            Export Markets
-          </div>
+          <div className="section-label">Export Markets</div>
           <h1>Our Global Reach</h1>
           <p>From Nairobi to the world — serving premium buyers across Europe, the Middle East, Asia and Africa.</p>
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>Export Markets</span>
+            <span>Export Markets</span>
           </div>
         </div>
       </div>
 
-      {/* Intro */}
+      {/* Intro / carousel section */}
       <section className="export-intro page-section">
         <div className="container-xl">
-          <div className="section-label">Global Presence</div>
-          <h2 className="section-title">Kenya to the World</h2>
-          {divider('1rem 0')}
-          <p>
-            Carl Fresh Produce Limited currently serves buyers in 15+ countries across four
-            continents. Our strategic location in Nairobi provides direct access to Jomo
-            Kenyatta International Airport, one of Africa's busiest cargo hubs, enabling
-            efficient air freight to global markets.
-          </p>
-          <p>
-            We work with a network of trusted freight forwarders, customs brokers and
-            in-market agents to ensure seamless delivery from Kenya to your warehouse.
-          </p>
-        </div>
-      </section>
-
-      {/* Map visual */}
-      <section className="export-map-section page-section" style={{ paddingTop: 0 }}>
-        <div className="container-xl">
-          <div className="export-map-container">
-            <div className="map-overlay">
-              <Globe size={48} color="var(--color-green-primary)" strokeWidth={1.25} style={{ margin: '0 auto 0.75rem' }} />
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 800, color: 'var(--color-green-primary)' }}>
-                Export Reach: 15+ Countries
+          <div className="export-intro-panel">
+            <div>
+              <div className="section-label">Global Presence</div>
+              <h2 className="section-title">Kenya to the World</h2>
+              {divider('1rem 0')}
+              <p>
+                Carl Fresh Produce Limited currently serves buyers in 15+ countries across four continents.
+                From Nairobi, our logistics network reaches major import hubs with speed, reliability and full compliance.
               </p>
-              <p>Serving buyers across Europe, Middle East, Asia & Africa</p>
             </div>
-            <div className="map-pins">
-              {[
-                { label: 'UK', top: '22%', left: '42%' },
-                { label: 'Netherlands', top: '20%', left: '46%' },
-                { label: 'Germany', top: '23%', left: '48%' },
-                { label: 'UAE', top: '38%', left: '60%' },
-                { label: 'Kenya', top: '55%', left: '56%' },
-                { label: 'Singapore', top: '58%', left: '76%' },
-              ].map(pin => (
-                <div key={pin.label} className="map-pin" style={{ top: pin.top, left: pin.left }}>
-                  <div className="pin-dot" />
-                  <div className="pin-label">{pin.label}</div>
-                </div>
+            <div className="export-stats-card">
+              <span>15+</span>
+              <p>Countries Exported</p>
+            </div>
+          </div>
+
+          <div className="export-carousel-shell">
+            <button type="button" className="carousel-btn" onClick={prevSlide} aria-label="Previous market">
+              <ChevronLeft size={18} />
+            </button>
+
+            <div className="export-carousel-track">
+              {regions.map((market, index) => (
+                <article
+                  key={market.region}
+                  className={`export-carousel-card ${index === carouselIndex ? 'active' : ''}`}
+                  style={{ backgroundImage: `linear-gradient(rgba(6,38,12,0.18), rgba(6,38,12,0.72)), url(${market.image})` }}
+                >
+                  <div className="export-carousel-card-inner">
+                    <p>{market.region}</p>
+                    <h3>{market.subtitle}</h3>
+                    <div className="carousel-card-footer">
+                      <span>{market.countries.length} markets</span>
+                      <span>{market.products.length} products</span>
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
+
+            <button type="button" className="carousel-btn" onClick={nextSlide} aria-label="Next market">
+              <ChevronRight size={18} />
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Region cards */}
-      <section className="export-regions-section page-section">
+      {/* Interactive map */}
+      <section className="export-map-section page-section">
         <div className="container-xl">
-          <div style={{ textAlign: 'center' }}>
-            <div className="section-label">Our Regions</div>
-            <h2 className="section-title">Markets We Serve</h2>
-            {divider()}
-          </div>
+          <div className="export-map-layout">
 
-          <div className="regions-grid">
-            {regions.map(({ Icon, region, subtitle, products, info }) => (
-              <div key={region} className="region-card">
-                <div className="region-card-header">
-                  <div className="region-flag"><Icon size={32} strokeWidth={1.5} /></div>
-                  <div>
-                    <h3>{region}</h3>
-                    <p>{subtitle}</p>
+            <div className="export-map-panel">
+
+              <div className="map-header">
+                <div>
+                  <div className="section-label">
+                    Trade Routes
                   </div>
+
+                  <h2 className="section-title">
+                    Global Export Network
+                  </h2>
                 </div>
-                <div className="region-card-body">
-                  <div className="region-products-list">
-                    {products.map(p => (
-                      <span key={p} className="region-product-tag">
-                        <Package size={11} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '3px' }} />
-                        {p}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="region-info">{info}</p>
-                </div>
+
+                <span className="map-pill">
+                  15+ Countries
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Key markets */}
-      <section className="key-markets page-section">
-        <div className="container-xl">
-          <div style={{ textAlign: 'center' }}>
-            <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
-              Country List
+              <MapContainer
+                center={kenyaPosition}
+                zoom={3}
+                scrollWheelZoom={false}
+                className="leaflet-map"
+              >
+                <TileLayer
+                  url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                />
+
+                <Marker
+                  position={kenyaPosition}
+                  icon={mapMarker}
+                >
+                  <Popup>
+                    Carl Fresh Produce
+                    <br />
+                    Nairobi, Kenya
+                  </Popup>
+                </Marker>
+
+                {exportDestinations.map((destination) => (
+                  <div key={destination.region}>
+                    <Marker
+                      position={destination.position as [number, number]}
+                      icon={mapMarker}
+                    >
+                      <Popup>
+                        {destination.region}
+                      </Popup>
+                    </Marker>
+
+                    <Polyline
+                      positions={[
+                        kenyaPosition,
+                        destination.position as [number, number],
+                      ]}
+                      pathOptions={{
+                        color: '#c9a84c',
+                        weight: 2,
+                        opacity: 0.85,
+                      }}
+                    />
+                  </div>
+                ))}
+              </MapContainer>
+
             </div>
-            <h2 className="section-title" style={{ color: '#fff' }}>Key Destination Countries</h2>
-            {divider()}
-          </div>
 
-          <div className="key-markets-grid">
-            {keyMarkets.map(({ name }) => (
-              <div key={name} className="market-item">
-                <div className="flag"><MapPin size={22} strokeWidth={1.5} /></div>
-                <div className="market-name">{name}</div>
+            <div className="map-info-card">
+              <p className="map-info-label">
+                Export Reach
+              </p>
+
+              <h3>15+ Countries</h3>
+
+              <p>
+                From Kenya's fertile growing regions, Carl Fresh Produce
+                delivers premium fruits, vegetables, herbs and spices to
+                customers across Europe, the Middle East, Asia and Africa
+                through trusted logistics and cold-chain networks.
+              </p>
+
+              <div className="map-info-tags">
+                <span>Europe</span>
+                <span>Middle East</span>
+                <span>Asia</span>
+                <span>Africa</span>
               </div>
-            ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Market focus section */}
+      <section className="export-focus page-section">
+        <div className="container-xl">
+          <div className="export-focus-layout">
+            <div className="export-focus-text">
+              <div className="section-label">Why Buyers Choose Us</div>
+              <h2 className="section-title">A dependable supply partner</h2>
+              {divider('1rem 0')}
+              <p>
+                Our global network combines premium sourcing, strict quality standards and flexible logistics to meet the demands of international buyers.
+              </p>
+              <div className="focus-points">
+                {marketPoints.map(point => (
+                  <div key={point} className="focus-point">
+                    <CheckCircle2 size={18} />
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="export-focus-visual">
+              <img
+                src={Export}
+                alt="Fresh produce export operations"
+                loading="lazy"
+              />
+              <div className="focus-floating-card">
+                <p>Market Reach</p>
+                <h3>4 Continents</h3>
+                <span>15+ countries served</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Third section / conjoined card */}
+      <section className="export-network page-section">
+        <div className="container-xl">
+          <div className="export-network-layout">
+            <div className="network-image-panel">
+              <img
+                src={Export2}
+                alt="Global supply network"
+                loading="lazy"
+              />
+            </div>
+
+            <div className="network-card">
+              <div className="network-card-content">
+                <div className="section-label">Export Network</div>
+                <h2 className="section-title">Connected from farm to destination</h2>
+                <p>
+                  We coordinate sourcing, treatment, inspection, packaging and freight so your orders move efficiently from Kenya to your warehouse.
+                </p>
+                <div className="network-pill-row">
+                  <span><Globe size={15} /> Global reach</span>
+                  <span><Package size={15} /> Packaging support</span>
+                  <span><MapPin size={15} /> Destination tracking</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
