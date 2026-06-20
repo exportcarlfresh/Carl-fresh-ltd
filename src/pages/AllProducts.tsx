@@ -22,12 +22,14 @@ export default function AllProducts() {
       : "/products";
 
   const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [prevInitialCategory, setPrevInitialCategory] = useState(initialCategory);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
+  if (initialCategory !== prevInitialCategory) {
+    setPrevInitialCategory(initialCategory);
     setActiveCategory(initialCategory);
-  }, [initialCategory]);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);

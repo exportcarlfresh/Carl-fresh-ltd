@@ -12,6 +12,7 @@ import Sustainability from './pages/Sustainability';
 import ExportMarkets from './pages/ExportMarkets';
 import Packaging from './pages/Packaging';
 import News from './pages/News';
+import NewsArticle from './pages/NewsArticle';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 
@@ -73,6 +74,7 @@ function AppContent() {
           <Route path="/export-markets" element={<ExportMarkets />} />
           <Route path="/packaging" element={<Packaging />} />
           <Route path="/news" element={<News />} />
+          <Route path="/news/:id" element={<NewsArticle />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

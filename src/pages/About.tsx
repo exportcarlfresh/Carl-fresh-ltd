@@ -1,42 +1,10 @@
 import { Link } from 'react-router-dom';
 import {
-  Handshake, Award, Leaf, Globe, Users, Lightbulb, Clock, ClipboardCheck,
-  Target, Eye, Gem, Sprout, FlaskConical, Thermometer, Package,
-  ArrowRight,
+  Handshake, Award, Leaf, Globe, Clock, ClipboardCheck, Thermometer, Package,
 } from 'lucide-react';
 import '../styles/about.css';
-import Logo from '../assets/logo.png';
 import Banner from '../assets/trial.png';
 import Export from '../assets/Export.png';
-
-const values = [
-  { Icon: Handshake,     title: 'Integrity',    desc: 'Honest business practices, transparent operations and trustworthy partnerships.' },
-  { Icon: Award,         title: 'Quality First', desc: 'Uncompromising standards from farm to final delivery at every touchpoint.' },
-  { Icon: Leaf,          title: 'Sustainability', desc: 'Long-term commitment to environmental stewardship and responsible farming.' },
-  { Icon: Globe,         title: 'Global Focus',   desc: 'International market awareness driving our product development and logistics.' },
-  { Icon: Users,         title: 'Community',      desc: 'Empowering local farmers and communities through fair partnerships.' },
-  { Icon: Lightbulb,     title: 'Innovation',     desc: 'Embracing modern agricultural practices and technology for better outcomes.' },
-  { Icon: Clock,         title: 'Reliability',    desc: 'Consistent supply schedules and dependable logistics partners worldwide.' },
-  { Icon: ClipboardCheck, title: 'Compliance',   desc: 'Full adherence to international food safety and trade regulations.' },
-];
-
-const stats = [
-  { number: '15+',  label: 'Years of Excellence' },
-  { number: '500+', label: 'Tonnes Exported' },
-  { number: '15+',  label: 'Global Markets' },
-  { number: '100+', label: 'Partner Farmers' },
-];
-
-const features = [
-  { Icon: Sprout,       title: 'Farm-to-Export Expertise',  desc: 'We control the entire supply chain from our partner farms to the point of export.' },
-  { Icon: FlaskConical, title: 'Quality Assurance Labs',    desc: 'On-site testing and inspection facilities ensure every batch meets specification.' },
-  { Icon: Thermometer,  title: 'Cold Chain Infrastructure', desc: 'State-of-the-art cold storage and refrigerated transport maintain product freshness.' },
-  { Icon: Package,      title: 'Custom Packaging',          desc: 'Flexible packaging solutions designed to meet buyer and market-specific requirements.' },
-];
-
-const divider = (margin: string = '1rem auto') => (
-  <div className="divider-gold" style={{ margin }} />
-);
 
 export default function About() {
   return (

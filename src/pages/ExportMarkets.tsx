@@ -92,7 +92,6 @@ const divider = (margin = '1rem auto') => (
 );
 
 export default function ExportMarkets() {
-  const [activeRegion, setActiveRegion] = useState(0);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
   const nextSlide = () => {
@@ -102,8 +101,6 @@ export default function ExportMarkets() {
   const prevSlide = () => {
     setCarouselIndex((prev) => (prev - 1 + regions.length) % regions.length);
   };
-
-  const activeMarket = regions[activeRegion];
 
   return (
     <main>
