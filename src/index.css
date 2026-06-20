@@ -1,5 +1,6 @@
 /* ── External fonts ── */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/breathing');
 
 /* ── Tailwind v4 ── */
 @import "tailwindcss";
@@ -179,21 +180,21 @@ a {
   align-items: center;
   gap: 0.5rem;
   background-color: transparent;
-  color: #fff;
+  color:#ffffff;
   padding: 0.72rem 1.72rem;
   border-radius: 999px;
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 0.875rem;
   transition: all 0.25s ease;
-  border: 2px solid rgba(255, 255, 255, 0.65);
+  border: 2px solid #ffffff;
   cursor: pointer;
   text-decoration: none;
 }
 
 .btn-outline-white:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-  border-color: #fff;
+  background-color:rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
 }
 
 .btn-gold {
