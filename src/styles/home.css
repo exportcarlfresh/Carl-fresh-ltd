@@ -821,7 +821,7 @@
 /* ── CTA Banner ── */
 
 .cta-banner {
-  background: url('/public/CTABannerr.png') center/cover;
+  background: url('/CTABannerr.png') center/cover;
     /* linear-gradient(
       90deg,
       #ffffff,

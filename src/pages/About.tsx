@@ -23,7 +23,7 @@ const coreValues = [
     num: '02',
     icon: Sparkles,
     title: 'Excellence',
-    short: "Good enough, isn't.",
+    short: "High Standards.",
     detail: 'We hold every harvest to a standard higher than what is required, because reputation is earned one shipment at a time.',
   },
   {
@@ -223,48 +223,26 @@ export default function About() {
 ========================== */}
 
 <section className="vision-section page-section">
-
   <div className="container-xl vision-inner">
 
-    <div className="section-label">
-      Our Vision
-    </div>
+    <div className="vision-card">
 
-    <h2 className="section-title vision-heading">
-      Where We Are Going
-    </h2>
-
-    <div className="vision-orbit">
-
-      <div className="orbit-ring orbit-ring-1" />
-      <div className="orbit-ring orbit-ring-2" />
-      <div className="orbit-ring orbit-ring-3" />
-
-      <div className="orbit-core">
-        <span className="orbit-origin">KENYA</span>
-        <p>
-          To become Africa's most trusted gateway for fresh produce —
-          connecting a thousand farms to a thousand markets, one harvest at a time.
-        </p>
+      <div className="section-label">
+        Our Vision
       </div>
 
-      <span className="orbit-node node-europe">
-        <Globe size={14} /> Europe
-      </span>
-      <span className="orbit-node node-middle-east">
-        <Globe size={14} /> Middle East
-      </span>
-      <span className="orbit-node node-asia">
-        <Globe size={14} /> Asia
-      </span>
-      <span className="orbit-node node-africa">
-        <Globe size={14} /> Africa
-      </span>
+      <h2 className="section-title">
+        Where We Are Going
+      </h2>
+
+      <p className="vision-statement">
+        To become World's most trusted gateway for fresh produce —
+        connecting a thousand farms to a thousand markets, one harvest at a time.
+      </p>
 
     </div>
 
   </div>
-
 </section>
 
 {/* ==========================
