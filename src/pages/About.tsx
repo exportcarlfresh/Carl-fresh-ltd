@@ -1,11 +1,99 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Handshake, Award, Leaf, Globe, Clock, ClipboardCheck, Thermometer, Package,
+  ShieldCheck, Truck, Sparkles, Lightbulb, Users, Heart,
 } from 'lucide-react';
 import '../styles/about.css';
 import Logo from '../assets/logo.png';
 import Banner from '../assets/About.png';
 import Export from '../assets/HeroAbout2.png';
+
+const coreValues = [
+  {
+    id: 'integrity',
+    num: '01',
+    icon: ShieldCheck,
+    title: 'Integrity',
+    short: 'We do what we say.',
+    detail: "From farm contracts to export documentation, our word is our bond — transparency at every link of the chain.",
+  },
+  {
+    id: 'excellence',
+    num: '02',
+    icon: Sparkles,
+    title: 'Excellence',
+    short: "High Standards.",
+    detail: 'We hold every harvest to a standard higher than what is required, because reputation is earned one shipment at a time.',
+  },
+  {
+    id: 'sustain',
+    num: '03',
+    icon: Leaf,
+    title: 'Sustainability',
+    short: 'Farming for tomorrow.',
+    detail: 'We invest in soil health, water stewardship and fair partnerships with the farmers who feed this business.',
+  },
+  {
+    id: 'innovation',
+    num: '04',
+    icon: Lightbulb,
+    title: 'Innovation',
+    short: 'Always improving.',
+    detail: 'From cold-chain technology to traceability systems, we adopt what makes our produce safer and our process sharper.',
+  },
+  {
+    id: 'partnership',
+    num: '05',
+    icon: Users,
+    title: 'Partnership',
+    short: 'We grow together.',
+    detail: 'Our farmers, freight partners and buyers are not vendors — they are co-authors of every successful season.',
+  },
+  {
+    id: 'customer',
+    num: '06',
+    icon: Heart,
+    title: 'Customer Focus',
+    short: 'Your standards, our obsession.',
+    detail: 'We shape our grading, packaging and scheduling around what matters most to the markets we serve.',
+  },
+];
+
+function ValueCard({ value }: { value: typeof coreValues[number] }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const Icon = value.icon;
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-6px)`;
+  }
+
+  function handleMouseLeave() {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = '';
+  }
+
+  return (
+    <div
+      ref={cardRef}
+      className={`value-mosaic-card value-${value.id}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <span className="value-num">{value.num}</span>
+      <div className="value-icon"><Icon size={22} /></div>
+      <h3>{value.title}</h3>
+      <p className="value-short">{value.short}</p>
+      <p className="value-detail">{value.detail}</p>
+    </div>
+  );
+}
 
 export default function About() {
   return (
@@ -70,6 +158,161 @@ export default function About() {
     </div>
 
   </div>
+</section>
+
+{/* ==========================
+   OUR MISSION
+========================== */}
+
+<section className="mission-section">
+
+  <svg className="mission-globe" viewBox="0 0 600 600" aria-hidden="true">
+    <circle cx="300" cy="300" r="280" />
+    <ellipse cx="300" cy="300" rx="130" ry="280" />
+    <ellipse cx="300" cy="300" rx="280" ry="130" />
+    <ellipse cx="300" cy="300" rx="280" ry="40" />
+    <line x1="20" y1="300" x2="580" y2="300" />
+    <line x1="300" y1="20" x2="300" y2="580" />
+    <circle cx="170" cy="195" r="3.5" className="mission-globe-dot" />
+    <circle cx="430" cy="240" r="3.5" className="mission-globe-dot" />
+    <circle cx="380" cy="420" r="3.5" className="mission-globe-dot" />
+    <path d="M170,195 C260,140 340,160 430,240" className="mission-globe-route" />
+    <path d="M430,240 C440,330 410,380 380,420" className="mission-globe-route" />
+  </svg>
+
+  <div className="mission-pattern" aria-hidden="true" />
+
+  <div className="container-xl mission-inner">
+
+    <div className="section-label mission-label">
+      Our Mission
+    </div>
+
+    <h2 className="mission-heading">
+      Why We Exist
+    </h2>
+
+    <div className="mission-manifesto">
+
+      <p>
+        We exist to carry the <span className="hl-gold">fertile soil of Kenya</span> to
+        tables it has never touched — moving fresh produce with the precision of
+        global trade and the integrity of a family farm.
+      </p>
+
+      <p>
+        Every crate we export is a promise kept: to the
+        farmer who trusted us with a season's work, and to the
+        <span className="hl-green-light"> buyer who trusted us with their standards</span>.
+      </p>
+
+      <p className="mission-emphasis">
+        This is not logistics. This is stewardship —
+        of land, of labour, and of the long relationships that move
+        a harvest from one hemisphere to another.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* ==========================
+   OUR VISION
+========================== */}
+
+<section className="vision-section page-section">
+  <div className="container-xl vision-inner">
+
+    <div className="vision-card">
+
+      <div className="section-label">
+        Our Vision
+      </div>
+
+      <h2 className="section-title">
+        Where We Are Going
+      </h2>
+
+      <p className="vision-statement">
+        To become World's most trusted gateway for fresh produce —
+        connecting a thousand farms to a thousand markets, one harvest at a time.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+{/* ==========================
+   OUR PROMISE
+========================== */}
+
+<section className="promise-section page-section">
+
+  <div className="container-xl">
+
+    <div className="section-heading-center">
+      <div className="section-label">Our Promise</div>
+      <h2 className="section-title">A Journey Built On Trust</h2>
+    </div>
+
+    <div className="promise-journey">
+
+      <div className="promise-line" />
+
+      <div className="promise-pillar">
+        <div className="promise-marker"><ShieldCheck size={22} /></div>
+        <h4>Quality Assured</h4>
+        <p className="promise-desc">
+          Every batch inspected, graded and certified before it leaves our hands.
+        </p>
+      </div>
+
+      <div className="promise-pillar">
+        <div className="promise-marker"><Truck size={22} /></div>
+        <h4>Reliable Delivery</h4>
+        <p className="promise-desc">
+          Cold-chain logistics and disciplined scheduling, shipment after shipment.
+        </p>
+      </div>
+
+      <div className="promise-pillar">
+        <div className="promise-marker"><Handshake size={22} /></div>
+        <h4>Trusted Partnerships</h4>
+        <p className="promise-desc">
+          Long-term relationships built on transparency, not transactions.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* ==========================
+   CORE VALUES
+========================== */}
+
+<section className="values-section page-section">
+
+  <div className="container-xl">
+
+    <div className="section-heading-center">
+      <div className="section-label">Core Values</div>
+      <h2 className="section-title">What We Stand For</h2>
+    </div>
+
+    <div className="values-mosaic">
+      {coreValues.map((value) => (
+        <ValueCard key={value.id} value={value} />
+      ))}
+    </div>
+
+  </div>
+
 </section>
 
 {/* ==========================
