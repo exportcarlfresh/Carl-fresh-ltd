@@ -531,3 +531,437 @@
     padding: 3rem 2rem;
   }
 }
+
+/* ==========================================================
+   SHARED — highlight spans
+========================================================== */
+
+.hl-gold {
+  color: var(--color-gold-light);
+  font-style: italic;
+  font-family: var(--font-editorial);
+}
+
+.hl-green-light {
+  color: var(--color-green-light);
+  font-weight: 600;
+}
+
+/* ==========================================================
+   OUR MISSION — immersive manifesto
+========================================================== */
+
+.mission-section {
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 0 8rem;
+  background: linear-gradient(165deg, #0a2a10 0%, #0d3b12 55%, #123018 100%);
+  isolation: isolate;
+}
+
+.mission-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1.4px, transparent 1.4px);
+  background-size: 26px 26px;
+}
+
+.mission-globe {
+  position: absolute;
+  top: 50%;
+  right: -12%;
+  width: min(64vw, 880px);
+  height: min(64vw, 880px);
+  transform: translateY(-50%);
+  color: rgba(232, 201, 106, 0.16);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  z-index: 0;
+  animation: globeSpin 90s linear infinite;
+  pointer-events: none;
+}
+
+.mission-globe-dot {
+  fill: rgba(232, 201, 106, 0.55);
+  stroke: none;
+}
+
+.mission-globe-route {
+  stroke: rgba(232, 201, 106, 0.35);
+  stroke-dasharray: 6 6;
+}
+
+@keyframes globeSpin {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to   { transform: translateY(-50%) rotate(360deg); }
+}
+
+.mission-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 880px;
+}
+
+.mission-label {
+  color: var(--color-gold-light);
+  border-color: rgba(232, 201, 106, 0.45);
+}
+
+.mission-heading {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 2.5rem;
+}
+
+.mission-manifesto p {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 42rem;
+  margin-bottom: 1.75rem;
+}
+
+.mission-manifesto .mission-emphasis {
+  color: rgba(255, 255, 255, 0.95);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .mission-section { padding: 5rem 0 5.5rem; }
+  .mission-globe { width: 110vw; height: 110vw; right: -30%; opacity: 0.7; }
+}
+
+/* ==========================================================
+   OUR VISION — orbital / futuristic
+========================================================== */
+
+.vision-section {
+  position: relative;
+  background: var(--color-off-white);
+  overflow: hidden;
+}
+
+.vision-inner {
+  text-align: center;
+}
+
+.vision-heading {
+  margin-bottom: 3.5rem;
+}
+
+.vision-orbit {
+  position: relative;
+  width: min(100%, 640px);
+  height: min(92vw, 640px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(27, 94, 32, 0.16);
+}
+
+.orbit-ring-1 { width: 100%; height: 100%; animation: orbitSpin 70s linear infinite; }
+.orbit-ring-2 { width: 74%; height: 74%; border-style: dashed; border-color: rgba(201, 168, 76, 0.35); animation: orbitSpinReverse 50s linear infinite; }
+.orbit-ring-3 { width: 48%; height: 48%; animation: orbitSpin 40s linear infinite; }
+
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbitSpinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+.orbit-core {
+  position: relative;
+  z-index: 2;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.orbit-origin {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--color-gold);
+  margin-bottom: 0.75rem;
+}
+
+.orbit-core p {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--color-green-dark);
+}
+
+.orbit-node {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-green-primary);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: var(--shadow-md);
+  animation: nodeFloat 5s ease-in-out infinite;
+}
+
+.node-europe       { top: 4%; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+.node-middle-east  { top: 50%; right: 0%; transform: translateY(-50%); animation-delay: 0.6s; }
+.node-asia         { bottom: 4%; left: 50%; transform: translateX(-50%); animation-delay: 1.2s; }
+.node-africa       { top: 50%; left: 0%; transform: translateY(-50%); animation-delay: 1.8s; }
+
+@keyframes nodeFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(0, -8px); }
+}
+
+@media (max-width: 768px) {
+  .vision-orbit { transform: scale(0.82); }
+  .orbit-core { width: 220px; }
+  .orbit-core p { font-size: 1rem; }
+}
+
+/* ==========================================================
+   OUR PROMISE — connected trust pillars
+========================================================== */
+
+.promise-section {
+  background: #fff;
+}
+
+.promise-journey {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.promise-line {
+  position: absolute;
+  top: 38px;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(27,94,32,0.12), rgba(201,168,76,0.45), rgba(27,94,32,0.12));
+  z-index: 0;
+}
+
+.promise-pillar {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-top: 0;
+}
+
+.promise-marker {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid rgba(27, 94, 32, 0.18);
+  color: var(--color-green-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease, color 0.35s ease;
+}
+
+.promise-pillar h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-green-primary);
+  margin-bottom: 0.6rem;
+  transition: color 0.3s ease;
+}
+
+.promise-desc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-gray-mid);
+  line-height: 1.65;
+  max-width: 18rem;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.promise-pillar:hover .promise-marker {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  box-shadow: 0 0 0 10px rgba(201, 168, 76, 0.12), 0 10px 24px rgba(201, 168, 76, 0.3);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.promise-pillar:hover .promise-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .promise-journey { grid-template-columns: 1fr; gap: 3rem; }
+  .promise-line { display: none; }
+  .promise-desc { opacity: 1; transform: none; }
+}
+
+/* ==========================================================
+   CORE VALUES — asymmetric mosaic
+========================================================== */
+
+.values-section {
+  background: var(--color-off-white);
+}
+
+.values-mosaic {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, minmax(150px, auto));
+  grid-template-areas:
+    "integrity integrity integrity excellence sustain sustain"
+    "integrity integrity integrity excellence innovation innovation"
+    "partnership partnership customer excellence innovation innovation";
+  gap: 1.25rem;
+  margin-top: 3rem;
+  perspective: 900px;
+}
+
+.value-mosaic-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-md);
+  will-change: transform;
+}
+
+.value-integrity      { grid-area: integrity; background: linear-gradient(155deg, var(--color-green-dark), var(--color-green-primary) 80%); color: #fff; justify-content: flex-end; padding: 2.5rem; }
+.value-excellence     { grid-area: excellence; background: #fff; border: 1px solid #e5e7eb; justify-content: space-between; }
+.value-sustain        { grid-area: sustain; background: var(--color-gold); color: #fff; justify-content: space-between; }
+.value-innovation     { grid-area: innovation; background: #123926; color: #fff; justify-content: flex-end; }
+.value-partnership    { grid-area: partnership; background: #fff; border: 1px solid #e5e7eb; flex-direction: row; align-items: center; gap: 1rem; }
+.value-customer       { grid-area: customer; background: var(--color-green-pale); justify-content: center; align-items: center; text-align: center; }
+
+.value-num {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 2.25rem;
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.value-integrity .value-num,
+.value-sustain .value-num,
+.value-innovation .value-num { color: #fff; opacity: 0.35; }
+
+.value-mosaic-card .value-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.value-integrity .value-icon,
+.value-sustain .value-icon,
+.value-innovation .value-icon { background: rgba(255,255,255,0.16); }
+
+.value-mosaic-card h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.value-mosaic-card .value-short {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.value-mosaic-card .value-detail {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-top: 0.75rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
+}
+
+.value-mosaic-card:hover .value-detail {
+  max-height: 200px;
+  opacity: 0.9;
+  margin-top: 0.75rem;
+}
+
+.value-integrity h3, .value-sustain h3, .value-innovation h3 { color: #fff; }
+.value-excellence h3, .value-partnership h3 { color: var(--color-green-primary); }
+.value-customer h3 { color: var(--color-green-dark); }
+
+.value-excellence .value-detail,
+.value-partnership .value-detail { color: var(--color-gray-mid); }
+
+.value-integrity h3 { font-size: 1.6rem; }
+
+.value-partnership .value-icon { margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .values-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas:
+      "integrity"
+      "excellence"
+      "sustain"
+      "innovation"
+      "partnership"
+      "customer";
+  }
+  .value-mosaic-card { min-height: 180px; }
+  .value-mosaic-card .value-detail { max-height: none; opacity: 0.85; margin-top: 0.75rem; }
+}
