@@ -196,7 +196,7 @@
   transition: color 0.2s;
 }
 
-.navbar.transparent .navbar-hamburger { color: #fff; }
+.navbar.transparent .navbar-hamburger { color: var(--color-green-primary); }
 .navbar.scrolled   .navbar-hamburger { color: var(--color-gray-dark); }
 
 /* Mobile nav drawer */

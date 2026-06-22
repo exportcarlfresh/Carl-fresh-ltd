@@ -13,7 +13,7 @@ export default function Logo({ className, style, height = 52, inverted = false }
   if (!imgError) {
     return (
       <img
-        src="/logo.png"
+        src="/logoHero.png"
         alt="Carl Fresh Produce Limited"
         height={height}
         className={className}

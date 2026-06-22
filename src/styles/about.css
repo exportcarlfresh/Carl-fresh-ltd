@@ -345,11 +345,49 @@
 ========================== */
 
 .capabilities-section {
+  max-width: 1200px;      /* control width */
+  margin: 0 auto;         /* center */
   overflow: hidden;
-  border-top: 1px solid #ececec;
-  border-bottom: 1px solid #ececec;
   padding: 1.25rem 0;
   background: #fff;
+  position: relative;
+
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+}
+
+/* Fade left side */
+.capabilities-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    #fff 0%,
+    rgba(255,255,255,0) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Fade right side */
+.capabilities-section::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(
+    to left,
+    #fff 0%,
+    rgba(255,255,255,0) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
 }
 
 .capability-track {

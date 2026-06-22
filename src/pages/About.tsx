@@ -3,8 +3,9 @@ import {
   Handshake, Award, Leaf, Globe, Clock, ClipboardCheck, Thermometer, Package,
 } from 'lucide-react';
 import '../styles/about.css';
-import Banner from '../assets/trial.png';
-import Export from '../assets/Export.png';
+import Logo from '../assets/logo.png';
+import Banner from '../assets/About.png';
+import Export from '../assets/HeroAbout2.png';
 
 export default function About() {
   return (
@@ -48,20 +49,20 @@ export default function About() {
         </div>
 
         <h2 className="section-title">
-          Fresh Produce From Kenya To The World
+          From Kenya's Fertile Lands to Global Tables
         </h2>
 
         <p>
-          Carl Fresh Produce connects global markets with
-          premium fruits and vegetables grown in Kenya's
-          fertile agricultural regions.
+          Carl Fresh Produce Limited is a premier Kenyan exporter dedicated to
+          delivering the finest fresh produce to international markets. Rooted in
+          Kenya's rich agricultural heritage, we combine traditional farming wisdom
+          with modern quality systems to consistently meet and exceed global standards.
         </p>
 
         <p>
-          Through strong partnerships with farmers,
-          rigorous quality control and dependable export
-          logistics, we deliver freshness, consistency
-          and traceability across every shipment.
+          Our team of experienced agronomists, quality controllers, and logistics
+          specialists ensures every product that leaves our facility meets the
+          exacting requirements of European, Middle Eastern, and Asian buyers.
         </p>
 
       </div>

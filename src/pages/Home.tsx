@@ -5,8 +5,8 @@ import {
   Globe, FileText, MessageCircle, Mail,
   ArrowRight, CheckCircle2, Package, Wheat
 } from 'lucide-react';
-import HeroBannerr from '../assets/HeroBannerr.png';
-import AboutBanner from '../assets/Export.png';
+import HeroBannerr from '../assets/HeroBackground.png';
+import AboutBanner from '../assets/HeroAbout.png';
 import Asia from '../assets/Asia.png';
 import Europe from '../assets/Europe.png';
 import MiddleEast from '../assets/MiddleEast.png';
@@ -193,18 +193,16 @@ export default function Home() {
 
             <div className="about-strip-text">
               <div className="section-label">About Carl Fresh</div>
-              <h2 className="section-title">From Kenya's Fertile Lands to Global Tables</h2>
+              <h2 className="section-title">Fresh Produce From Kenya To The World</h2>
               {dividerLeft}
               <p>
-                Carl Fresh Produce Limited is a premier Kenyan exporter dedicated to
-                delivering the finest fresh produce to international markets. Rooted in
-                Kenya's rich agricultural heritage, we combine traditional farming wisdom
-                with modern quality systems to consistently meet and exceed global standards.
+                Carl Fresh Produce connects global markets with
+                premium fruits and vegetables grown in Kenya's fertile
+                 agricultural regions.
               </p>
               <p>
-                Our team of experienced agronomists, quality controllers, and logistics
-                specialists ensures every product that leaves our facility meets the
-                exacting requirements of European, Middle Eastern, and Asian buyers.
+                A premium exporter of fresh produce, Carl Fresh Produce Limited 
+                is dedicated to delivering the finest fruits and vegetables to international markets.
               </p>
               <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
                 <Link to="/about" className="btn-primary">
@@ -363,7 +361,7 @@ export default function Home() {
       {/* ── CTA Banner ── */}
       <section className="cta-banner" aria-label="Call to action">
         <div className="container-xl">
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)', margin: '0 auto 1rem' }}>
+          <div className="section-label" style={{ borderColor: 'var(--color-gold)', color: 'var(--color-gold)', margin: '0 auto 1rem' }}>
             Get In Touch
           </div>
           <h2>Let's Grow Together</h2>
