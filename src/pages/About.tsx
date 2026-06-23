@@ -5,8 +5,8 @@ import {
   ShieldCheck, Truck, Sparkles, Lightbulb, Users, Heart,
 } from 'lucide-react';
 import '../styles/about.css';
-import Banner from '../assets/About.png';
-import Export from '../assets/HeroAbout2.png';
+import Banner from '../assets/About.webp';
+import Export from '../assets/HeroAbout2.webp';
 
 const coreValues = [
   {

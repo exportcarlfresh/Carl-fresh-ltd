@@ -5,20 +5,20 @@ import {
   Globe, FileText, MessageCircle, Mail,
   ArrowRight, CheckCircle2, Package, Wheat
 } from 'lucide-react';
-import HeroBannerr from '../assets/HeroBackground.png';
-import AboutBanner from '../assets/HeroAbout.png';
-import Asia from '../assets/Asia.png';
-import Europe from '../assets/Europe.png';
-import MiddleEast from '../assets/MiddleEast.png';
+import HeroBannerr from '../assets/HeroBackground.webp';
+import AboutBanner from '../assets/HeroAbout.webp';
+import Asia from '../assets/Asia.webp';
+import Europe from '../assets/Europe.webp';
+import MiddleEast from '../assets/MiddleEast.webp';
 import Africa from '../assets/Africa.png';
-import Avocado from '../assets/Avocados.png';
-import Mango from '../assets/Mangoes.png';
-import Pineapple from '../assets/Pineapples.png';
-import PassionFruit from '../assets/PassionFruits.png';  
-import FineBeans from '../assets/FineBeans.png';
-import Chilies from '../assets/Chillies.png';
-import SnapPeas from '../assets/SnapPeas.png';
-import SnowPeas from '../assets/SnowPeas.png';
+import Avocado from '../assets/Avocados.webp';
+import Mango from '../assets/Mangoes.webp';
+import Pineapple from '../assets/Pineapples.webp';
+import PassionFruit from '../assets/PassionFruits.png';
+import FineBeans from '../assets/FineBeans.webp';
+import Chilies from '../assets/Chillies.webp';
+import SnapPeas from '../assets/SnapPeas.webp';
+import SnowPeas from '../assets/SnowPeas.webp';
 import '../styles/home.css';
 
 const stats = [

@@ -308,6 +308,10 @@ a {
   to   { opacity: 1; transform: translateX(0); }
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .animate-fade-up    { animation: fadeInUp     0.65s ease forwards; }
 .animate-fade-in    { animation: fadeIn       0.65s ease forwards; }
 .animate-slide-right { animation: slideInRight 0.65s ease forwards; }

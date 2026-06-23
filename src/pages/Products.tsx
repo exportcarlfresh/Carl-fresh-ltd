@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import "../styles/products.css";
-import pbannerImg from "../assets/images/pbanner.png";
-import pbanner3Img from "../assets/images/pbanner3.png";
-import pbanner4Img from "../assets/images/pbanner4.png";
-import pbanner5Img from "../assets/images/pbanner7.png";
+import pbannerImg from "../assets/images/pbanner.webp";
+import pbanner3Img from "../assets/images/pbanner3.webp";
+import pbanner4Img from "../assets/images/pbanner4.webp";
+import pbanner5Img from "../assets/images/pbanner7.webp";
 import {
   allProducts,
   categories,
