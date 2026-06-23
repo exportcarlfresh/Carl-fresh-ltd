@@ -644,7 +644,7 @@
 
 .vision-section {
   position: relative;
-  background: url('/src/assets/Worldmap.png');
+  background: url('../assets/Worldmap.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
