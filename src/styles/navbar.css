@@ -74,7 +74,7 @@
 }
 
 .navbar.transparent .navbar-link {
-  color: rgba(255, 255, 255, 0.9);
+  color:#0d3b12;
 }
 
 .navbar.scrolled .navbar-link {
@@ -82,7 +82,7 @@
 }
 
 .navbar.transparent .navbar-link:hover {
-  color: #fff;
+  color: #c9a84c;
   background-color: rgba(255,255,255,0.1);
 }
 
@@ -196,7 +196,7 @@
   transition: color 0.2s;
 }
 
-.navbar.transparent .navbar-hamburger { color: #fff; }
+.navbar.transparent .navbar-hamburger { color: var(--color-green-primary); }
 .navbar.scrolled   .navbar-hamburger { color: var(--color-gray-dark); }
 
 /* Mobile nav drawer */

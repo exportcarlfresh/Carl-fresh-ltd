@@ -5,6 +5,7 @@ import {
   ClipboardList, QrCode, BarChart2, Ship, Mail,
 } from 'lucide-react';
 import '../styles/packaging.css';
+import Shipment from '../assets/Logistics.png';
 
 const packagingTypes = [
   {
@@ -71,7 +72,7 @@ export default function Packaging() {
     <main>
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             Packaging & Logistics
           </div>
           <h1>Packaging & Logistics Solutions</h1>
@@ -82,7 +83,7 @@ export default function Packaging() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>Packaging & Logistics</span>
+            <span>Packaging & Logistics</span>
           </div>
         </div>
       </div>
@@ -111,7 +112,7 @@ export default function Packaging() {
             </div>
             <div style={{ borderRadius: '20px', overflow: 'hidden', aspectRatio: '4/3' }}>
               <img
-                src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=80"
+                src={Shipment}
                 alt="Fresh produce packaging facility"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 loading="lazy"
@@ -148,54 +149,63 @@ export default function Packaging() {
       {/* Freight Options */}
       <section className="freight-section page-section">
         <div className="container-xl">
-          <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-            <div className="section-label">Freight Solutions</div>
-            <h2 className="section-title">Air & Sea Freight</h2>
-            {divider()}
-            <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              We offer both air freight and sea freight options, tailored to your
-              timeline, budget and product requirements.
-            </p>
-          </div>
-
-          <div className="freight-grid">
-            <div className="freight-card air">
-              <div className="freight-card-header">
-                <div className="freight-icon"><Plane size={28} strokeWidth={1.5} /></div>
-                <div>
-                  <h3>Air Freight</h3>
-                  <p>Fast delivery for perishable products</p>
-                </div>
-              </div>
-              <div className="freight-card-body">
-                {[
-                  'Direct flights from Nairobi JKIA to major hubs',
-                  'Transit time: 24–72 hours to Europe & Middle East',
-                  'Ideal for fine beans, snap peas, snow peas',
-                  'Priority handling and cold room storage at airport',
-                  'Phytosanitary certificates and all export docs handled',
-                  'Cargo tracking from departure to delivery',
-                ].map(f => <div key={f} className="freight-feature">{f}</div>)}
+          <div className="freight-layout">
+            <div className="freight-intro">
+              <div className="section-label">Freight Solutions</div>
+              <h2 className="section-title">Air & Sea Freight</h2>
+              {divider('1rem 0')}
+              <p>
+                We match every shipment to the right transport mode so your produce
+                arrives fresh, compliant, and on schedule.
+              </p>
+              <div className="freight-highlights">
+                <span>Fast delivery</span>
+                <span>Cold chain control</span>
+                <span>Custom logistics</span>
               </div>
             </div>
 
-            <div className="freight-card sea">
-              <div className="freight-card-header">
-                <div className="freight-icon"><Ship size={28} strokeWidth={1.5} /></div>
-                <div>
-                  <h3>Sea Freight</h3>
-                  <p>Cost-effective for high-volume orders</p>
+            <div className="freight-cards">
+              <div className="freight-card air">
+                <div className="freight-card-content">
+                  <div className="freight-card-badge">Priority Cargo</div>
+                  <div className="freight-card-header">
+                    <div className="freight-icon"><Plane size={28} strokeWidth={1.5} /></div>
+                    <div>
+                      <h3>Air Freight</h3>
+                      <p>Fast delivery for perishable products</p>
+                    </div>
+                  </div>
+                  <div className="freight-card-body">
+                    {[
+                      'Direct flights from Nairobi JKIA to key hubs',
+                      'Transit time: 24–72 hours to Europe & Middle East',
+                      'Best for fine beans, snap peas & snow peas',
+                      'Cold room handling and export documentation included',
+                    ].map(f => <div key={f} className="freight-feature">{f}</div>)}
+                  </div>
                 </div>
               </div>
-              <div className="freight-card-body">
-                {[
-                  'Reefer containers from Mombasa Port',
-                  'Transit time: 14–28 days depending on destination',
-                  'Ideal for avocados, mangoes, pineapples',
-                  'Temperature-controlled reefer containers',
-                  'Full container (FCL) and groupage (LCL) options',
-                  'Customs clearance support at destination ports',
-                ].map(f => <div key={f} className="freight-feature">{f}</div>)}
+
+              <div className="freight-card sea">
+                <div className="freight-card-content">
+                  <div className="freight-card-badge">Bulk Shipping</div>
+                  <div className="freight-card-header">
+                    <div className="freight-icon"><Ship size={28} strokeWidth={1.5} /></div>
+                    <div>
+                      <h3>Sea Freight</h3>
+                      <p>Cost-effective for high-volume orders</p>
+                    </div>
+                  </div>
+                  <div className="freight-card-body">
+                    {[
+                      'Reefer containers from Mombasa Port',
+                      'Transit time: 14–28 days depending on destination',
+                      'Ideal for avocados, mangoes & pineapples',
+                      'FCL and LCL options with destination customs support',
+                    ].map(f => <div key={f} className="freight-feature">{f}</div>)}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -1,39 +1,99 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Handshake, Award, Leaf, Globe, Users, Lightbulb, Clock, ClipboardCheck,
-  Target, Eye, Gem, Sprout, FlaskConical, Thermometer, Package,
-  ArrowRight,
+  Handshake, Award, Leaf, Globe, Clock, ClipboardCheck, Thermometer, Package,
+  ShieldCheck, Truck, Sparkles, Lightbulb, Users, Heart,
 } from 'lucide-react';
 import '../styles/about.css';
+import Logo from '../assets/logo.png';
+import Banner from '../assets/About.png';
+import Export from '../assets/HeroAbout2.png';
 
-const values = [
-  { Icon: Handshake,     title: 'Integrity',    desc: 'Honest business practices, transparent operations and trustworthy partnerships.' },
-  { Icon: Award,         title: 'Quality First', desc: 'Uncompromising standards from farm to final delivery at every touchpoint.' },
-  { Icon: Leaf,          title: 'Sustainability', desc: 'Long-term commitment to environmental stewardship and responsible farming.' },
-  { Icon: Globe,         title: 'Global Focus',   desc: 'International market awareness driving our product development and logistics.' },
-  { Icon: Users,         title: 'Community',      desc: 'Empowering local farmers and communities through fair partnerships.' },
-  { Icon: Lightbulb,     title: 'Innovation',     desc: 'Embracing modern agricultural practices and technology for better outcomes.' },
-  { Icon: Clock,         title: 'Reliability',    desc: 'Consistent supply schedules and dependable logistics partners worldwide.' },
-  { Icon: ClipboardCheck, title: 'Compliance',   desc: 'Full adherence to international food safety and trade regulations.' },
+const coreValues = [
+  {
+    id: 'integrity',
+    num: '01',
+    icon: ShieldCheck,
+    title: 'Integrity',
+    short: 'We do what we say.',
+    detail: "From farm contracts to export documentation, our word is our bond — transparency at every link of the chain.",
+  },
+  {
+    id: 'excellence',
+    num: '02',
+    icon: Sparkles,
+    title: 'Excellence',
+    short: "High Standards.",
+    detail: 'We hold every harvest to a standard higher than what is required, because reputation is earned one shipment at a time.',
+  },
+  {
+    id: 'sustain',
+    num: '03',
+    icon: Leaf,
+    title: 'Sustainability',
+    short: 'Farming for tomorrow.',
+    detail: 'We invest in soil health, water stewardship and fair partnerships with the farmers who feed this business.',
+  },
+  {
+    id: 'innovation',
+    num: '04',
+    icon: Lightbulb,
+    title: 'Innovation',
+    short: 'Always improving.',
+    detail: 'From cold-chain technology to traceability systems, we adopt what makes our produce safer and our process sharper.',
+  },
+  {
+    id: 'partnership',
+    num: '05',
+    icon: Users,
+    title: 'Partnership',
+    short: 'We grow together.',
+    detail: 'Our farmers, freight partners and buyers are not vendors — they are co-authors of every successful season.',
+  },
+  {
+    id: 'customer',
+    num: '06',
+    icon: Heart,
+    title: 'Customer Focus',
+    short: 'Your standards, our obsession.',
+    detail: 'We shape our grading, packaging and scheduling around what matters most to the markets we serve.',
+  },
 ];
 
-const stats = [
-  { number: '15+',  label: 'Years of Excellence' },
-  { number: '500+', label: 'Tonnes Exported' },
-  { number: '15+',  label: 'Global Markets' },
-  { number: '100+', label: 'Partner Farmers' },
-];
+function ValueCard({ value }: { value: typeof coreValues[number] }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const Icon = value.icon;
 
-const features = [
-  { Icon: Sprout,       title: 'Farm-to-Export Expertise',  desc: 'We control the entire supply chain from our partner farms to the point of export.' },
-  { Icon: FlaskConical, title: 'Quality Assurance Labs',    desc: 'On-site testing and inspection facilities ensure every batch meets specification.' },
-  { Icon: Thermometer,  title: 'Cold Chain Infrastructure', desc: 'State-of-the-art cold storage and refrigerated transport maintain product freshness.' },
-  { Icon: Package,      title: 'Custom Packaging',          desc: 'Flexible packaging solutions designed to meet buyer and market-specific requirements.' },
-];
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-6px)`;
+  }
 
-const divider = (margin: string = '1rem auto') => (
-  <div className="divider-gold" style={{ margin }} />
-);
+  function handleMouseLeave() {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = '';
+  }
+
+  return (
+    <div
+      ref={cardRef}
+      className={`value-mosaic-card value-${value.id}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <span className="value-num">{value.num}</span>
+      <div className="value-icon"><Icon size={22} /></div>
+      <h3>{value.title}</h3>
+      <p className="value-short">{value.short}</p>
+      <p className="value-detail">{value.detail}</p>
+    </div>
+  );
+}
 
 export default function About() {
   return (
@@ -41,7 +101,7 @@ export default function About() {
       {/* Hero */}
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             About Us
           </div>
           <h1>Our Story So Far</h1>
@@ -49,184 +109,351 @@ export default function About() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>About Us</span>
+            <span>About Us</span>
           </div>
         </div>
       </div>
 
-      {/* ── Intro ── */}
-      <section className="about-intro page-section">
-        <div className="container-xl">
-          <div className="about-intro-grid">
-            <div style={{ position: 'relative' }}>
-              <div className="about-intro-image">
-                <img
-                  src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80"
-                  alt="Carl Fresh Produce farm in Kenya"
-                  loading="lazy"
-                />
-              </div>
-              <div className="about-intro-image-accent">
-                <img
-                  src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=400&q=80"
-                  alt="Quality inspection"
-                  loading="lazy"
-                />
-              </div>
-            </div>
+      {/* ==========================
+   BRAND STORY
+========================== */}
 
-            <div className="about-intro-text" style={{ paddingBottom: '2rem' }}>
-              <div className="section-label">Who We Are</div>
-              <h2 className="section-title">About Carl Fresh Produce Limited</h2>
-              {divider('1rem 0')}
-              <p>
-                Carl Fresh Produce Limited is a premier Kenyan fresh produce exporter, committed
-                to connecting the world's finest buyers with Kenya's exceptional agricultural
-                output. Founded with a vision to transform Kenyan produce into a globally
-                recognised premium brand, we have grown to become a trusted name in
-                international fresh produce trade.
-              </p>
-              <p>
-                Based in Nairobi, Kenya, our operations span the entire supply chain — from
-                working closely with carefully selected partner farmers across Kenya's fertile
-                highlands to managing export logistics with precision and care.
-              </p>
-              <p>
-                We are proud to be ambassadors of Kenya's agricultural heritage, exporting
-                chilies, avocados, mangoes, pineapples, fine beans, snap peas, snow peas,
-                and passion fruits to markets across Europe, the Middle East, Asia and Africa.
-              </p>
-              <Link to="/contact" className="btn-primary" style={{ marginTop: '1.5rem', display: 'inline-flex' }}>
-                Work With Us <ArrowRight size={16} />
-              </Link>
-            </div>
-          </div>
+<section className="about-story page-section">
+  <div className="container-xl">
+
+    <div className="story-grid">
+
+      <div className="story-image">
+        <img
+          src={Banner}
+          alt="Fresh Produce"
+        />
+      </div>
+
+      <div className="story-content">
+
+        <div className="section-label">
+          ABOUT US
         </div>
-      </section>
 
-      {/* ── Mission / Vision / Promise ── */}
-      <section className="mvv-section page-section">
-        <div className="container-xl">
-          <div style={{ textAlign: 'center' }}>
-            <div className="section-label">Our Foundation</div>
-            <h2 className="section-title">Mission, Vision & Values</h2>
-            {divider()}
-          </div>
+        <h2 className="section-title">
+          From Kenya's Fertile Lands to Global Tables
+        </h2>
 
-          <div className="mvv-grid">
-            <div className="mvv-card mission">
-              <div className="mvv-icon"><Target size={28} strokeWidth={1.75} /></div>
-              <h3>Our Mission</h3>
-              <p>
-                To be Kenya's most trusted fresh produce exporter by delivering consistently
-                premium quality products, building lasting relationships with global buyers,
-                and uplifting local farming communities through sustainable, profitable
-                agricultural practices.
-              </p>
-            </div>
-            <div className="mvv-card vision">
-              <div className="mvv-icon"><Eye size={28} strokeWidth={1.75} /></div>
-              <h3>Our Vision</h3>
-              <p>
-                To establish Carl Fresh Produce as the benchmark for excellence in African
-                fresh produce exports — recognised globally for unparalleled quality,
-                sustainability, and the authentic taste of Kenya's agricultural richness.
-              </p>
-            </div>
-            <div className="mvv-card values">
-              <div className="mvv-icon"><Gem size={28} strokeWidth={1.75} /></div>
-              <h3>Our Promise</h3>
-              <p>
-                Every product we export carries our promise: Safe to eat, of the highest
-                Quality, Sustainably grown, fully Traceable, and Reliably delivered. These
-                five pillars guide every decision we make from farm to export.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <p>
+          Carl Fresh Produce Limited is a premier Kenyan exporter dedicated to
+          delivering the finest fresh produce to international markets. Rooted in
+          Kenya's rich agricultural heritage, we combine traditional farming wisdom
+          with modern quality systems to consistently meet and exceed global standards.
+        </p>
 
-      {/* ── Core Values ── */}
-      <section className="page-section" style={{ background: '#fff' }}>
-        <div className="container-xl">
-          <div style={{ textAlign: 'center' }}>
-            <div className="section-label">What Drives Us</div>
-            <h2 className="section-title">Our Core Values</h2>
-            {divider()}
-          </div>
+        <p>
+          Our team of experienced agronomists, quality controllers, and logistics
+          specialists ensures every product that leaves our facility meets the
+          exacting requirements of European, Middle Eastern, and Asian buyers.
+        </p>
 
-          <div className="values-grid">
-            {values.map(({ Icon, title, desc }) => (
-              <div key={title} className="value-item">
-                <div className="icon"><Icon size={26} strokeWidth={1.75} color="var(--color-green-primary)" /></div>
-                <h4>{title}</h4>
-                <p>{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
 
-      {/* ── Operations ── */}
-      <section className="who-we-are page-section">
-        <div className="container-xl">
-          <div className="who-grid">
-            <div>
-              <div className="section-label">Our Operations</div>
-              <h2 className="section-title">Built for Export Excellence</h2>
-              {divider('1rem 0')}
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: 'var(--color-gray-mid)', lineHeight: 1.8 }}>
-                Our vertically integrated operations give us complete control over product
-                quality, supply consistency, and export logistics. We partner with certified
-                farms across Kenya's most productive agricultural regions, ensuring year-round
-                supply of premium fresh produce.
-              </p>
+    </div>
 
-              <div className="who-features">
-                {features.map(({ Icon, title, desc }) => (
-                  <div key={title} className="who-feature">
-                    <div className="feature-icon">
-                      <Icon size={20} strokeWidth={1.75} color="var(--color-green-primary)" />
-                    </div>
-                    <div className="feature-text">
-                      <h4>{title}</h4>
-                      <p>{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+  </div>
+</section>
 
-            <div className="who-image">
-              <img
-                src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=700&q=80"
-                alt="Carl Fresh Produce quality control operations"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+{/* ==========================
+   OUR MISSION
+========================== */}
 
-      {/* ── Stats ── */}
-      <section className="about-stats page-section">
-        <div className="container-xl">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
-              By The Numbers
-            </div>
-            <h2 className="section-title" style={{ color: '#fff' }}>Carl Fresh in Numbers</h2>
-          </div>
-          <div className="stats-grid">
-            {stats.map((s) => (
-              <div key={s.label} className="stat-item">
-                <div className="stat-number">{s.number}</div>
-                <div className="stat-label">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+<section className="mission-section">
+
+  <svg className="mission-globe" viewBox="0 0 600 600" aria-hidden="true">
+    <circle cx="300" cy="300" r="280" />
+    <ellipse cx="300" cy="300" rx="130" ry="280" />
+    <ellipse cx="300" cy="300" rx="280" ry="130" />
+    <ellipse cx="300" cy="300" rx="280" ry="40" />
+    <line x1="20" y1="300" x2="580" y2="300" />
+    <line x1="300" y1="20" x2="300" y2="580" />
+    <circle cx="170" cy="195" r="3.5" className="mission-globe-dot" />
+    <circle cx="430" cy="240" r="3.5" className="mission-globe-dot" />
+    <circle cx="380" cy="420" r="3.5" className="mission-globe-dot" />
+    <path d="M170,195 C260,140 340,160 430,240" className="mission-globe-route" />
+    <path d="M430,240 C440,330 410,380 380,420" className="mission-globe-route" />
+  </svg>
+
+  <div className="mission-pattern" aria-hidden="true" />
+
+  <div className="container-xl mission-inner">
+
+    <div className="section-label mission-label">
+      Our Mission
+    </div>
+
+    <h2 className="mission-heading">
+      Why We Exist
+    </h2>
+
+    <div className="mission-manifesto">
+
+      <p>
+        We exist to carry the <span className="hl-gold">fertile soil of Kenya</span> to
+        tables it has never touched — moving fresh produce with the precision of
+        global trade and the integrity of a family farm.
+      </p>
+
+      <p>
+        Every crate we export is a promise kept: to the
+        farmer who trusted us with a season's work, and to the
+        <span className="hl-green-light"> buyer who trusted us with their standards</span>.
+      </p>
+
+      <p className="mission-emphasis">
+        This is not logistics. This is stewardship —
+        of land, of labour, and of the long relationships that move
+        a harvest from one hemisphere to another.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* ==========================
+   OUR VISION
+========================== */}
+
+<section className="vision-section page-section">
+  <div className="container-xl vision-inner">
+
+    <div className="vision-card">
+
+      <div className="section-label">
+        Our Vision
+      </div>
+
+      <h2 className="section-title">
+        Where We Are Going
+      </h2>
+
+      <p className="vision-statement">
+        To become World's most trusted gateway for fresh produce —
+        connecting a thousand farms to a thousand markets, one harvest at a time.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+{/* ==========================
+   OUR PROMISE
+========================== */}
+
+<section className="promise-section page-section">
+
+  <div className="container-xl">
+
+    <div className="section-heading-center">
+      <div className="section-label">Our Promise</div>
+      <h2 className="section-title">A Journey Built On Trust</h2>
+    </div>
+
+    <div className="promise-journey">
+
+      <div className="promise-line" />
+
+      <div className="promise-pillar">
+        <div className="promise-marker"><ShieldCheck size={22} /></div>
+        <h4>Quality Assured</h4>
+        <p className="promise-desc">
+          Every batch inspected, graded and certified before it leaves our hands.
+        </p>
+      </div>
+
+      <div className="promise-pillar">
+        <div className="promise-marker"><Truck size={22} /></div>
+        <h4>Reliable Delivery</h4>
+        <p className="promise-desc">
+          Cold-chain logistics and disciplined scheduling, shipment after shipment.
+        </p>
+      </div>
+
+      <div className="promise-pillar">
+        <div className="promise-marker"><Handshake size={22} /></div>
+        <h4>Trusted Partnerships</h4>
+        <p className="promise-desc">
+          Long-term relationships built on transparency, not transactions.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* ==========================
+   CORE VALUES
+========================== */}
+
+<section className="values-section page-section">
+
+  <div className="container-xl">
+
+    <div className="section-heading-center">
+      <div className="section-label">Core Values</div>
+      <h2 className="section-title">What We Stand For</h2>
+    </div>
+
+    <div className="values-mosaic">
+      {coreValues.map((value) => (
+        <ValueCard key={value.id} value={value} />
+      ))}
+    </div>
+
+  </div>
+
+</section>
+
+{/* ==========================
+   MARQUEE
+========================== */}
+
+<section className="capabilities-section">
+
+  <div className="capability-track">
+
+    <span><Globe size={18}/> Global Export</span>
+    <span><Leaf size={18}/> Sustainable Farming</span>
+    <span><ClipboardCheck size={18}/> Quality Control</span>
+    <span><Package size={18}/> Premium Packaging</span>
+    <span><Thermometer size={18}/> Cold Chain</span>
+    <span><Handshake size={18}/> Trusted Partnerships</span>
+    <span><Award size={18}/> Certified Produce</span>
+    <span><Clock size={18}/> Reliable Delivery</span>
+
+    {/* duplicate */}
+    <span><Globe size={18}/> Global Export</span>
+    <span><Leaf size={18}/> Sustainable Farming</span>
+    <span><ClipboardCheck size={18}/> Quality Control</span>
+    <span><Package size={18}/> Premium Packaging</span>
+    <span><Thermometer size={18}/> Cold Chain</span>
+
+  </div>
+
+</section>
+
+{/* ==========================
+   EXPORT SHOWCASE
+========================== */}
+
+<section className="export-showcase page-section">
+
+  <div className="container-xl">
+
+    <div className="showcase-grid">
+
+      <div className="showcase-card dark">
+
+        <span className="showcase-tag">
+          Fresh Produce
+        </span>
+
+        <h3>
+          Exporting Kenya's Finest Fruits
+        </h3>
+
+        <p>
+          Avocados, mangoes, passion fruits,
+          pineapples and premium tropical produce.
+        </p>
+
+      </div>
+
+      <div className="showcase-image">
+        <img
+          src={Export}
+          alt="Export"
+        />
+      </div>
+
+      <div className="showcase-image">
+        <img
+          src={Export}
+          alt="Export II"
+        />
+      </div>
+
+      <div className="showcase-card light">
+
+        <span className="showcase-tag">
+          Vegetables
+        </span>
+
+        <h3>
+          Premium Farm Fresh Exports
+        </h3>
+
+        <p>
+          Chillies, beans, peas and carefully
+          selected vegetables grown for international markets.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* ==========================
+   OPERATIONS
+========================== */}
+
+<section className="operations-section page-section">
+
+  <div className="container-xl">
+
+    <div className="section-heading-center">
+
+      <div className="section-label">
+        OUR PROCESS
+      </div>
+
+      <h2 className="section-title">
+        From Farm To Global Markets
+      </h2>
+
+    </div>
+
+    <div className="operations-grid">
+
+      <div>
+        <h4>01</h4>
+        <p>Farmer Partnerships</p>
+      </div>
+
+      <div>
+        <h4>02</h4>
+        <p>Harvest & Sorting</p>
+      </div>
+
+      <div>
+        <h4>03</h4>
+        <p>Quality Inspection</p>
+      </div>
+
+      <div>
+        <h4>04</h4>
+        <p>Export Logistics</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* ── CTA ── */}
       <section className="cta-banner">

@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ImageOff, X } from 'lucide-react';
 import '../styles/gallery.css';
+import Avocado from '../assets/Avocados.png';
+import Mango from '../assets/Mangoes.png';
+import Pineapple from '../assets/Pineapples.png';
+import PassionFruit from '../assets/PassionFruits.png';  
+import FineBeans from '../assets/FineBeans.png';
+import Chilies from '../assets/Chillies.png';
+import SnapPeas from '../assets/SnapPeas.png';
+import SnowPeas from '../assets/SnowPeas.png';
 
 interface GalleryItem {
   id: number;
@@ -12,21 +20,21 @@ interface GalleryItem {
 }
 
 const galleryItems: GalleryItem[] = [
-  { id: 1,  category: 'Farms',      caption: 'Avocado Farm — Central Highlands',   img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=700&q=80', size: 'tall' },
-  { id: 2,  category: 'Products',   caption: 'Premium Export Avocados',             img: 'https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=700&q=80' },
-  { id: 3,  category: 'Products',   caption: 'Long Cayenne Chilies',                img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80' },
-  { id: 4,  category: 'Harvesting', caption: 'Harvest Season — Fine Beans',         img: 'https://images.unsplash.com/photo-1506389225426-7b19e8060b35?w=700&q=80', size: 'wide' },
-  { id: 5,  category: 'Packing',    caption: 'Export Packing Facility',             img: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=80' },
-  { id: 6,  category: 'Products',   caption: 'Fresh Mangoes — Export Grade',        img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=700&q=80', size: 'tall' },
-  { id: 7,  category: 'Farms',      caption: 'Green Farms — Rift Valley',           img: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=700&q=80' },
-  { id: 8,  category: 'Export',     caption: 'Ready for Air Freight — JKIA',        img: 'https://images.unsplash.com/photo-1524508762098-b9ff39a7a869?w=700&q=80' },
-  { id: 9,  category: 'Products',   caption: 'Snap Peas — Premium Quality',         img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=700&q=80' },
-  { id: 10, category: 'Harvesting', caption: 'Passion Fruit Harvest',               img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=700&q=80', size: 'wide' },
-  { id: 11, category: 'Packing',    caption: 'Quality Control & Inspection',        img: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=700&q=80' },
-  { id: 12, category: 'Farms',      caption: 'Pineapple Farm — Western Kenya',      img: 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=80' },
-  { id: 13, category: 'Products',   caption: 'Snow Peas — Export Ready',            img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&q=80' },
-  { id: 14, category: 'Export',     caption: 'Reefer Container Loading',            img: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=700&q=80' },
-  { id: 15, category: 'Harvesting', caption: 'Chili Harvest — Eastern Kenya',       img: 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=700&q=80' },
+  { id: 1,  category: 'Farms',      caption: 'Avocado Farm — Central Highlands',   img: Avocado, size: 'tall' },
+  { id: 2,  category: 'Products',   caption: 'Premium Export Avocados',             img: Avocado },
+  { id: 3,  category: 'Products',   caption: 'Long Cayenne Chilies',                img: Chilies },
+  { id: 4,  category: 'Harvesting', caption: 'Harvest Season — Fine Beans',         img: FineBeans, size: 'wide' },
+  { id: 5,  category: 'Packing',    caption: 'Export Packing Facility',             img: Avocado },
+  { id: 6,  category: 'Products',   caption: 'Fresh Mangoes — Export Grade',        img: Mango, size: 'tall' },
+  { id: 7,  category: 'Farms',      caption: 'Green Farms — Rift Valley',           img: Pineapple },
+  { id: 8,  category: 'Export',     caption: 'Ready for Air Freight — JKIA',        img: PassionFruit },
+  { id: 9,  category: 'Products',   caption: 'Snap Peas — Premium Quality',         img: SnapPeas },
+  { id: 10, category: 'Harvesting', caption: 'Passion Fruit Harvest',               img: PassionFruit, size: 'wide' },
+  { id: 11, category: 'Packing',    caption: 'Quality Control & Inspection',        img: FineBeans },
+  { id: 12, category: 'Farms',      caption: 'Pineapple Farm — Western Kenya',      img: Pineapple },
+  { id: 13, category: 'Products',   caption: 'Snow Peas — Export Ready',            img: SnowPeas },
+  { id: 14, category: 'Export',     caption: 'Reefer Container Loading',            img: PassionFruit },
+  { id: 15, category: 'Harvesting', caption: 'Chili Harvest — Eastern Kenya',       img: Chilies },
 ];
 
 const categories = ['All', 'Farms', 'Products', 'Harvesting', 'Packing', 'Export'];
@@ -43,7 +51,7 @@ export default function Gallery() {
     <main>
       <div className="page-hero">
         <div className="container-xl" style={{ position: 'relative' }}>
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)' }}>
+          <div className="section-label">
             Gallery
           </div>
           <h1>Our Gallery</h1>
@@ -54,7 +62,7 @@ export default function Gallery() {
           <div className="breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <span style={{ color: 'var(--color-gold-light)' }}>Gallery</span>
+            <span>Gallery</span>
           </div>
         </div>
       </div>

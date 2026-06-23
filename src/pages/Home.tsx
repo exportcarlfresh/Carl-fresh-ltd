@@ -3,15 +3,29 @@ import {
   Shield, Award, Leaf, ScanSearch,
   BadgeCheck, Sprout, Link2, Thermometer,
   Globe, FileText, MessageCircle, Mail,
-  ArrowRight, CheckCircle2,
+  ArrowRight, CheckCircle2, Package, Wheat
 } from 'lucide-react';
+import HeroBannerr from '../assets/HeroBackground.png';
+import AboutBanner from '../assets/HeroAbout.png';
+import Asia from '../assets/Asia.png';
+import Europe from '../assets/Europe.png';
+import MiddleEast from '../assets/MiddleEast.png';
+import Africa from '../assets/Africa.png';
+import Avocado from '../assets/Avocados.png';
+import Mango from '../assets/Mangoes.png';
+import Pineapple from '../assets/Pineapples.png';
+import PassionFruit from '../assets/PassionFruits.png';  
+import FineBeans from '../assets/FineBeans.png';
+import Chilies from '../assets/Chillies.png';
+import SnapPeas from '../assets/SnapPeas.png';
+import SnowPeas from '../assets/SnowPeas.png';
 import '../styles/home.css';
 
 const stats = [
-  { number: '500+', label: 'Tonnes Exported Annually' },
-  { number: '15+',  label: 'Countries Served' },
-  { number: '8+',   label: 'Premium Products' },
-  { number: '100%', label: 'Sustainably Grown' },
+  { icon: Package, number: '500+', label: 'Tonnes Exported Annually' },
+  { icon: Globe, number: '15+',  label: 'Countries Served' },
+  { icon: Wheat, number: '8+',   label: 'Premium Products' },
+  { icon: Leaf, number: '100%', label: 'Sustainably Grown' },
 ];
 
 const whyChoose = [
@@ -23,14 +37,14 @@ const whyChoose = [
 ];
 
 const products = [
-  { name: 'Avocados',       tag: 'Fruits',          desc: 'Hass & Fuerte varieties, export grade',     img: 'https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?w=400&q=80' },
-  { name: 'Mangoes',        tag: 'Fruits',          desc: 'Tommy Atkins, Kent & Apple mangoes',         img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&q=80' },
-  { name: 'Pineapples',     tag: 'Fruits',          desc: 'Sweet Kenyan pineapples, year-round',        img: 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400&q=80' },
-  { name: 'Passion Fruits', tag: 'Fruits',          desc: 'Purple passion fruits, vibrant flavour',     img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400&q=80' },
-  { name: 'Fine Beans',     tag: 'Vegetables',      desc: 'Tender fine beans, premium quality',         img: 'https://images.unsplash.com/photo-1506389225426-7b19e8060b35?w=400&q=80' },
-  { name: 'Chilies',        tag: 'Herbs & Spices',  desc: 'Long Cayenne, Bullet & Thin varieties',      img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
-  { name: 'Snap Peas',      tag: 'Vegetables',      desc: 'Crisp snap peas, air-freight ready',         img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=400&q=80' },
-  { name: 'Snow Peas',      tag: 'Vegetables',      desc: 'Tender snow peas, European market',          img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80' },
+  { name: 'Avocados',       tag: 'Fruits',          desc: 'Hass & Fuerte varieties, export grade',     img: Avocado },
+  { name: 'Mangoes',        tag: 'Fruits',          desc: 'Tommy Atkins, Kent & Apple mangoes',         img: Mango },
+  { name: 'Pineapples',     tag: 'Fruits',          desc: 'Sweet Kenyan pineapples, year-round',        img: Pineapple },
+  { name: 'Passion Fruits', tag: 'Fruits',          desc: 'Purple passion fruits, vibrant flavour',     img: PassionFruit },
+  { name: 'Fine Beans',     tag: 'Vegetables',      desc: 'Tender fine beans, premium quality',         img: FineBeans },
+  { name: 'Chilies',        tag: 'Herbs & Spices',  desc: 'Long Cayenne, Bullet & Thin varieties',      img: Chilies },
+  { name: 'Snap Peas',      tag: 'Vegetables',      desc: 'Crisp snap peas, air-freight ready',         img: SnapPeas },
+  { name: 'Snow Peas',      tag: 'Vegetables',      desc: 'Tender snow peas, European market',          img: SnowPeas },
 ];
 
 const certifications = [
@@ -41,10 +55,34 @@ const certifications = [
 ];
 
 const exportRegions = [
-  { Icon: Globe, region: 'Europe',      markets: 'UK, Netherlands, Germany, France', desc: 'Premium supermarket chains and food processors.' },
-  { Icon: Globe, region: 'Middle East', markets: 'UAE, Saudi Arabia, Qatar',          desc: 'Major importers and hospitality groups.' },
-  { Icon: Globe, region: 'Asia',        markets: 'Singapore, Malaysia, Hong Kong',    desc: 'Specialty food retailers and distributors.' },
-  { Icon: Globe, region: 'Africa',      markets: 'Rwanda, Uganda, Tanzania',          desc: 'Regional wholesale and retail markets.' },
+  {
+    Icon: Globe,
+    region: 'Europe',
+    markets: 'UK, Netherlands, Germany, France',
+    desc: 'Premium supermarket chains and food processors.',
+    image: Europe
+  },
+  {
+    Icon: Globe,
+    region: 'Middle East',
+    markets: 'UAE, Saudi Arabia, Qatar',
+    desc: 'Major importers and hospitality groups.',
+    image: MiddleEast
+  },
+  {
+    Icon: Globe,
+    region: 'Asia',
+    markets: 'Singapore, Malaysia, Hong Kong',
+    desc: 'Specialty food retailers and distributors.',
+    image: Asia
+  },
+  {
+    Icon: Globe,
+    region: 'Africa',
+    markets: 'Rwanda, Uganda, Tanzania',
+    desc: 'Regional wholesale and retail markets.',
+    image: Africa
+  },
 ];
 
 const divider = (
@@ -60,15 +98,15 @@ export default function Home() {
     <main>
       {/* ── Hero ── */}
       <section className="hero" aria-label="Hero">
-        <div className="hero-bg-image loaded" role="img" aria-label="Fresh produce farm in Kenya" />
-        <div className="hero-bg" />
+        <div
+          className="hero-bg-image loaded"
+          role="img"
+          aria-label="Fresh produce farm in Kenya"
+          style={{ backgroundImage: `url(${HeroBannerr})` }}
+        />
 
         <div className="container-xl" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
           <div className="hero-content">
-            <div className="hero-badge">
-              <span />
-              Premium Fresh Produce Exporter · Nairobi, Kenya
-            </div>
 
             <h1 className="hero-title">
               Premium Fresh<br />
@@ -77,8 +115,7 @@ export default function Home() {
             </h1>
 
             <p className="hero-subtitle">
-              Sustainably Grown in Kenya — connecting global buyers with the finest
-              fresh fruits, vegetables, herbs and spices Kenya has to offer.
+              Sustainably Grown in Kenya
             </p>
 
             <div className="hero-actions">
@@ -88,7 +125,7 @@ export default function Home() {
               <Link to="/contact#quote" className="btn-gold">
                 <FileText size={16} /> Request a Quote
               </Link>
-              <Link to="/contact" className="btn-outline-white">
+              <Link to="/contact" className="btn-secondary">
                 Contact Us
               </Link>
             </div>
@@ -114,12 +151,23 @@ export default function Home() {
       <section className="stats-bar" aria-label="Key statistics">
         <div className="container-xl">
           <div className="stats-bar-inner">
-            {stats.map((s) => (
-              <div key={s.label} className="stats-bar-item">
-                <div className="stats-bar-number">{s.number}</div>
-                <div className="stats-bar-label">{s.label}</div>
-              </div>
-            ))}
+            {stats.map((s) => {
+                const Icon = s.icon;
+
+                return (
+                  <div key={s.label} className="stats-bar-item">
+                    <Icon className="stats-icon" />
+
+                    <div className="stats-bar-number">
+                      {s.number}
+                    </div>
+
+                    <div className="stats-bar-label">
+                      {s.label}
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </section>
@@ -130,7 +178,7 @@ export default function Home() {
           <div className="about-strip-grid">
             <div className="about-strip-image">
               <img
-                src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=700&q=80"
+                src={AboutBanner}
                 alt="Farm workers harvesting fresh produce in Kenya"
                 loading="lazy"
               />
@@ -145,18 +193,16 @@ export default function Home() {
 
             <div className="about-strip-text">
               <div className="section-label">About Carl Fresh</div>
-              <h2 className="section-title">From Kenya's Fertile Lands to Global Tables</h2>
+              <h2 className="section-title">Fresh Produce From Kenya To The World</h2>
               {dividerLeft}
               <p>
-                Carl Fresh Produce Limited is a premier Kenyan exporter dedicated to
-                delivering the finest fresh produce to international markets. Rooted in
-                Kenya's rich agricultural heritage, we combine traditional farming wisdom
-                with modern quality systems to consistently meet and exceed global standards.
+                Carl Fresh Produce connects global markets with
+                premium fruits and vegetables grown in Kenya's fertile
+                 agricultural regions.
               </p>
               <p>
-                Our team of experienced agronomists, quality controllers, and logistics
-                specialists ensures every product that leaves our facility meets the
-                exacting requirements of European, Middle Eastern, and Asian buyers.
+                A premium exporter of fresh produce, Carl Fresh Produce Limited 
+                is dedicated to delivering the finest fruits and vegetables to international markets.
               </p>
               <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
                 <Link to="/about" className="btn-primary">
@@ -284,35 +330,30 @@ export default function Home() {
       {/* ── Export Markets ── */}
       <section className="export-teaser page-section" aria-label="Export markets">
         <div className="container-xl">
-          <div style={{ textAlign: 'center' }}>
-            <div className="section-label">Global Reach</div>
-            <h2 className="section-title">Our Export Markets</h2>
-            {divider}
-            <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              Serving premium buyers across four continents with consistent quality,
-              reliable logistics and competitive pricing.
-            </p>
+          <div className="export-teaser-header">
+            <div>
+              <div className="section-label">Global Reach</div>
+              <h2 className="section-title">Our Export Markets</h2>
+            </div>
+            <Link to="/export-markets" className="btn-primary">
+              Explore All Markets <ArrowRight size={16} />
+            </Link>
           </div>
 
           <div className="export-regions">
-            {exportRegions.map(({ Icon, region, markets, desc }) => (
-              <div key={region} className="export-region-card">
-                <div style={{ marginBottom: '0.75rem' }}>
-                  <Icon size={32} color="var(--color-green-primary)" strokeWidth={1.5} />
+            {exportRegions.map(({ region, markets, desc, image }) => (
+              <div
+                key={region}
+                className="export-region-card"
+                style={{ backgroundImage: `linear-gradient(180deg, rgba(6,38,12,0.10), rgba(6,38,12,0.78)), url(${image})` }}
+              >
+                <div className="export-region-card-content">
+                  <span className="export-region-card-tag">{region}</span>
+                  <h3>{markets}</h3>
+                  <p>{desc}</p>
                 </div>
-                <h3>{region}</h3>
-                <p style={{ fontSize: '0.78rem', color: 'var(--color-gold)', fontWeight: 700, marginBottom: '0.35rem' }}>
-                  {markets}
-                </p>
-                <p>{desc}</p>
               </div>
             ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/export-markets" className="btn-primary">
-              Explore Our Markets <ArrowRight size={16} />
-            </Link>
           </div>
         </div>
       </section>
@@ -320,7 +361,7 @@ export default function Home() {
       {/* ── CTA Banner ── */}
       <section className="cta-banner" aria-label="Call to action">
         <div className="container-xl">
-          <div className="section-label" style={{ borderColor: 'rgba(201,168,76,0.5)', color: 'var(--color-gold-light)', margin: '0 auto 1rem' }}>
+          <div className="section-label" style={{ borderColor: 'var(--color-gold)', color: 'var(--color-gold)', margin: '0 auto 1rem' }}>
             Get In Touch
           </div>
           <h2>Let's Grow Together</h2>

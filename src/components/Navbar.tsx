@@ -45,20 +45,22 @@ export default function Navbar() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const location   = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [prevPathname, setPrevPathname] = useState(location.pathname);
 
   const isHomePage = location.pathname === '/';
+
+  if (location.pathname !== prevPathname) {
+    setPrevPathname(location.pathname);
+    setMobileOpen(false);
+    setOpenDropdown(null);
+    setMobileExpanded(null);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-    setOpenDropdown(null);
-    setMobileExpanded(null);
-  }, [location.pathname]);
 
   useEffect(() => {
     const handleOutside = (e: MouseEvent) => {

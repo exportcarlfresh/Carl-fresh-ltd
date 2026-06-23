@@ -6,19 +6,32 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
+import AllProducts from './pages/AllProducts';
 import Quality from './pages/Quality';
 import Sustainability from './pages/Sustainability';
 import ExportMarkets from './pages/ExportMarkets';
 import Packaging from './pages/Packaging';
 import News from './pages/News';
+import NewsArticle from './pages/NewsArticle';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash.slice(1));
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      return;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -55,11 +68,13 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/all" element={<AllProducts />} />
           <Route path="/quality" element={<Quality />} />
           <Route path="/sustainability" element={<Sustainability />} />
           <Route path="/export-markets" element={<ExportMarkets />} />
           <Route path="/packaging" element={<Packaging />} />
           <Route path="/news" element={<News />} />
+          <Route path="/news/:id" element={<NewsArticle />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
