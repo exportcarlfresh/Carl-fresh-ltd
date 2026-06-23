@@ -5,7 +5,7 @@ import {
   ClipboardList, QrCode, BarChart2, Ship, Mail,
 } from 'lucide-react';
 import '../styles/packaging.css';
-import Shipment from '../assets/Logistics.png';
+import Shipment from '../assets/Logistics.webp';
 
 const packagingTypes = [
   {

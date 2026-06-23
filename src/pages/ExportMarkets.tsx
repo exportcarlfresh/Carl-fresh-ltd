@@ -12,12 +12,12 @@ import {
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles/exports.css';
-import Asia from '../assets/Asia.png';
-import Europe from '../assets/Europe.png';
-import MiddleEast from '../assets/MiddleEast.png';
+import Asia from '../assets/Asia.webp';
+import Europe from '../assets/Europe.webp';
+import MiddleEast from '../assets/MiddleEast.webp';
 import Africa from '../assets/Africa.png';
-import Export from '../assets/Supply.png';
-import Export2 from '../assets/ExportII.png';
+import Export from '../assets/Supply.webp';
+import Export2 from '../assets/ExportII.webp';
 
 const regions = [
   {

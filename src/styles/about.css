@@ -644,7 +644,7 @@
 
 .vision-section {
   position: relative;
-  background: url('../assets/Worldmap.png');
+  background: url('../assets/Worldmap.webp');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -921,6 +921,17 @@
       "partnership"
       "customer";
   }
-  .value-mosaic-card { min-height: 180px; }
-  .value-mosaic-card .value-detail { max-height: none; opacity: 0.85; margin-top: 0.75rem; }
+  .value-mosaic-card {
+    min-height: 0;
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: visible;
+  }
+  .value-partnership { gap: 0.5rem; }
+  .value-partnership .value-icon { margin-bottom: 1rem; }
+  .value-mosaic-card .value-short,
+  .value-mosaic-card .value-detail,
+  .value-mosaic-card h3 { width: 100%; }
+  .value-mosaic-card .value-detail { max-height: none; opacity: 0.85; margin-top: 0.75rem; overflow: visible; }
 }

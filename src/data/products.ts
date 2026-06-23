@@ -1,8 +1,8 @@
 import { Leaf, Carrot, Flame, LayoutGrid } from "lucide-react";
-import fruitsImg from "../assets/images/fruits.png";
-import vegetablesImg from "../assets/images/vegetables.png";
-import herbsImg from "../assets/images/herbs.png";
-import allImg from "../assets/images/all.png";
+import fruitsImg from "../assets/images/fruits.webp";
+import vegetablesImg from "../assets/images/vegetables.webp";
+import herbsImg from "../assets/images/herbs.webp";
+import allImg from "../assets/images/all.webp";
 
 export interface Product {
   name: string;
