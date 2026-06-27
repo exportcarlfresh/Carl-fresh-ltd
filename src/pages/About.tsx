@@ -6,9 +6,9 @@ import {
 } from 'lucide-react';
 import '../styles/about.css';
 import Banner from '../assets/AboutProfile.png';
-import herbs from '../assets/images/herbs.png';
-import vegetables from '../assets/images/vegetables.png';
-import fruits from '../assets/images/fruits.png';
+import herbs from '../assets/images/herbs.webp';
+import vegetables from '../assets/images/vegetables.webp';
+import fruits from '../assets/images/fruits.webp';
 
 const coreValues = [
   {
