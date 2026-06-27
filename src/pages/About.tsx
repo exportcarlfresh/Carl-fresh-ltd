@@ -5,8 +5,10 @@ import {
   ShieldCheck, Truck, Sparkles, Lightbulb, Users, Heart,
 } from 'lucide-react';
 import '../styles/about.css';
-import Banner from '../assets/About.webp';
-import Export from '../assets/HeroAbout2.webp';
+import Banner from '../assets/AboutProfile.png';
+import herbs from '../assets/images/herbs.png';
+import vegetables from '../assets/images/vegetables.png';
+import fruits from '../assets/images/fruits.png';
 
 const coreValues = [
   {
@@ -194,15 +196,13 @@ export default function About() {
     <div className="mission-manifesto">
 
       <p>
-        We exist to carry the <span className="hl-gold">fertile soil of Kenya</span> to
-        tables it has never touched — moving fresh produce with the precision of
-        global trade and the integrity of a family farm.
+        To provide <span className="hl-gold">safe, premium-quality and sustainably</span> grown
+         fresh produce through efficient supply chains, responsible farming, and long-term partnerships 
       </p>
 
       <p>
-        Every crate we export is a promise kept: to the
-        farmer who trusted us with a season's work, and to the
-        <span className="hl-green-light"> buyer who trusted us with their standards</span>.
+       partnerships that create value for 
+        <span className="hl-green-light"> customers, farmers, and communities.</span>.
       </p>
 
       <p className="mission-emphasis">
@@ -235,8 +235,8 @@ export default function About() {
       </h2>
 
       <p className="vision-statement">
-        To become World's most trusted gateway for fresh produce —
-        connecting a thousand farms to a thousand markets, one harvest at a time.
+        To become a leading global supplier of premium fresh produce from Kenya,
+         recognized for quality, reliability, and sustainable agricultural practices.
       </p>
 
     </div>
@@ -351,6 +351,55 @@ export default function About() {
   <div className="container-xl">
 
     <div className="showcase-grid">
+      <div className="showcase-card dark">
+
+        <span className="showcase-tag">
+          Fresh Produce
+        </span>
+
+        <h3>
+          Exporting Kenya's Finest Herbs & Spices
+        </h3>
+
+        <p>
+          •	Long Cayenne Chili 
+          •	Thin Chili 
+          •	Bullet Chili ,
+         Additional herbs and spices may be added according to seasonal demand and customer specifications..
+        </p>
+
+      </div>
+
+      <div className="showcase-image">
+        <img
+          src={herbs}
+          alt="Export"
+        />
+      </div>
+
+      <div className="showcase-image">
+        <img
+          src={vegetables}
+          alt="Export II"
+        />
+      </div>
+
+      <div className="showcase-card light">
+
+        <span className="showcase-tag">
+          Vegetables
+        </span>
+
+        <h3>
+          Premium Farm Fresh Exports
+        </h3>
+
+        <p>
+          Chillies, beans, peas and carefully
+          selected vegetables grown for international markets.
+        </p>
+
+      </div>
 
       <div className="showcase-card dark">
 
@@ -371,33 +420,9 @@ export default function About() {
 
       <div className="showcase-image">
         <img
-          src={Export}
+          src={fruits}
           alt="Export"
         />
-      </div>
-
-      <div className="showcase-image">
-        <img
-          src={Export}
-          alt="Export II"
-        />
-      </div>
-
-      <div className="showcase-card light">
-
-        <span className="showcase-tag">
-          Vegetables
-        </span>
-
-        <h3>
-          Premium Farm Fresh Exports
-        </h3>
-
-        <p>
-          Chillies, beans, peas and carefully
-          selected vegetables grown for international markets.
-        </p>
-
       </div>
 
     </div>
