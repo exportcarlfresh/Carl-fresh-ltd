@@ -1,8 +1,11 @@
 import { Leaf, Carrot, Flame, LayoutGrid } from "lucide-react";
 import fruitsImg from "../assets/images/fruits.webp";
 import vegetablesImg from "../assets/images/vegetables.webp";
-import herbsImg from "../assets/images/herbs.webp";
+import herbsCategoryImg from "../assets/images/chilli banner.png";
 import allImg from "../assets/images/all.webp";
+import longCayenneChiliImg from "../assets/images/long chilli.jpg";
+import thinChiliImg from "../assets/images/thin chilli.jpg";
+import bulletChiliImg from "../assets/images/bullet chilli.jpg";
 
 export interface Product {
   name: string;
@@ -18,6 +21,41 @@ export interface Product {
 }
 
 export const allProducts: Product[] = [
+  {
+    name: "Long Cayenne Chili",
+    category: "Herbs & Spices",
+    badge: "Seasonal Spotlight",
+    desc: "Long Cayenne chilies are one of Carl Fresh's flagship export products. These bright red, intensely flavoured chilies are in high demand in European, Middle Eastern and Asian markets for both fresh and food processing use.",
+    origin: "Eastern & Coastal Kenya",
+    season: "Year-round",
+    packaging: ["3kg carton", "5kg carton", "10kg bulk", "Retail 100g bags"],
+    specs: "Length 15–20cm, Scoville 30,000–50,000 SHU, bright red, no blemish",
+    markets: "Europe, Middle East, Asia",
+    img: longCayenneChiliImg,
+  },
+  {
+    name: "Thin Chili",
+    category: "Herbs & Spices",
+    desc: "Slender, high-heat thin chilies with exceptional colour and pungency. Popular with spice processors and specialty food manufacturers, these chilies are harvested at full maturity for maximum capsaicin content.",
+    origin: "Eastern Kenya",
+    season: "Year-round",
+    packaging: ["3kg carton", "5kg carton", "10kg bulk"],
+    specs: "Length 8–12cm, Scoville 50,000–80,000 SHU, deep red to green",
+    markets: "Europe, Asia, Middle East",
+    img: thinChiliImg,
+  },
+  {
+    name: "Bullet Chili",
+    category: "Herbs & Spices",
+    badge: "Seasonal Spotlight",
+    desc: "Compact, round bullet chilies with intense heat and vibrant red colour. A popular variety for Asian cuisines and food processing, our bullet chilies offer consistent size, colour and heat levels.",
+    origin: "Coast & Eastern Regions",
+    season: "Year-round",
+    packaging: ["2kg carton", "3kg carton", "5kg bulk"],
+    specs: "Diameter 1.5–3cm, Scoville 50,000–100,000 SHU, deep red, firm",
+    markets: "Asia, Middle East, Africa",
+    img: bulletChiliImg,
+  },
   {
     name: "Avocados",
     category: "Fruits",
@@ -55,7 +93,6 @@ export const allProducts: Product[] = [
   {
     name: "Purple Passion Fruits",
     category: "Fruits",
-    badge: "Seasonal Spotlight",
     desc: "Purple passion fruit from Kenya's highland regions is celebrated for its intense, aromatic flavour. High in vitamin C and antioxidants, our passion fruits are ideal for juice processing and premium fresh markets.",
     origin: "Central Kenya Highlands",
     season: "Year-round",
@@ -97,56 +134,26 @@ export const allProducts: Product[] = [
     markets: "Netherlands, UK, Germany, Singapore",
     img: "https://www.taylorfarms.com/wp-content/uploads/2023/10/Snow-Peas.webp",
   },
-  {
-    name: "Long Cayenne Chili",
-    category: "Herbs & Spices",
-    badge: "Flagship Export",
-    desc: "Long Cayenne chilies are one of Carl Fresh's flagship export products. These bright red, intensely flavoured chilies are in high demand in European, Middle Eastern and Asian markets for both fresh and food processing use.",
-    origin: "Eastern & Coastal Kenya",
-    season: "Year-round",
-    packaging: ["3kg carton", "5kg carton", "10kg bulk", "Retail 100g bags"],
-    specs: "Length 15–20cm, Scoville 30,000–50,000 SHU, bright red, no blemish",
-    markets: "Europe, Middle East, Asia",
-    img: "https://agroduka.com/images/product/Cayenne-pepper-.png",
-  },
-  {
-    name: "Thin Chili",
-    category: "Herbs & Spices",
-    desc: "Slender, high-heat thin chilies with exceptional colour and pungency. Popular with spice processors and specialty food manufacturers, these chilies are harvested at full maturity for maximum capsaicin content.",
-    origin: "Eastern Kenya",
-    season: "Year-round",
-    packaging: ["3kg carton", "5kg carton", "10kg bulk"],
-    specs: "Length 8–12cm, Scoville 50,000–80,000 SHU, deep red to green",
-    markets: "Europe, Asia, Middle East",
-    img: "https://theamazingseeds.com/cdn/shop/products/CayenneRedLongThin-001_1024x1024.jpg?v=1609771054",
-  },
-  {
-    name: "Bullet Chili",
-    category: "Herbs & Spices",
-    badge: "Seasonal Spotlight",
-    desc: "Compact, round bullet chilies with intense heat and vibrant red colour. A popular variety for Asian cuisines and food processing, our bullet chilies offer consistent size, colour and heat levels.",
-    origin: "Coast & Eastern Regions",
-    season: "Year-round",
-    packaging: ["2kg carton", "3kg carton", "5kg bulk"],
-    specs: "Diameter 1.5–3cm, Scoville 50,000–100,000 SHU, deep red, firm",
-    markets: "Asia, Middle East, Africa",
-    img: "https://cdn.standardmedia.co.ke/images/monday/high_prospects_for_b5e5cc1c2bdab9.jpg",
-  },
 ];
 
-export const categories = ["All", "Fruits", "Vegetables", "Herbs & Spices"];
+export const categories = ["All", "Herbs & Spices", "Fruits", "Vegetables"];
 
 export const categoryCircles = [
   { name: "All", Icon: LayoutGrid, img: allImg },
+  { name: "Herbs & Spices", Icon: Flame, img: herbsCategoryImg },
   { name: "Fruits", Icon: Leaf, img: fruitsImg },
   { name: "Vegetables", Icon: Carrot, img: vegetablesImg },
-  { name: "Herbs & Spices", Icon: Flame, img: herbsImg },
 ];
 
 export const bestSellerNames = [
+  "Long Cayenne Chili",
+  "Thin Chili",
+  "Bullet Chili",
   "Avocados",
   "Mangoes",
-  "Fine Beans",
-  "Long Cayenne Chili",
   "Pineapples",
+  "Purple Passion Fruits",
+  "Fine Beans",
+  "Snap Peas",
+  "Snow Peas",
 ];

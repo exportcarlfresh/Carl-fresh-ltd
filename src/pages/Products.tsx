@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import "../styles/products.css";
-import pbannerImg from "../assets/images/pbanner.webp";
+import pbannerImg from "../assets/images/chilli banner2.png";
 import pbanner3Img from "../assets/images/pbanner3.webp";
 import pbanner4Img from "../assets/images/pbanner4.webp";
 import pbanner5Img from "../assets/images/pbanner7.webp";
