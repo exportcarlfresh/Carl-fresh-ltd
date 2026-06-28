@@ -387,13 +387,15 @@
 @media (max-width: 1024px) {
   .packaging-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .packaging-types-grid { grid-template-columns: 1fr 1fr; }
-  .freight-grid { grid-template-columns: 1fr; }
+  .freight-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .cold-chain-steps { grid-template-columns: repeat(3, 1fr); }
   .traceability-content { grid-template-columns: 1fr; gap: 3rem; }
 }
 
 @media (max-width: 640px) {
   .packaging-types-grid { grid-template-columns: 1fr; }
+  .freight-cards { grid-template-columns: 1fr; }
+  .freight-card { min-height: 420px; }
   .cold-chain-steps { grid-template-columns: repeat(2, 1fr); }
   .cold-chain-steps::before { display: none; }
 }

@@ -10,6 +10,13 @@ import FineBeans from '../assets/FineBeans.webp';
 import Chilies from '../assets/Chillies.webp';
 import SnapPeas from '../assets/SnapPeas.webp';
 import SnowPeas from '../assets/SnowPeas.webp';
+import Gallery0 from '../assets/Gallery0.jpeg';
+import Gallery1 from '../assets/Gallery1.jpeg';
+import Gallery2 from '../assets/Gallery2.jpeg';
+import Gallery3 from '../assets/Gallery3.jpeg';
+import Gallery4 from '../assets/Gallery4.png';
+import Gallery5 from '../assets/Gallery5.png';
+import Gallery6 from '../assets/Gallery6.png';
 
 interface GalleryItem {
   id: number;
@@ -20,6 +27,13 @@ interface GalleryItem {
 }
 
 const galleryItems: GalleryItem[] = [
+  { id: 101, category: 'Harvesting', caption: 'Hand-Picking Fine Beans in the Field', img: Gallery0, size: 'tall' },
+  { id: 102, category: 'Products',   caption: 'Freshly Picked Fine Beans',            img: Gallery1 },
+  { id: 103, category: 'Export',     caption: 'Loading Crates for Export',            img: Gallery2, size: 'wide' },
+  { id: 104, category: 'Farms',      caption: 'Fine Beans Farm — Open Fields',        img: Gallery3 },
+  { id: 105, category: 'Products',   caption: 'Fine Beans Ready for Harvest',         img: Gallery4, size: 'tall' },
+  { id: 106, category: 'Farms',      caption: 'Farm Visit — Inspecting the Bean Crop', img: Gallery5 },
+  { id: 107, category: 'Packing',    caption: 'Sorted Fine Beans Ready for Packing',  img: Gallery6, size: 'wide' },
   { id: 1,  category: 'Farms',      caption: 'Avocado Farm — Central Highlands',   img: Avocado, size: 'tall' },
   { id: 2,  category: 'Products',   caption: 'Premium Export Avocados',             img: Avocado },
   { id: 3,  category: 'Products',   caption: 'Long Cayenne Chilies',                img: Chilies },
