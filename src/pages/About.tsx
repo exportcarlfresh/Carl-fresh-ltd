@@ -9,7 +9,43 @@ import Banner from '../assets/AboutProfile.png';
 import herbs from '../assets/images/herbs.webp';
 import vegetables from '../assets/images/vegetables.webp';
 import fruits from '../assets/images/fruits.webp';
+import MartinKitema from '../assets/Martin.png';
+import DanielKalii from '../assets/Daniel.png';
+import CarolineKaranja from '../assets/Caroline.png';
+import { useState } from "react";
 
+const teamMembers = [
+  {
+    id: 1,
+    name: "Martin Kitema",
+    role: "Head, Operations & International Markets",
+    image: MartinKitema,
+    shortBio:
+      "Martin Kitema is a strategic business leader with over 10 years of experience in senior strategic leadership, operations management, and international market development. At Carl Fresh Produce Limited, he leads operational excellence and global market expansion, fostering strategic partnerships with importers, distributors, and retailers while driving the company's growth in international fresh produce markets.",
+    bio:
+      "He champions quality management, product traceability, post-harvest excellence, and sustainable sourcing, ensuring Carl Fresh consistently delivers premium produce that meets international quality, food safety, and customer requirements. His leadership is driven by innovation, operational excellence, customer focus, and the creation of sustainable value across the agricultural value chain.\n\nMartin holds a Master of Business Administration (MBA) in Strategic Management from Kenyatta University, a Postgraduate Diploma in Corporate Governance from PAC University, a Postgraduate Diploma in Data Science from Moringa School, and a Foundational Degree in Food Science and Technology from Jomo Kenyatta University of Agriculture and Technology (JKUAT)."
+  },
+  {
+    id: 2,
+    name: "Daniel Kalii",
+    role: "Head, Sustainable Agriculture & European Market Development",
+    image: DanielKalii,
+    shortBio:
+      "Daniel Kalii is an agribusiness professional with expertise in sustainable agriculture, international farm management, and European market development. Based in Germany, he leads Carl Fresh Produce Limited's sustainable agriculture initiatives while supporting the company's expansion across European markets through strategic business development and market intelligence.",
+    bio:
+      "Drawing on his extensive exposure to Kenya's farming systems and grower networks, Daniel promotes responsible sourcing, sustainable farming practices, and resilient agricultural value chains. He plays a key role in aligning production systems with evolving European quality, food safety, sustainability, and regulatory requirements, enabling Carl Fresh to consistently meet the expectations of international buyers and strengthen its position in global fresh produce markets.\n\nLeveraging his international exposure and understanding of European agricultural systems, Daniel provides strategic insights into market trends, customer requirements, sustainability standards, and agricultural innovations that enhance the company's competitiveness and long-term growth.\n\nDaniel holds a Foundational Degree in Agribusiness Management from Jaramogi Oginga Odinga University of Science and Technology (JOOUST) and a Master of Science (M.Sc.) in International Farm Management from Weihenstephan-Triesdorf University of Applied Sciences, Germany."
+  },
+  {
+    id: 3,
+    name: "Caroline Karanja",
+    role: "Managing Director",
+    image: CarolineKaranja,
+    shortBio:
+      "Caroline Karanja is the visionary leader of Carl Fresh Produce Limited, providing strategic direction and driving the company's growth as a trusted exporter of premium Kenyan fresh produce. With over 20 years of experience in entrepreneurship and business leadership, she has built a strong track record in business development, organizational growth, and stakeholder engagement.",
+    bio:
+      "As Managing Director, Caroline oversees the company's corporate strategy, governance, and business development, fostering strong partnerships with growers, customers, and industry stakeholders. She is committed to promoting innovation, operational excellence, and sustainable business practices that create long-term value across the agricultural value chain.\n\nCaroline holds a Bachelor's Degree in Entrepreneurship, providing a solid foundation in business strategy, enterprise development, and value creation that continues to guide Carl Fresh's growth and international aspirations."
+  }
+];
 const coreValues = [
   {
     id: 'integrity',
@@ -97,6 +133,7 @@ function ValueCard({ value }: { value: typeof coreValues[number] }) {
 }
 
 export default function About() {
+  const [expanded, setExpanded] = useState<number | null>(null);
   return (
     <main>
       {/* Hero */}
@@ -478,7 +515,69 @@ export default function About() {
   </div>
 
 </section>
+      <section className="team-section page-section">
+  <div className="container-xl">
 
+    <div className="section-heading-center">
+      <div className="section-label">Leadership Team</div>
+      <h2 className="section-title">Meet The People Behind Carl Fresh Produce</h2>
+      <p className="team-intro">
+        Experienced professionals dedicated to delivering premium Kenyan produce
+        to international markets.
+      </p>
+    </div>
+
+    <div className="team-grid">
+
+      {teamMembers.map((member) => {
+
+        const open = expanded === member.id;
+
+        return (
+
+          <article className="team-card" key={member.id}>
+
+            <div className="team-image">
+              <img src={member.image} alt={member.name}/>
+            </div>
+
+            <div className="team-content">
+
+              <h3>{member.name}</h3>
+
+              <span className="team-role">
+                {member.role}
+              </span>
+
+              <p>
+                {member.shortBio}
+              </p>
+
+              <div className={`team-bio ${open ? "open" : ""}`}>
+                <p>{member.bio}</p>
+              </div>
+
+              <button
+                className="team-readmore"
+                onClick={() =>
+                  setExpanded(open ? null : member.id)
+                }
+              >
+                {open ? "Show Less" : "Read More"}
+              </button>
+
+            </div>
+
+          </article>
+
+        );
+
+      })}
+
+    </div>
+
+  </div>
+</section>
       {/* ── CTA ── */}
       <section className="cta-banner">
         <div className="container-xl">
