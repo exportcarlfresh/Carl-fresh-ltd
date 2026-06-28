@@ -1,13 +1,8 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import {
-  FlaskConical,
-  Sprout,
-  Shield,
-  Link2,
-  Thermometer,
-} from "lucide-react";
+import { FlaskConical, Sprout, Shield, Link2, Thermometer } from "lucide-react";
 import "../styles/quality.css";
+import chilliImg from "../assets/images/chilli farm.png";
 
 const pillars = [
   {
@@ -71,10 +66,23 @@ const haccpSteps = [
 ];
 
 const certLogos = [
-  { name: "Food Safety Certification", src: "https://thumbs.dreamstime.com/b/food-safety-369124264.jpg" },
-  { name: "Ceres Certification", src: "https://www.ceres-cert.de/img/778f8eb5c324d3e293e22d7258cabd29_G_Logo_green_RGB.png" },
-  { name: "GlobalG.A.P. Certification", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF66YakFORitWD-dDtv_C0r8E6mUrCibgMkA&s" },
-  { name: "KEPHIS Certification", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzqEraxN-nY2x-K850ktpHtp_Lt2fdr1HxyQ&s" },
+  {
+    name: "Food Safety Certification",
+    src: "https://thumbs.dreamstime.com/b/food-safety-369124264.jpg",
+  },
+  //{ name: "GAP Certification",  src: "https://www.ceres-cert.de/img/778f8eb5c324d3e293e22d7258cabd29_G_Logo_green_RGB.png",},
+  {
+    name: "KEBS Certification",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF66YakFORitWD-dDtv_C0r8E6mUrCibgMkA&s",
+  },
+  {
+    name: "KEPHIS Certification",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzqEraxN-nY2x-K850ktpHtp_Lt2fdr1HxyQ&s",
+  },
+  {
+    name: "Agriculture and Food Authority (AFA)",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6HiF0o07hFkv55XViqI0vBp0SN2b1uJFI-w&s",
+  },
 ];
 
 // Repeated so a single half of the track is always wider than the viewport —
@@ -141,7 +149,7 @@ export default function Quality() {
               }}
             >
               <img
-                src="https://t3.ftcdn.net/jpg/03/92/79/30/360_F_392793022_sI86g7HjLEfBPxImNVIZNM7txBJVDRCw.jpg"
+                src={chilliImg}
                 alt="Quality inspection at Carl Fresh facility"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 loading="lazy"

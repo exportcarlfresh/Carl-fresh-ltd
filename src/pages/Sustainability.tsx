@@ -8,7 +8,6 @@ import {
   Users,
   BookOpen,
   School,
-  Monitor,
   Waves,
 } from "lucide-react";
 import "../styles/sustainability.css";
@@ -99,10 +98,10 @@ const initiatives = [
     Icon: School,
     text: "School support programme in farming communities around partner farms",
   },
-  {
-    Icon: Monitor,
-    text: "Digital record-keeping programme reducing paper waste by 70%",
-  },
+  // {
+  //   Icon: Monitor,
+  //   text: "Digital record-keeping programme reducing paper waste by 70%",
+  // },
   {
     Icon: Waves,
     text: "Watershed protection along key rivers near agricultural regions",

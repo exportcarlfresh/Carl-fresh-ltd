@@ -5,8 +5,8 @@ import {
   Globe, FileText, MessageCircle, Mail,
   ArrowRight, CheckCircle2, Package, Wheat
 } from 'lucide-react';
-import HeroBannerr from '../assets/HeroBackground.webp';
-import AboutBanner from '../assets/HeroAbout.webp';
+import HeroBannerr from '../assets/HeroBackgroundII.png';
+import AboutBanner from '../assets/HeroAboutI.png';
 import Asia from '../assets/Asia.webp';
 import Europe from '../assets/Europe.webp';
 import MiddleEast from '../assets/MiddleEast.webp';
@@ -16,7 +16,7 @@ import Mango from '../assets/Mangoes.webp';
 import Pineapple from '../assets/Pineapples.webp';
 import PassionFruit from '../assets/PassionFruits.png';
 import FineBeans from '../assets/FineBeans.webp';
-import Chilies from '../assets/Chillies.webp';
+import Chilies from '../assets/GreenChillie.png';
 import SnapPeas from '../assets/SnapPeas.webp';
 import SnowPeas from '../assets/SnowPeas.webp';
 import '../styles/home.css';
@@ -37,14 +37,14 @@ const whyChoose = [
 ];
 
 const products = [
+  { name: 'Chilies',        tag: 'Herbs & Spices',  desc: 'Long Cayenne, Bullet & Thin varieties',      img: Chilies },
+  { name: 'Fine Beans',     tag: 'Vegetables',      desc: 'Tender fine beans, premium quality',         img: FineBeans },
+  { name: 'Snap Peas',      tag: 'Vegetables',      desc: 'Crisp snap peas, air-freight ready',         img: SnapPeas },
+  { name: 'Snow Peas',      tag: 'Vegetables',      desc: 'Tender snow peas, European market',          img: SnowPeas },
   { name: 'Avocados',       tag: 'Fruits',          desc: 'Hass & Fuerte varieties, export grade',     img: Avocado },
   { name: 'Mangoes',        tag: 'Fruits',          desc: 'Tommy Atkins, Kent & Apple mangoes',         img: Mango },
   { name: 'Pineapples',     tag: 'Fruits',          desc: 'Sweet Kenyan pineapples, year-round',        img: Pineapple },
   { name: 'Passion Fruits', tag: 'Fruits',          desc: 'Purple passion fruits, vibrant flavour',     img: PassionFruit },
-  { name: 'Fine Beans',     tag: 'Vegetables',      desc: 'Tender fine beans, premium quality',         img: FineBeans },
-  { name: 'Chilies',        tag: 'Herbs & Spices',  desc: 'Long Cayenne, Bullet & Thin varieties',      img: Chilies },
-  { name: 'Snap Peas',      tag: 'Vegetables',      desc: 'Crisp snap peas, air-freight ready',         img: SnapPeas },
-  { name: 'Snow Peas',      tag: 'Vegetables',      desc: 'Tender snow peas, European market',          img: SnowPeas },
 ];
 
 const certifications = [
