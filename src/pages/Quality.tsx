@@ -70,11 +70,11 @@ const certLogos = [
     name: "Food Safety Certification",
     src: "https://thumbs.dreamstime.com/b/food-safety-369124264.jpg",
   },
+  //{ name: "GAP Certification",  src: "https://www.ceres-cert.de/img/778f8eb5c324d3e293e22d7258cabd29_G_Logo_green_RGB.png",},
   {
-    name: "Ceres Certification",
-    src: "https://www.ceres-cert.de/img/778f8eb5c324d3e293e22d7258cabd29_G_Logo_green_RGB.png",
+    name: "KEBS Certification",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF66YakFORitWD-dDtv_C0r8E6mUrCibgMkA&s",
   },
-  // { name: "GlobalG.A.P. Certification", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF66YakFORitWD-dDtv_C0r8E6mUrCibgMkA&s" },
   {
     name: "KEPHIS Certification",
     src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzqEraxN-nY2x-K850ktpHtp_Lt2fdr1HxyQ&s",
