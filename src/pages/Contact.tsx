@@ -96,6 +96,8 @@ export default function Contact() {
   const [quoteForm, setQuoteForm] = useState(initialQuote);
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
   const [quoteSubmitted, setQuoteSubmitted] = useState(false);
+  const [inquirySending, setInquirySending] = useState(false);
+  const [quoteSending, setQuoteSending] = useState(false);
   const [inquiryProducts, setInquiryProducts] = useState<string[]>([""]);
   const [quoteProducts, setQuoteProducts] = useState<ProductVolumeRow[]>([
     emptyProductVolumeRow(),
@@ -183,15 +185,20 @@ export default function Contact() {
       selectedProductsArray,
     };
 
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify(payload),
-    });
+    setInquirySending(true);
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(payload),
+      });
 
-    setInquirySubmitted(true);
-    setInquiryForm(initialInquiry);
-    setInquiryProducts([""]);
+      setInquirySubmitted(true);
+      setInquiryForm(initialInquiry);
+      setInquiryProducts([""]);
+    } finally {
+      setInquirySending(false);
+    }
   };
 
   const handleQuoteSubmit = async (e: React.FormEvent) => {
@@ -213,15 +220,20 @@ export default function Contact() {
       productsAndVolumesArray,
     };
 
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify(payload),
-    });
+    setQuoteSending(true);
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(payload),
+      });
 
-    setQuoteSubmitted(true);
-    setQuoteForm(initialQuote);
-    setQuoteProducts([emptyProductVolumeRow()]);
+      setQuoteSubmitted(true);
+      setQuoteForm(initialQuote);
+      setQuoteProducts([emptyProductVolumeRow()]);
+    } finally {
+      setQuoteSending(false);
+    }
   };
 
   return (
@@ -634,8 +646,12 @@ export default function Contact() {
                             />
                             Your information is kept strictly confidential.
                           </span>
-                          <button type="submit" className="btn-primary">
-                            Send Message
+                          <button
+                            type="submit"
+                            className="btn-primary"
+                            disabled={inquirySending}
+                          >
+                            {inquirySending ? "Sending..." : "Send Message"}
                           </button>
                         </div>
                       </form>
@@ -937,8 +953,12 @@ export default function Contact() {
                             />
                             Your information is strictly confidential.
                           </span>
-                          <button type="submit" className="btn-primary">
-                            Request Quote
+                          <button
+                            type="submit"
+                            className="btn-primary"
+                            disabled={quoteSending}
+                          >
+                            {quoteSending ? "Sending..." : "Request Quote"}
                           </button>
                         </div>
                       </form>
