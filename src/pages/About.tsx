@@ -16,35 +16,35 @@ import DavidMutunga from '../assets/David.png';
 import { useState } from "react";
 
 const teamMembers = [
-  {
+   {
     id: 1,
-    name: "Martin Kitema",
-    role: "Head, Operations & International Markets",
-    image: MartinKitema,
-    shortBio:
-      "Martin Kitema is a strategic business leader with over 10 years of experience in strategic leadership, operations management, and international market development. He leads Carl Fresh Produce Limited's operational excellence and global market expansion with international buyers and driving sustainable business growth.",
-    bio:
-      "\nHe holds a Master of Business Administration (MBA) in Strategic Management from Kenyatta University, a Postgraduate Diploma in Corporate Governance from PAC University, a Postgraduate Diploma in Data Science from Moringa School, and a Foundational Degree in Food Science and Technology from Jomo Kenyatta University of Agriculture and Technology (JKUAT)."
-  },
-  {
-    id: 2,
-    name: "Daniel Kalii",
-    role: "Head, Sustainable Agriculture & European Market Development",
-    image: DanielKalii,
-    shortBio:
-      "Daniel Kalii is an agribusiness professional specializing in sustainable agriculture, international farm management, and European market development. Based in Germany, he leads Carl Fresh Produce Limited's sustainability initiatives while supporting the company's expansion across European markets.",
-    bio:
-      "\nHe holds a Foundational Degree in Agribusiness Management from Jaramogi Oginga Odinga University of Science and Technology (JOOUST) and a Master of Science (M.Sc.) in International Farm Management from Weihenstephan-Triesdorf University of Applied Sciences, Germany."
-  },
-  {
-    id: 3,
     name: "Caroline Karanja",
     role: "Managing Director",
     image: CarolineKaranja,
     shortBio:
-      "Caroline Karanja is the visionary leader of Carl Fresh Produce Limited with over 20 years of experience in entrepreneurship and business leadership. She provides strategic direction, drives business growth, and strengthens partnerships that position the company as a trusted exporter of premium Kenyan fresh produce.",
+      "Caroline Karanja is the visionary leader of Carl Fresh Produce Limited with over 20 years of experience in entrepreneurship and business leadership.",
     bio:
-      "\nShe holds a Bachelor's Degree in Entrepreneurship, providing a strong foundation in business strategy, enterprise development, and value creation."
+      "She provides strategic direction, drives business growth, positioning the company as a trusted exporter of premium Kenyan fresh produce.\nShe holds a Bachelor's Degree in Entrepreneurship, providing a strong foundation in business strategy, enterprise development, and value creation."
+  },
+  {
+    id: 2,
+    name: "Martin Kitema",
+    role: "Head, Operations & International Markets",
+    image: MartinKitema,
+    shortBio:
+      "Martin Kitema is a strategic business leader with 10+ years experience in strategic leadership, operations management, and international market development. ",
+    bio:
+      "He leads Carl Fresh Produce Limited's operational excellence and global market expansion.\n(MBA) Strategic Management-Kenyatta University,Postgraduate Diploma-Corporate Governance from PAC University,Postgraduate Diploma-Data Science :Moringa School, Degree- Food Science and Technology-Jomo Kenyatta University of Agriculture and Technology (JKUAT)."
+  },
+  {
+    id: 3,
+    name: "Daniel Kalii",
+    role: "Head, Sustainable Agriculture & European Market Development",
+    image: DanielKalii,
+    shortBio:
+      "Daniel is an agribusiness professional specializing in sustainable agriculture, international farm management, and European market development. ",
+    bio:
+      "He leads Carl Fresh Produce Limited's sustainability initiatives.\nDegree-Agribusiness Management (Jaramogi Oginga Odinga University of Science and Technology (JOOUST)),(M.Sc.) International Farm Management from Weihenstephan-Triesdorf University of Applied Sciences, Germany."
   },
   {
     id: 4,
@@ -52,9 +52,9 @@ const teamMembers = [
     role: "Field Partnerships & Grower Development Advisor",
     image: DavidMutunga,
     shortBio:
-      "David Mutunga Matuku is a horticulture professional with over 10 years of experience in crop production, grower development, climate-smart agriculture, and sustainable farming systems. He leads Carl Fresh Produce Limited's field partnerships and grower development initiatives, working closely with farmers to promote Good Agricultural Practices (GAP) and responsible sourcing.",
+      "David is a horticulture professional with 10+ years experience in crop production, climate-smart agriculture, and sustainable farming systems.",
     bio:
-      "\nHe holds a Bachelor of Science in Horticulture (First Class Honours) from Jomo Kenyatta University of Agriculture and Technology (JKUAT), a Postgraduate Diploma in Advanced Agriculture from the Arava International Center for Agricultural Training (AICAT), Israel, and a Postgraduate Certificate in Advanced Agriculture from the Center for Agriculture, Education and Partnerships (CAEP), United States."
+      "Leads Carl Fresh Produce Limited's field partnerships and grower development initiatives\nBSc Horticulture (First Class Honours)-Jomo Kenyatta University of Agriculture and Technology,Postgraduate Diploma in Advanced Agriculture - Arava International Center for Agricultural Training (AICAT), Israel,Postgraduate Certificate -Advanced Agriculture from the Center for Agriculture, Education and Partnerships (CAEP), United States."
   }
 ];
 const coreValues = [
