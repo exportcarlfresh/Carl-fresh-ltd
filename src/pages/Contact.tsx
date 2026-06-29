@@ -20,7 +20,7 @@ import "../styles/contact.css";
 import { allProducts } from "../data/products";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyRZtCWw4yVmQhluIg07ko9Ka9lMy2ALJNddcwgsy4QAnKCjy4v-wj34KMPS4_dUx5eyg/exec";
+  "https://script.google.com/macros/s/AKfycbzDLmsyGSWWPBOdRmPPdKJyShEd1zjRASVwd-J3w1CJ-HAQDWgE3an3TjFYw9h2C-gV/exec";
 
 type FormTab = "inquiry" | "quote";
 
